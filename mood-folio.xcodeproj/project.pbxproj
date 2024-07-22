@@ -23,6 +23,12 @@
 		C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCF82C4E6A06006998D6 /* CommonButton.swift */; };
 		C478FCFC2C4E6A3F006998D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCFB2C4E6A3F006998D6 /* Constants.swift */; };
 		C478FD012C4E7595006998D6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD002C4E7595006998D6 /* ProfileViewController.swift */; };
+		C478FD042C4E81AD006998D6 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = C478FD032C4E81AD006998D6 /* TextFieldEffects */; };
+		C478FD062C4E8367006998D6 /* TextFieldEffets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD052C4E8367006998D6 /* TextFieldEffets+.swift */; };
+		C478FD082C4E863A006998D6 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD072C4E863A006998D6 /* UIViewController+.swift */; };
+		C478FD0F2C4E89B8006998D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD0E2C4E89B8006998D6 /* ProfileView.swift */; };
+		C478FD112C4E89D2006998D6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD102C4E89D2006998D6 /* BaseView.swift */; };
+		C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD122C4E8B4C006998D6 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +49,11 @@
 		C478FCF82C4E6A06006998D6 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 		C478FCFB2C4E6A3F006998D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C478FD002C4E7595006998D6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C478FD052C4E8367006998D6 /* TextFieldEffets+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldEffets+.swift"; sourceTree = "<group>"; };
+		C478FD072C4E863A006998D6 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		C478FD0E2C4E89B8006998D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C478FD102C4E89D2006998D6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		C478FD122C4E8B4C006998D6 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C478FCEF2C4E636A006998D6 /* SnapKit in Frameworks */,
+				C478FD042C4E81AD006998D6 /* TextFieldEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +94,6 @@
 				C478FCE52C4E61F5006998D6 /* Protocol */,
 				C478FCF72C4E69EA006998D6 /* Components */,
 				C478FCDD2C4E615B006998D6 /* Presentation */,
-				C478FCFF2C4E757C006998D6 /* Profile */,
 				C478FCD52C4E5546006998D6 /* Application */,
 				C478FCCA2C4E54C2006998D6 /* Assets.xcassets */,
 				C478FCCC2C4E54C2006998D6 /* LaunchScreen.storyboard */,
@@ -104,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				C478FCDE2C4E6163006998D6 /* Onboarding */,
+				C478FCFF2C4E757C006998D6 /* Profile */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -119,6 +131,7 @@
 		C478FCE12C4E617E006998D6 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C478FD102C4E89D2006998D6 /* BaseView.swift */,
 				C478FCE32C4E61D0006998D6 /* BaseViewController.swift */,
 			);
 			path = Base;
@@ -138,6 +151,8 @@
 			children = (
 				C478FCEA2C4E62CA006998D6 /* UIView+.swift */,
 				C478FCF52C4E646B006998D6 /* UIColor+.swift */,
+				C478FD052C4E8367006998D6 /* TextFieldEffets+.swift */,
+				C478FD072C4E863A006998D6 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -171,9 +186,35 @@
 		C478FCFF2C4E757C006998D6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				C478FD002C4E7595006998D6 /* ProfileViewController.swift */,
+				C478FD0A2C4E8991006998D6 /* View */,
+				C478FD0B2C4E8994006998D6 /* ViewController */,
+				C478FD0C2C4E8999006998D6 /* ViewModel */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		C478FD0A2C4E8991006998D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD0E2C4E89B8006998D6 /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C478FD0B2C4E8994006998D6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD002C4E7595006998D6 /* ProfileViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C478FD0C2C4E8999006998D6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD122C4E8B4C006998D6 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +235,7 @@
 			name = "mood-folio";
 			packageProductDependencies = (
 				C478FCEE2C4E636A006998D6 /* SnapKit */,
+				C478FD032C4E81AD006998D6 /* TextFieldEffects */,
 			);
 			productName = "mood-folio";
 			productReference = C478FCBE2C4E54C2006998D6 /* mood-folio.app */;
@@ -225,6 +267,7 @@
 			mainGroup = C478FCB52C4E54C1006998D6;
 			packageReferences = (
 				C478FCED2C4E636A006998D6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C478FD022C4E81AD006998D6 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = C478FCBF2C4E54C2006998D6 /* Products */;
 			projectDirPath = "";
@@ -253,18 +296,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C478FD082C4E863A006998D6 /* UIViewController+.swift in Sources */,
+				C478FD062C4E8367006998D6 /* TextFieldEffets+.swift in Sources */,
 				C478FCEB2C4E62CA006998D6 /* UIView+.swift in Sources */,
 				C478FCFC2C4E6A3F006998D6 /* Constants.swift in Sources */,
 				C478FCF42C4E642E006998D6 /* Resource.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,
 				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
+				C478FD0F2C4E89B8006998D6 /* ProfileView.swift in Sources */,
 				C478FCE02C4E6170006998D6 /* OnboardingViewController.swift in Sources */,
 				C478FD012C4E7595006998D6 /* ProfileViewController.swift in Sources */,
 				C478FCE72C4E620F006998D6 /* Reusable.swift in Sources */,
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
+				C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */,
 				C478FCC42C4E54C2006998D6 /* SceneDelegate.swift in Sources */,
 				C478FCF62C4E646B006998D6 /* UIColor+.swift in Sources */,
+				C478FD112C4E89D2006998D6 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +547,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		C478FD022C4E81AD006998D6 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -506,6 +562,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C478FCED2C4E636A006998D6 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		C478FD032C4E81AD006998D6 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C478FD022C4E81AD006998D6 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -24,8 +24,12 @@ enum Resource {
     }
     
     enum Fonts {
-//        static let bold20: UIFont = .systemFont(ofSize: 20, weight: .bold)
+        static let regular13: UIFont = .systemFont(ofSize: 13, weight: .regular)
         static let black20: UIFont = .systemFont(ofSize: 20, weight: .black)
         static let button: UIFont = .systemFont(ofSize: 16, weight: .black)
+    }
+    
+    enum SystemImage {
+        static let camera = UIImage(systemName: "camera.fill")
     }
 }
