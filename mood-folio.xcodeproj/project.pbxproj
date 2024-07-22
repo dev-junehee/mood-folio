@@ -20,6 +20,8 @@
 		C478FCF12C4E63B8006998D6 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCF02C4E63B8006998D6 /* Base.swift */; };
 		C478FCF42C4E642E006998D6 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCF32C4E642E006998D6 /* Resource.swift */; };
 		C478FCF62C4E646B006998D6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCF52C4E646B006998D6 /* UIColor+.swift */; };
+		C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCF82C4E6A06006998D6 /* CommonButton.swift */; };
+		C478FCFC2C4E6A3F006998D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCFB2C4E6A3F006998D6 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		C478FCF02C4E63B8006998D6 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		C478FCF32C4E642E006998D6 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		C478FCF52C4E646B006998D6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		C478FCF82C4E6A06006998D6 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		C478FCFB2C4E6A3F006998D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +78,7 @@
 				C478FCF22C4E6425006998D6 /* Common */,
 				C478FCE82C4E62BA006998D6 /* Extension */,
 				C478FCE52C4E61F5006998D6 /* Protocol */,
-				C478FCE12C4E617E006998D6 /* Base */,
+				C478FCF72C4E69EA006998D6 /* Components */,
 				C478FCDD2C4E615B006998D6 /* Presentation */,
 				C478FCD52C4E5546006998D6 /* Application */,
 				C478FCCA2C4E54C2006998D6 /* Assets.xcassets */,
@@ -139,8 +143,26 @@
 			isa = PBXGroup;
 			children = (
 				C478FCF32C4E642E006998D6 /* Resource.swift */,
+				C478FCFB2C4E6A3F006998D6 /* Constants.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		C478FCF72C4E69EA006998D6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C478FCE12C4E617E006998D6 /* Base */,
+				C478FCFA2C4E6A09006998D6 /* CustomView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C478FCFA2C4E6A09006998D6 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				C478FCF82C4E6A06006998D6 /* CommonButton.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,11 +243,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C478FCEB2C4E62CA006998D6 /* UIView+.swift in Sources */,
+				C478FCFC2C4E6A3F006998D6 /* Constants.swift in Sources */,
 				C478FCF42C4E642E006998D6 /* Resource.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,
 				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
 				C478FCE02C4E6170006998D6 /* OnboardingViewController.swift in Sources */,
 				C478FCE72C4E620F006998D6 /* Reusable.swift in Sources */,
+				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
 				C478FCC42C4E54C2006998D6 /* SceneDelegate.swift in Sources */,
 				C478FCF62C4E646B006998D6 /* UIColor+.swift in Sources */,

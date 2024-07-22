@@ -14,13 +14,16 @@ import UIKit
 
 enum Resource {
     enum Colors {
-        static let primary: UIColor = .init(rgb: 0x186FF2)
+        static let primary: UIColor = .init(rgb: 0x186ff2)
         static let pink: UIColor = .init(rgb: 0xF04452)
-        static let white: UIColor = .init(rgb: 0x000000)
+        static let white: UIColor = .init(rgb: 0xFFFFFF)
         static let whiteSmoke: UIColor = .init(rgb: 0xF2F2F2)
         static let lightGray: UIColor = .init(rgb: 0x8C8C8C)
         static let gray: UIColor = .init(rgb: 0x4D5652)
-        static let black: UIColor = .init(rgb: 0xFFFFFF)
+        static let black: UIColor = .init(rgb: 0x000000)
     }
     
+    enum Fonts {
+        static let button: UIFont = .systemFont(ofSize: 16, weight: .black)
+    }
 }
