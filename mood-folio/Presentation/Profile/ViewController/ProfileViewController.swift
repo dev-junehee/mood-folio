@@ -36,6 +36,8 @@ final class ProfileViewController: BaseViewController {
         viewModel.outputNicknameIsValid.bind { [weak self] isValid in
             if isValid {
                 self?.mainView.invalidMessage.textColor = Resource.Color.primary
+            } else {
+                self?.mainView.invalidMessage.textColor = Resource.Color.pink
             }
         }
         
