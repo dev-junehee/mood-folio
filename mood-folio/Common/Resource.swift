@@ -24,6 +24,8 @@ enum Resource {
     }
     
     enum Fonts {
+//        static let bold20: UIFont = .systemFont(ofSize: 20, weight: .bold)
+        static let black20: UIFont = .systemFont(ofSize: 20, weight: .black)
         static let button: UIFont = .systemFont(ofSize: 16, weight: .black)
     }
 }

@@ -14,7 +14,7 @@ final class CommonButton: UIButton {
         setTitle(title, for: .normal)
         setTitleColor(Resource.Colors.white, for:.normal)
         titleLabel?.font = Resource.Fonts.button
-        backgroundColor = self.isEnabled ? Resource.Colors.lightGray : Resource.Colors.primary
+        backgroundColor = isEnabled ? Resource.Colors.primary : Resource.Colors.lightGray
         layer.cornerRadius = CGFloat(Constants.Integer.buttonRadius)
     }
     
