@@ -17,27 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="HaR-Ye-5GZ">
-                                <rect key="frame" x="26.666666666666657" y="119" width="340" height="160"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchTitle" translatesAutoresizingMaskIntoConstraints="NO" id="OhW-pI-U3d">
+                                <rect key="frame" x="32" y="99" width="320" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="rYK-C8-jA0"/>
-                                    <constraint firstAttribute="width" constant="340" id="w8z-cE-eSP"/>
+                                    <constraint firstAttribute="height" constant="120" id="MUa-D9-T1S"/>
+                                    <constraint firstAttribute="width" constant="320" id="QbR-BH-J0o"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-Ff-uYE">
-                                <rect key="frame" x="29" y="309" width="335" height="335"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchPolaroid" translatesAutoresizingMaskIntoConstraints="NO" id="6c5-bi-jzu">
+                                <rect key="frame" x="0.0" y="235" width="393" height="400"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="335" id="HcR-2m-1Sy"/>
-                                    <constraint firstAttribute="height" constant="335" id="xG1-df-w2Q"/>
+                                    <constraint firstAttribute="height" constant="400" id="fbs-fB-acq"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김준희" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGY-7j-pZZ">
-                                <rect key="frame" x="146.66666666666666" y="664" width="100" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김준희" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pJ-RU-kuU">
+                                <rect key="frame" x="0.0" y="651" width="393" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ZCs-BJ-D84"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="yQo-zT-IfW"/>
+                                    <constraint firstAttribute="height" constant="40" id="4Sd-ka-pHY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -45,12 +43,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HaR-Ye-5GZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9QS-Xv-gNJ"/>
-                            <constraint firstItem="YGY-7j-pZZ" firstAttribute="top" secondItem="6LP-Ff-uYE" secondAttribute="bottom" constant="20" id="CkN-5a-3dv"/>
-                            <constraint firstItem="HaR-Ye-5GZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="Dxo-MM-vy1"/>
-                            <constraint firstItem="YGY-7j-pZZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FdY-O7-Pgc"/>
-                            <constraint firstItem="6LP-Ff-uYE" firstAttribute="top" secondItem="HaR-Ye-5GZ" secondAttribute="bottom" constant="30" id="LRH-Tg-3ep"/>
-                            <constraint firstItem="6LP-Ff-uYE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="o3B-cu-YfS"/>
+                            <constraint firstItem="6c5-bi-jzu" firstAttribute="top" secondItem="OhW-pI-U3d" secondAttribute="bottom" constant="16" id="c5j-Bx-Tkb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4pJ-RU-kuU" secondAttribute="trailing" id="cPY-UT-p4o"/>
+                            <constraint firstItem="4pJ-RU-kuU" firstAttribute="top" secondItem="6c5-bi-jzu" secondAttribute="bottom" constant="16" id="e6R-Q2-ptU"/>
+                            <constraint firstItem="OhW-pI-U3d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="g5m-h7-eLZ"/>
+                            <constraint firstItem="OhW-pI-U3d" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="jaP-7A-j2t"/>
+                            <constraint firstItem="4pJ-RU-kuU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pAF-O5-y2L"/>
+                            <constraint firstItem="6c5-bi-jzu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vPt-Kt-HtS"/>
+                            <constraint firstItem="6c5-bi-jzu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wBT-0K-UtQ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -60,8 +60,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch" width="294.66665649414062" height="80.333335876464844"/>
-        <image name="launchImage" width="335" height="374"/>
+        <image name="launchPolaroid" width="335" height="374"/>
+        <image name="launchTitle" width="294.66665649414062" height="80.333335876464844"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
