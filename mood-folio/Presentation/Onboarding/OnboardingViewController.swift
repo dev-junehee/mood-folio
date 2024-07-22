@@ -28,7 +28,7 @@ final class OnboardingViewController: BaseViewController {
         let label = UILabel()
         label.text = "김준희"
         label.textAlignment = .center
-        label.font = Resource.Fonts.black20
+        label.font = Resource.Font.black20
         return label
     }()
     

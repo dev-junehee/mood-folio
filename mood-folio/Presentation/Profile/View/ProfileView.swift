@@ -17,12 +17,12 @@ final class ProfileView: BaseView {
         return view
     }()
     
-    private let profileImage = {
+    let profileImage = {
         let view = UIImageView()
-        view.backgroundColor = Resource.Colors.white
+        view.backgroundColor = Resource.Color.white
         view.clipsToBounds = true
         view.layer.cornerRadius = 50
-        view.layer.borderColor = Resource.Colors.primary.cgColor
+        view.layer.borderColor = Resource.Color.primary.cgColor
         view.layer.borderWidth = CGFloat(Constants.Integer.borderWidth)
         view.contentMode = .scaleAspectFit
         return view
@@ -30,7 +30,7 @@ final class ProfileView: BaseView {
     
     private let cameraImageView = {
         let view = UIView()
-        view.backgroundColor = Resource.Colors.primary
+        view.backgroundColor = Resource.Color.primary
         view.layer.cornerRadius = 12
         return view
     }()
@@ -39,7 +39,7 @@ final class ProfileView: BaseView {
         let view = UIImageView()
         view.image = Resource.SystemImage.camera
         view.contentMode = .scaleAspectFit
-        view.tintColor = Resource.Colors.white
+        view.tintColor = Resource.Color.white
         return view
     }()
     
@@ -51,10 +51,10 @@ final class ProfileView: BaseView {
         return view
     }()
     
-    private let invalidMessage = {
+    let invalidMessage = {
         let view = UILabel()
-        view.textColor = Resource.Colors.primary
-        view.font = Resource.Fonts.regular13
+        view.textColor = Resource.Color.pink
+        view.font = Resource.Font.regular13
         return view
     }()
     

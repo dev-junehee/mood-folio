@@ -12,9 +12,9 @@ final class CommonButton: UIButton {
     init(title: String) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
-        setTitleColor(Resource.Colors.white, for:.normal)
-        titleLabel?.font = Resource.Fonts.button
-        backgroundColor = isEnabled ? Resource.Colors.primary : Resource.Colors.lightGray
+        setTitleColor(Resource.Color.white, for:.normal)
+        titleLabel?.font = Resource.Font.button
+        backgroundColor = isEnabled ? Resource.Color.primary : Resource.Color.lightGray
         layer.cornerRadius = CGFloat(Constants.Integer.buttonRadius)
     }
     

@@ -10,9 +10,9 @@ import TextFieldEffects
 extension HoshiTextField {
     func setTextFieldUI(_ placeholder: String) {
         self.placeholder = placeholder
-        self.placeholderColor = Resource.Colors.lightGray
-        self.borderInactiveColor = Resource.Colors.lightGray
-        self.borderActiveColor = Resource.Colors.primary
-        self.tintColor = Resource.Colors.primary
+        self.placeholderColor = Resource.Color.lightGray
+        self.borderInactiveColor = Resource.Color.lightGray
+        self.borderActiveColor = Resource.Color.primary
+        self.tintColor = Resource.Color.primary
     }
 }

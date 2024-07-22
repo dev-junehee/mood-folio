@@ -29,6 +29,9 @@
 		C478FD0F2C4E89B8006998D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD0E2C4E89B8006998D6 /* ProfileView.swift */; };
 		C478FD112C4E89D2006998D6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD102C4E89D2006998D6 /* BaseView.swift */; };
 		C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD122C4E8B4C006998D6 /* ProfileViewModel.swift */; };
+		C478FD162C4E8FF2006998D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD152C4E8FF2006998D6 /* User.swift */; };
+		C478FD192C4E9025006998D6 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD182C4E9025006998D6 /* Observable.swift */; };
+		C478FD1C2C4E9340006998D6 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		C478FD0E2C4E89B8006998D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C478FD102C4E89D2006998D6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C478FD122C4E8B4C006998D6 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C478FD152C4E8FF2006998D6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C478FD182C4E9025006998D6 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +95,11 @@
 		C478FCC02C4E54C2006998D6 /* mood-folio */ = {
 			isa = PBXGroup;
 			children = (
+				C478FD172C4E9019006998D6 /* Observable */,
+				C478FD142C4E8FE9006998D6 /* Model */,
 				C478FCF22C4E6425006998D6 /* Common */,
 				C478FCE82C4E62BA006998D6 /* Extension */,
+				C478FD1A2C4E9332006998D6 /* Manager */,
 				C478FCE52C4E61F5006998D6 /* Protocol */,
 				C478FCF72C4E69EA006998D6 /* Components */,
 				C478FCDD2C4E615B006998D6 /* Presentation */,
@@ -217,6 +226,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C478FD142C4E8FE9006998D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD152C4E8FF2006998D6 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C478FD172C4E9019006998D6 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD182C4E9025006998D6 /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
+		C478FD1A2C4E9332006998D6 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,11 +329,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C478FD192C4E9025006998D6 /* Observable.swift in Sources */,
 				C478FD082C4E863A006998D6 /* UIViewController+.swift in Sources */,
 				C478FD062C4E8367006998D6 /* TextFieldEffets+.swift in Sources */,
 				C478FCEB2C4E62CA006998D6 /* UIView+.swift in Sources */,
 				C478FCFC2C4E6A3F006998D6 /* Constants.swift in Sources */,
 				C478FCF42C4E642E006998D6 /* Resource.swift in Sources */,
+				C478FD1C2C4E9340006998D6 /* UserDefaultsManager.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,
 				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
 				C478FD0F2C4E89B8006998D6 /* ProfileView.swift in Sources */,
@@ -310,6 +345,7 @@
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
 				C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */,
+				C478FD162C4E8FF2006998D6 /* User.swift in Sources */,
 				C478FCC42C4E54C2006998D6 /* SceneDelegate.swift in Sources */,
 				C478FCF62C4E646B006998D6 /* UIColor+.swift in Sources */,
 				C478FD112C4E89D2006998D6 /* BaseView.swift in Sources */,

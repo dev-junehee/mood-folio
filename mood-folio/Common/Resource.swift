@@ -13,7 +13,7 @@ import UIKit
  */
 
 enum Resource {
-    enum Colors {
+    enum Color {
         static let primary: UIColor = .init(rgb: 0x186ff2)
         static let pink: UIColor = .init(rgb: 0xF04452)
         static let white: UIColor = .init(rgb: 0xFFFFFF)
@@ -23,13 +23,22 @@ enum Resource {
         static let black: UIColor = .init(rgb: 0x000000)
     }
     
-    enum Fonts {
+    enum Font {
         static let regular13: UIFont = .systemFont(ofSize: 13, weight: .regular)
         static let black20: UIFont = .systemFont(ofSize: 20, weight: .black)
         static let button: UIFont = .systemFont(ofSize: 16, weight: .black)
     }
     
+    enum Image {
+        static let profileImages: [UIImage] = [
+            .profile0, .profile1, .profile2, .profile3,
+            .profile4, .profile5, .profile6, .profile7,
+            .profile8, .profile9, .profile10, .profile11,
+        ]
+    }
+    
     enum SystemImage {
-        static let camera = UIImage(systemName: "camera.fill")
+        static let camera = UIImage(systemName: "camera.fill")!
+        static let left = UIImage(systemName: "chevron.left")!
     }
 }
