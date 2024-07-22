@@ -7,4 +7,12 @@
 
 import UIKit
 
-final class OnboardingViewController: Base
+final class OnboardingViewController: BaseViewController {
+    
+    private let titleImage = {
+        let view = UIImageView()
+        view.image = UIImage.launch
+        return view
+    }()
+    
+}

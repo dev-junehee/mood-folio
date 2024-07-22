@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, Base {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,9 @@ class BaseViewController: UIViewController {
         configureUI()
     }
     
-    func configureViewController() { }
+    func configureViewController() {
+        view.backgroundColor = Resource.Colors.white
+    }
     
     func configureHierarchy() { }
     
