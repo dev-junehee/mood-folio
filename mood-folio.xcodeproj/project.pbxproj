@@ -12,6 +12,10 @@
 		C478FCCB2C4E54C2006998D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C478FCCA2C4E54C2006998D6 /* Assets.xcassets */; };
 		C478FCCE2C4E54C2006998D6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C478FCCD2C4E54C2006998D6 /* Base */; };
 		C478FCD72C4E5560006998D6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C478FCD62C4E5560006998D6 /* .gitignore */; };
+		C478FCE02C4E6170006998D6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCDF2C4E6170006998D6 /* OnboardingViewController.swift */; };
+		C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCE32C4E61D0006998D6 /* BaseViewController.swift */; };
+		C478FCE72C4E620F006998D6 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCE62C4E620F006998D6 /* Reusable.swift */; };
+		C478FCEB2C4E62CA006998D6 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FCEA2C4E62CA006998D6 /* UIView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		C478FCCD2C4E54C2006998D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C478FCCF2C4E54C2006998D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C478FCD62C4E5560006998D6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C478FCDF2C4E6170006998D6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C478FCE32C4E61D0006998D6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C478FCE62C4E620F006998D6 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		C478FCEA2C4E62CA006998D6 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,10 @@
 		C478FCC02C4E54C2006998D6 /* mood-folio */ = {
 			isa = PBXGroup;
 			children = (
+				C478FCE82C4E62BA006998D6 /* Extension */,
+				C478FCE52C4E61F5006998D6 /* Protocol */,
+				C478FCE12C4E617E006998D6 /* Base */,
+				C478FCDD2C4E615B006998D6 /* Presentation */,
 				C478FCD52C4E5546006998D6 /* Application */,
 				C478FCCA2C4E54C2006998D6 /* Assets.xcassets */,
 				C478FCCC2C4E54C2006998D6 /* LaunchScreen.storyboard */,
@@ -70,6 +82,46 @@
 				C478FCC32C4E54C2006998D6 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		C478FCDD2C4E615B006998D6 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C478FCDE2C4E6163006998D6 /* Onboarding */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C478FCDE2C4E6163006998D6 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C478FCDF2C4E6170006998D6 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C478FCE12C4E617E006998D6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C478FCE32C4E61D0006998D6 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C478FCE52C4E61F5006998D6 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C478FCE62C4E620F006998D6 /* Reusable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C478FCE82C4E62BA006998D6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C478FCEA2C4E62CA006998D6 /* UIView+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +195,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C478FCEB2C4E62CA006998D6 /* UIView+.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,
+				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
+				C478FCE02C4E6170006998D6 /* OnboardingViewController.swift in Sources */,
+				C478FCE72C4E620F006998D6 /* Reusable.swift in Sources */,
 				C478FCC42C4E54C2006998D6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
