@@ -33,6 +33,7 @@
 		C478FD192C4E9025006998D6 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD182C4E9025006998D6 /* Observable.swift */; };
 		C478FD1C2C4E9340006998D6 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */; };
 		C478FD1E2C4F36AB006998D6 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD1D2C4F36AB006998D6 /* ProfileImageViewController.swift */; };
+		C478FD4B2C4FE2CA006998D6 /* MBTIButtton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD4A2C4FE2CA006998D6 /* MBTIButtton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		C478FD182C4E9025006998D6 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C478FD1D2C4F36AB006998D6 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
+		C478FD4A2C4FE2CA006998D6 /* MBTIButtton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIButtton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				C478FCF82C4E6A06006998D6 /* CommonButton.swift */,
+				C478FD4A2C4FE2CA006998D6 /* MBTIButtton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				C478FCEB2C4E62CA006998D6 /* UIView+.swift in Sources */,
 				C478FCFC2C4E6A3F006998D6 /* Constants.swift in Sources */,
 				C478FCF42C4E642E006998D6 /* Resource.swift in Sources */,
+				C478FD4B2C4FE2CA006998D6 /* MBTIButtton.swift in Sources */,
 				C478FD1E2C4F36AB006998D6 /* ProfileImageViewController.swift in Sources */,
 				C478FD1C2C4E9340006998D6 /* UserDefaultsManager.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,

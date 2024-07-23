@@ -58,6 +58,71 @@ final class ProfileView: BaseView {
         return view
     }()
     
+    private let mbtiLabel = {
+        let view = UILabel()
+        view.text = Constants.Profile.mbti
+        view.font = Resource.Font.bold16
+        return view
+    }()
+
+    private lazy var mbtiESTJBox = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        view.distribution = .equalSpacing
+        let mbtiButtons = [mbtiButtonE, mbtiButtonS, mbtiButtonT, mbtiButtonJ]
+        mbtiButtons.forEach { view.addArrangedSubview($0) }
+        return view
+    }()
+    
+    private lazy var mbtiINFPBox = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        view.distribution = .equalSpacing
+        let mbtiButtons = [mbtiButtonI, mbtiButtonN, mbtiButtonF, mbtiButtonP]
+        mbtiButtons.forEach { view.addArrangedSubview($0) }
+        return view
+    }()
+    
+    private let mbtiButtonE = {
+        let button = MBTIButtton(title: "E")
+        return button
+    }()
+    
+    private let mbtiButtonS = {
+        let button = MBTIButtton(title: "S")
+        return button
+    }()
+    
+    private let mbtiButtonT = {
+        let button = MBTIButtton(title: "T")
+        return button
+    }()
+    
+    private let mbtiButtonJ = {
+        let button = MBTIButtton(title: "J")
+        return button
+    }()
+    
+    private let mbtiButtonI = {
+        let button = MBTIButtton(title: "I")
+        return button
+    }()
+    
+    private let mbtiButtonN = {
+        let button = MBTIButtton(title: "N")
+        return button
+    }()
+    
+    private let mbtiButtonF = {
+        let button = MBTIButtton(title: "F")
+        return button
+    }()
+    
+    private let mbtiButtonP = {
+        let button = MBTIButtton(title: "P")
+        return button
+    }()
+    
     let doneButton = {
         let button = CommonButton(title: Constants.Button.done)
         button.isEnabled = false
@@ -69,7 +134,11 @@ final class ProfileView: BaseView {
         profileImageView.addSubview(profileImage)
         profileImageView.addSubview(cameraImageView)
         
-        let subviews = [profileImageView, nicknameField, invalidMessage, doneButton]
+        let subviews = [
+            profileImageView, nicknameField, invalidMessage,
+            mbtiLabel, mbtiESTJBox, mbtiESTJBox, mbtiINFPBox,
+            doneButton
+        ]
         subviews.forEach { self.addSubview($0) }
     }
     
@@ -107,6 +176,26 @@ final class ProfileView: BaseView {
             $0.top.equalTo(nicknameField.snp.bottom).offset(8)
             $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(24)
             $0.height.equalTo(30)
+        }
+        
+        mbtiLabel.snp.makeConstraints {
+            $0.top.equalTo(invalidMessage.snp.bottom).offset(32)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(24)
+            $0.width.equalTo(50)
+        }
+        
+        mbtiESTJBox.snp.makeConstraints {
+            $0.top.equalTo(invalidMessage.snp.bottom).offset(32)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(24)
+            $0.width.equalTo(220)
+            $0.height.equalTo(50)
+        }
+        
+        mbtiINFPBox.snp.makeConstraints {
+            $0.top.equalTo(mbtiESTJBox.snp.bottom).offset(8)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(24)
+            $0.width.equalTo(220)
+            $0.height.equalTo(50)
         }
         
         doneButton.snp.makeConstraints {

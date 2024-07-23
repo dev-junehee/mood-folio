@@ -8,6 +8,10 @@
 import Foundation
 
 enum Constants {
+    enum Profile {
+        static let mbti = "MBTI"
+    }
+    
     enum Button {
         static let start = "시작하기"
         static let done = "완료"
@@ -32,8 +36,9 @@ enum Constants {
     }
     
     enum Integer {
-        static let buttonRadius = 20
-        static let  borderWidth = 3
-        static let  borderWidthEnabled = 1
+        static let commonButtonRadius: CGFloat = 20
+        static let mbtiButtonRadius: CGFloat = 40
+        static let borderWidth = 3
+        static let borderWidthEnabled = 1
     }
 }
