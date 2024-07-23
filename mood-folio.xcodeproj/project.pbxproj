@@ -39,6 +39,7 @@
 		C478FD512C4FFE8B006998D6 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD502C4FFE8B006998D6 /* BaseCollectionViewCell.swift */; };
 		C478FD532C500020006998D6 /* ProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD522C500020006998D6 /* ProfileImageViewModel.swift */; };
 		C478FD552C500CAC006998D6 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD542C500CAC006998D6 /* DateFormatterManager.swift */; };
+		C478FD572C500EAF006998D6 /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD562C500EAF006998D6 /* ValidationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		C478FD502C4FFE8B006998D6 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C478FD522C500020006998D6 /* ProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewModel.swift; sourceTree = "<group>"; };
 		C478FD542C500CAC006998D6 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
+		C478FD562C500EAF006998D6 /* ValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 			children = (
 				C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */,
 				C478FD542C500CAC006998D6 /* DateFormatterManager.swift */,
+				C478FD562C500EAF006998D6 /* ValidationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				C478FD4D2C4FFC1F006998D6 /* ProfileImageView.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
 				C478FD552C500CAC006998D6 /* DateFormatterManager.swift in Sources */,
+				C478FD572C500EAF006998D6 /* ValidationManager.swift in Sources */,
 				C478FD4F2C4FFE60006998D6 /* ProfileImageCollectionViewCell.swift in Sources */,
 				C478FD532C500020006998D6 /* ProfileImageViewModel.swift in Sources */,
 				C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */,
