@@ -9,7 +9,7 @@ import UIKit
 
 final class CommonButton: UIButton {
     
-    init(title: String) {
+    init(title: String, isEnabled: Bool = true) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         setTitleColor(Resource.Color.white, for:.normal)

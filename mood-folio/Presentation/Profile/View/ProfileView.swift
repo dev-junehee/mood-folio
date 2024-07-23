@@ -23,7 +23,7 @@ final class ProfileView: BaseView {
         view.clipsToBounds = true
         view.layer.cornerRadius = 50
         view.layer.borderColor = Resource.Color.primary.cgColor
-        view.layer.borderWidth = CGFloat(Constants.Integer.borderWidth)
+        view.layer.borderWidth = Constants.Integer.borderWidth
         view.contentMode = .scaleAspectFit
         return view
     }()
@@ -124,10 +124,14 @@ final class ProfileView: BaseView {
     }()
     
     let doneButton = {
-        let button = CommonButton(title: Constants.Button.done)
-        button.isEnabled = false
+        let button = CommonButton(title: Constants.Button.done, isEnabled: false)
         return button
     }()
+    
+    lazy var mbtiButtons = [
+        mbtiButtonE, mbtiButtonS, mbtiButtonT, mbtiButtonJ,
+        mbtiButtonI, mbtiButtonN, mbtiButtonF, mbtiButtonP,
+    ]
     
     override func configureHierarchy() {
         cameraImageView.addSubview(cameraImage)

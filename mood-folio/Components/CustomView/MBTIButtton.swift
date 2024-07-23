@@ -13,7 +13,7 @@ final class MBTIButtton: UIButton {
     init(title: String, size: CGFloat = 50) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
-        setTitleColor(Resource.Color.black, for:.normal)
+        setTitleColor(isSelected ? Resource.Color.white : Resource.Color.lightGray, for:.normal)
         titleLabel?.font = Resource.Font.bold16
         backgroundColor = isSelected ? Resource.Color.primary : Resource.Color.white
         layer.borderColor = isSelected ? Resource.Color.primary.cgColor : Resource.Color.lightGray.cgColor
@@ -28,4 +28,9 @@ final class MBTIButtton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateUI() {
+        setTitleColor(isSelected ? Resource.Color.white : Resource.Color.lightGray, for:.normal)
+        backgroundColor = isSelected ? Resource.Color.primary : Resource.Color.white
+        layer.borderColor = isSelected ? Resource.Color.primary.cgColor : Resource.Color.lightGray.cgColor
+    }
 }

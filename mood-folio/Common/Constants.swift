@@ -38,7 +38,7 @@ enum Constants {
     enum Integer {
         static let commonButtonRadius: CGFloat = 20
         static let mbtiButtonRadius: CGFloat = 40
-        static let borderWidth = 3
-        static let borderWidthEnabled = 1
+        static let borderWidth: CGFloat = 3
+        static let borderWidthEnabled: CGFloat = 1
     }
 }

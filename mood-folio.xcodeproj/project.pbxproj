@@ -34,6 +34,11 @@
 		C478FD1C2C4E9340006998D6 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */; };
 		C478FD1E2C4F36AB006998D6 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD1D2C4F36AB006998D6 /* ProfileImageViewController.swift */; };
 		C478FD4B2C4FE2CA006998D6 /* MBTIButtton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD4A2C4FE2CA006998D6 /* MBTIButtton.swift */; };
+		C478FD4D2C4FFC1F006998D6 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD4C2C4FFC1F006998D6 /* ProfileImageView.swift */; };
+		C478FD4F2C4FFE60006998D6 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD4E2C4FFE60006998D6 /* ProfileImageCollectionViewCell.swift */; };
+		C478FD512C4FFE8B006998D6 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD502C4FFE8B006998D6 /* BaseCollectionViewCell.swift */; };
+		C478FD532C500020006998D6 /* ProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD522C500020006998D6 /* ProfileImageViewModel.swift */; };
+		C478FD552C500CAC006998D6 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD542C500CAC006998D6 /* DateFormatterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +69,11 @@
 		C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C478FD1D2C4F36AB006998D6 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		C478FD4A2C4FE2CA006998D6 /* MBTIButtton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIButtton.swift; sourceTree = "<group>"; };
+		C478FD4C2C4FFC1F006998D6 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		C478FD4E2C4FFE60006998D6 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		C478FD502C4FFE8B006998D6 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		C478FD522C500020006998D6 /* ProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewModel.swift; sourceTree = "<group>"; };
+		C478FD542C500CAC006998D6 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +156,7 @@
 			children = (
 				C478FD102C4E89D2006998D6 /* BaseView.swift */,
 				C478FCE32C4E61D0006998D6 /* BaseViewController.swift */,
+				C478FD502C4FFE8B006998D6 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -193,6 +204,7 @@
 			children = (
 				C478FCF82C4E6A06006998D6 /* CommonButton.swift */,
 				C478FD4A2C4FE2CA006998D6 /* MBTIButtton.swift */,
+				C478FD4E2C4FFE60006998D6 /* ProfileImageCollectionViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -211,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				C478FD0E2C4E89B8006998D6 /* ProfileView.swift */,
+				C478FD4C2C4FFC1F006998D6 /* ProfileImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				C478FD122C4E8B4C006998D6 /* ProfileViewModel.swift */,
+				C478FD522C500020006998D6 /* ProfileImageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -252,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */,
+				C478FD542C500CAC006998D6 /* DateFormatterManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -350,8 +365,13 @@
 				C478FCE02C4E6170006998D6 /* OnboardingViewController.swift in Sources */,
 				C478FD012C4E7595006998D6 /* ProfileViewController.swift in Sources */,
 				C478FCE72C4E620F006998D6 /* Reusable.swift in Sources */,
+				C478FD512C4FFE8B006998D6 /* BaseCollectionViewCell.swift in Sources */,
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
+				C478FD4D2C4FFC1F006998D6 /* ProfileImageView.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
+				C478FD552C500CAC006998D6 /* DateFormatterManager.swift in Sources */,
+				C478FD4F2C4FFE60006998D6 /* ProfileImageCollectionViewCell.swift in Sources */,
+				C478FD532C500020006998D6 /* ProfileImageViewModel.swift in Sources */,
 				C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */,
 				C478FD162C4E8FF2006998D6 /* User.swift in Sources */,
 				C478FCC42C4E54C2006998D6 /* SceneDelegate.swift in Sources */,
