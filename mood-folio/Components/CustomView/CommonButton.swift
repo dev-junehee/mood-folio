@@ -9,6 +9,12 @@ import UIKit
 
 final class CommonButton: UIButton {
     
+    override var isEnabled: Bool {
+        didSet {
+            updateUI()
+        }
+    }
+    
     init(title: String, isEnabled: Bool = true) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
@@ -20,6 +26,10 @@ final class CommonButton: UIButton {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateUI() {
+        backgroundColor = isEnabled ? Resource.Color.primary : Resource.Color.white
     }
     
 }

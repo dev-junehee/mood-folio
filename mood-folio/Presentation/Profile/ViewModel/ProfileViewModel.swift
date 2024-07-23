@@ -18,9 +18,10 @@ final class ProfileViewModel {
     
     // input
     var outputProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
-    var outputNicknameIsValid = Observable<Bool>(false)
+    var outputNicknameResult = Observable<Bool>(false)
     var outputNicknameInvalidMessage = Observable<Constants.NicknameValidation>(.empty)
-    var outputMBTIIsValid = Observable<Bool>(false)
+    var outputMBTIResult = Observable<Bool>(false)
+    var outputUserAccountResult = Observable<Bool>(false)
     
     init() {
         transform()
@@ -45,11 +46,6 @@ final class ProfileViewModel {
         }
         
         inputDoneButton.bind { [weak self] _ in
-            print("가입 전 확인")
-            print("프로필 이미지", self?.outputProfileImage.value)
-            print("닉네임", self?.inputNicknameTextField.value)
-            // print("MBTI")
-            
             self?.saveUserAccount()
         }
     }
@@ -60,11 +56,11 @@ final class ProfileViewModel {
         do {
             let result = try ValidationManager.shared.getNicknameValidation(nickname)
             if result {
-                outputNicknameIsValid.value = true
+                outputNicknameResult.value = true
                 outputNicknameInvalidMessage.value = .success
             }
         } catch  {
-            outputNicknameIsValid.value = false
+            outputNicknameResult.value = false
             switch error {
             case NicknameValidationError.empty:
                 outputNicknameInvalidMessage.value = .empty
@@ -91,6 +87,21 @@ final class ProfileViewModel {
     // 회원가입
     private func saveUserAccount() {
         // UserDefaults에 유저 데이터 저장
+        guard let nickname = inputNicknameTextField.value else { return }
+        UserDefaultsManager.shared.nickname = nickname
+        UserDefaultsManager.shared.profile = outputProfileImage.value
+        UserDefaultsManager.shared.mbti = "INTP"
+        UserDefaultsManager.shared.joinDate = DateFormatterManager.shared.getTodayString(formatType: "yyyy. MM. dd")
+        UserDefaultsManager.shared.isUser = true
+        
+        print("잘 저장됐는지 확인")
+        print("UD - ", UserDefaultsManager.shared.nickname)
+        print("UD - ", UserDefaultsManager.shared.profile)
+        print("UD - ", UserDefaultsManager.shared.mbti)
+        print("UD - ", UserDefaultsManager.shared.joinDate)
+        print("UD - ", UserDefaultsManager.shared.isUser)
+        
+        outputUserAccountResult.value = true
     }
     
     

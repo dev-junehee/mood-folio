@@ -22,13 +22,11 @@ final class ProfileViewController: BaseViewController {
         configureHandler()
         bindData()
         viewModel.inputViewDidLoad.value = ()
-        print("선택한거!!!!! >>>> ", viewModel.outputProfileImage.value)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.inputViewWillAppear.value = ()  // 랜덤 프로필 이미지 설정
-        print("선택한거!!!!! >>>> ", viewModel.outputProfileImage.value)
     }
     
     private func bindData() {
@@ -38,8 +36,8 @@ final class ProfileViewController: BaseViewController {
         }
         
         // 닉네임 유효성 검사 결과
-        viewModel.outputNicknameIsValid.bind { [weak self] isValid in
-            if isValid {
+        viewModel.outputNicknameResult.bind { [weak self] res in
+            if res {
                 self?.mainView.invalidMessage.textColor = Resource.Color.primary
             } else {
                 self?.mainView.invalidMessage.textColor = Resource.Color.pink
@@ -49,6 +47,15 @@ final class ProfileViewController: BaseViewController {
         // 닉네임 유효성 검사 메세지
         viewModel.outputNicknameInvalidMessage.bind { [weak self] validation in
             self?.mainView.invalidMessage.text = validation.rawValue
+        }
+        
+        // 유저 가입 완료
+        viewModel.outputUserAccountResult.bind { [weak self] res in
+            if res {
+                self?.mainView.doneButton.isEnabled = true
+            } else {
+                self?.mainView.doneButton.isEnabled = false
+            }
         }
     }
     
@@ -62,6 +69,7 @@ final class ProfileViewController: BaseViewController {
         // 배경 탭
         let backgroundTap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
         view.addGestureRecognizer(backgroundTap)
+        
         // 프로필 이미지 탭
         let profileTap =  UITapGestureRecognizer(target: self, action: #selector(profileImageClicked))
         mainView.profileImageView.addGestureRecognizer(profileTap)
@@ -77,7 +85,8 @@ final class ProfileViewController: BaseViewController {
     }
     
     @objc private func profileImageClicked() {
-        navigationController?.pushViewController(ProfileImageViewController(), animated: true)
+        let profileImageVC = ProfileImageViewController()
+        navigationController?.pushViewController(profileImageVC, animated: true)
     }
     
     @objc private func nicknameFieldEditing() {
@@ -89,7 +98,9 @@ final class ProfileViewController: BaseViewController {
     }
     
     @objc private func doneButtonClicked() {
+        // 화면 전환
+        
+        // 임시
         viewModel.inputDoneButton.value = ()
     }
 }
-

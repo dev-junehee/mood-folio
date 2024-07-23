@@ -10,6 +10,12 @@ import SnapKit
 
 final class MBTIButtton: UIButton {
     
+    override var isSelected: Bool {
+        didSet {
+            updateUI()
+        }
+    }
+    
     init(title: String, size: CGFloat = 50) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
