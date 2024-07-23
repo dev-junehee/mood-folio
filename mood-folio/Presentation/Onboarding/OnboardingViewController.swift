@@ -50,7 +50,8 @@ final class OnboardingViewController: BaseViewController {
     override func configureLayout() {
         titleImage.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(32)
+//            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(32)
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
             $0.width.equalTo(320)
             $0.height.equalTo(120)
         }
