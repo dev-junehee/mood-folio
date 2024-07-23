@@ -12,7 +12,7 @@ import TextFieldEffects
 
 final class ProfileView: BaseView {
     
-    private let profileImageView = {
+    let profileImageView = {
         let view = UIView()
         return view
     }()

@@ -53,11 +53,20 @@ final class ProfileViewController: BaseViewController {
     }
     
     private func configureHandler() {
-        let tapped = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
-        view.addGestureRecognizer(tapped)
+        let backgroundTap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
+        view.addGestureRecognizer(backgroundTap)
+        
+        let profileTap =  UITapGestureRecognizer(target: self, action: #selector(profileImageClicked))
+        mainView.profileImageView.addGestureRecognizer(profileTap)
+        
         
         mainView.nicknameField.addTarget(self, action: #selector(nicknameFieldEditing), for: .editingChanged)
         mainView.doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc private func profileImageClicked() {
+        print(#function)
+        navigationController?.pushViewController(ProfileImageViewController(), animated: true)
     }
     
     @objc private func nicknameFieldEditing() {
