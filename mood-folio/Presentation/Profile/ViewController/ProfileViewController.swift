@@ -56,12 +56,13 @@ final class ProfileViewController: BaseViewController {
             } else {
                 self?.mainView.doneButton.isEnabled = false
             }
+            self?.changeRootViewController()
         }
     }
     
     override func configureViewController() {
         super.configureViewController()
-        navigationItem.title = Constants.NavigationTitle.ProfileSetting
+        navigationItem.title = Constants.Title.profileSetting
         setImgBarButton(image: Resource.SystemImage.left, target: self, action: #selector(popViewController), type: .left)
     }
     

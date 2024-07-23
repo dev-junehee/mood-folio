@@ -34,7 +34,7 @@ final class ProfileImageViewController: BaseViewController {
     
     override func configureViewController() {
         super.configureViewController()
-        navigationItem.title = Constants.NavigationTitle.ProfileSetting
+        navigationItem.title = Constants.Title.profileSetting
         setImgBarButton(image: Resource.SystemImage.left, target: self, action: #selector(popViewController), type: .left)
         
         mainView.profileCollectionView.delegate = self

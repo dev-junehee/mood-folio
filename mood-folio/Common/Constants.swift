@@ -8,6 +8,14 @@
 import Foundation
 
 enum Constants {
+    enum Title {
+        static let topic = "OUR TOPIC"
+        static let search = "SEARCH PHOTO"
+        static let like = "MY POLAROID"
+        static let profileSetting = "PROFILE SETTING"
+        static let editProfile = "EDIT PROFILE"
+    }
+    
     enum Profile {
         static let mbti = "MBTI"
     }
@@ -15,10 +23,6 @@ enum Constants {
     enum Button {
         static let start = "시작하기"
         static let done = "완료"
-    }
-    
-    enum NavigationTitle {
-        static let ProfileSetting = "PROFILE SETTING"
     }
     
     enum Placeholder {

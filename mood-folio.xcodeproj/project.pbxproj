@@ -40,6 +40,10 @@
 		C478FD532C500020006998D6 /* ProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD522C500020006998D6 /* ProfileImageViewModel.swift */; };
 		C478FD552C500CAC006998D6 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD542C500CAC006998D6 /* DateFormatterManager.swift */; };
 		C478FD572C500EAF006998D6 /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD562C500EAF006998D6 /* ValidationManager.swift */; };
+		C478FD5A2C5019E9006998D6 /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD592C5019E9006998D6 /* TopicViewController.swift */; };
+		C478FD5D2C501A1F006998D6 /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD5C2C501A1F006998D6 /* RandomViewController.swift */; };
+		C478FD602C501A58006998D6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD5F2C501A58006998D6 /* SearchViewController.swift */; };
+		C478FD632C501A8A006998D6 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FD622C501A8A006998D6 /* LikeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +80,10 @@
 		C478FD522C500020006998D6 /* ProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewModel.swift; sourceTree = "<group>"; };
 		C478FD542C500CAC006998D6 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
 		C478FD562C500EAF006998D6 /* ValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
+		C478FD592C5019E9006998D6 /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
+		C478FD5C2C501A1F006998D6 /* RandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
+		C478FD5F2C501A58006998D6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C478FD622C501A8A006998D6 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,10 @@
 			children = (
 				C478FCDE2C4E6163006998D6 /* Onboarding */,
 				C478FCFF2C4E757C006998D6 /* Profile */,
+				C478FD582C5019D7006998D6 /* Topic */,
+				C478FD5B2C501A17006998D6 /* Random */,
+				C478FD5E2C501A4A006998D6 /* Search */,
+				C478FD612C501A76006998D6 /* Like */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -274,6 +286,38 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		C478FD582C5019D7006998D6 /* Topic */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD592C5019E9006998D6 /* TopicViewController.swift */,
+			);
+			path = Topic;
+			sourceTree = "<group>";
+		};
+		C478FD5B2C501A17006998D6 /* Random */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD5C2C501A1F006998D6 /* RandomViewController.swift */,
+			);
+			path = Random;
+			sourceTree = "<group>";
+		};
+		C478FD5E2C501A4A006998D6 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD5F2C501A58006998D6 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C478FD612C501A76006998D6 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				C478FD622C501A8A006998D6 /* LikeViewController.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -360,6 +404,7 @@
 				C478FCFC2C4E6A3F006998D6 /* Constants.swift in Sources */,
 				C478FCF42C4E642E006998D6 /* Resource.swift in Sources */,
 				C478FD4B2C4FE2CA006998D6 /* MBTIButtton.swift in Sources */,
+				C478FD602C501A58006998D6 /* SearchViewController.swift in Sources */,
 				C478FD1E2C4F36AB006998D6 /* ProfileImageViewController.swift in Sources */,
 				C478FD1C2C4E9340006998D6 /* UserDefaultsManager.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,
@@ -368,14 +413,17 @@
 				C478FCE02C4E6170006998D6 /* OnboardingViewController.swift in Sources */,
 				C478FD012C4E7595006998D6 /* ProfileViewController.swift in Sources */,
 				C478FCE72C4E620F006998D6 /* Reusable.swift in Sources */,
+				C478FD5D2C501A1F006998D6 /* RandomViewController.swift in Sources */,
 				C478FD512C4FFE8B006998D6 /* BaseCollectionViewCell.swift in Sources */,
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
 				C478FD4D2C4FFC1F006998D6 /* ProfileImageView.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
 				C478FD552C500CAC006998D6 /* DateFormatterManager.swift in Sources */,
 				C478FD572C500EAF006998D6 /* ValidationManager.swift in Sources */,
+				C478FD632C501A8A006998D6 /* LikeViewController.swift in Sources */,
 				C478FD4F2C4FFE60006998D6 /* ProfileImageCollectionViewCell.swift in Sources */,
 				C478FD532C500020006998D6 /* ProfileImageViewModel.swift in Sources */,
+				C478FD5A2C5019E9006998D6 /* TopicViewController.swift in Sources */,
 				C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */,
 				C478FD162C4E8FF2006998D6 /* User.swift in Sources */,
 				C478FCC42C4E54C2006998D6 /* SceneDelegate.swift in Sources */,
