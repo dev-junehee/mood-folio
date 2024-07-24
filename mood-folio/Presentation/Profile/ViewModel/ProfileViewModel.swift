@@ -57,7 +57,7 @@ final class ProfileViewModel {
         }
         
         inputNicknameTextField.bind { [weak self] _ in
-//            self?.nicknameValidation()
+            self?.nicknameValidation()
         }
         
         inputMBTIButton.bind { [weak self] _ in
