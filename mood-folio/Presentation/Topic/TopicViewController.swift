@@ -26,7 +26,6 @@ final class TopicViewController: BaseViewController {
     
     private func bindData() {
         viewModel.outputProfileImage.bind { [weak self] profile in
-//            self?.titleView.profileImage.image = Resource.Image.profileImages[profile
             self?.titleView.profileImage.setImage(Resource.Image.profileImages[profile], for: .normal)
         }
         
@@ -44,12 +43,8 @@ final class TopicViewController: BaseViewController {
     
     
     private func setTitleProfileView() {
-//        titleView.profileImage.addTarget(self, action: #selector(profileImageTapped), for: .touchUpInside)
         let profileButton = UIBarButtonItem(customView: titleView)
         navigationItem.rightBarButtonItem = profileButton
-        
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
-//        titleView.profileImage.addTarget(self, action: #selector(profileImageTapped), for: .touchUpInside)
     }
     
     @objc private func profileImageTapped() {

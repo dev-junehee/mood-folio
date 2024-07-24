@@ -22,6 +22,7 @@ final class TopicViewModel {
     }
     
     private func transform() {
+        // 저장된 프로필 이미지 가져오기 + TOPIC API 호출
         inputViewDidLoad.bind { [weak self] _ in
             self?.outputProfileImage.value = UserDefaultsManager.shared.profile
             self?.getTopics()
