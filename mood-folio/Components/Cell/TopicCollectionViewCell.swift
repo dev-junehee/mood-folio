@@ -6,16 +6,17 @@
 //
 
 import UIKit
+
+import Kingfisher
 import SnapKit
 
 final class TopicCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         view.layer.cornerRadius = 12
-        // 임시
-        view.backgroundColor = .systemPink
         return view
     }()
     
@@ -37,7 +38,6 @@ final class TopicCollectionViewCell: BaseCollectionViewCell {
     
     private let starCountLabel = {
         let label = UILabel()
-        label.text = "\(1334.formatted(.number))"
         label.textColor = Resource.Color.white
         label.font = Resource.Font.bold14
         return label
@@ -70,6 +70,11 @@ final class TopicCollectionViewCell: BaseCollectionViewCell {
             $0.trailing.equalTo(labelView.snp.trailing).inset(10)
             $0.centerY.equalTo(labelView)
         }
+    }
+    
+    func updateCell(data: Topic) {
+        imageView.kf.setImage(with: URL(string: data.urls.small))
+        starCountLabel.text = "\(data.likes.formatted())"
     }
     
 }

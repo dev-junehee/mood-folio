@@ -3,7 +3,10 @@
 
 .DS_Store
 
+/API
 API.swift
+APIKey.swift
+APICase.swift
 
 ### Swift ###
 # Xcode

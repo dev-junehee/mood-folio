@@ -12,6 +12,12 @@ final class TopicViewController: BaseViewController {
     private let titleView = ProfileTitleView()
     private let topicView = TopicView()
     private let viewModel = TopicViewModel()
+    
+    private var topicList: [[Topic]] = [
+        [],
+        [],
+        []
+    ]
 
     override func loadView() {
         view = topicView
@@ -20,6 +26,7 @@ final class TopicViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitleProfileView()
+        getTopics()
         bindData()
         viewModel.inputViewDidLoad.value = ()
     }
@@ -53,6 +60,66 @@ final class TopicViewController: BaseViewController {
     
 }
 
+extension TopicViewController {
+    private func getTopics() {
+        let group = DispatchGroup()
+        
+        // 골든 아워
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.callRequest(api: .topic(topicId: "golden-hour")) { (res: Result<[Topic]?, Error>) in
+                switch res {
+                case .success(let data):
+                    guard let data else { return }
+                    dump(data)
+                    self.topicList[0] = data
+                case .failure(let error):
+                    print(error)
+                }
+                group.leave()
+            }
+        }
+        
+        // 비즈니스 및 업무
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.callRequest(api: .topic(topicId: "business-work")) { (res: Result<[Topic]?, Error>) in
+                switch res {
+                case .success(let data):
+                    guard let data else { return }
+                    dump(data)
+                    self.topicList[1] = data
+                case .failure(let error):
+                    print(error)
+                }
+                group.leave()
+            }
+        }
+        
+        // 건축 및 인테리어
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.callRequest(api: .topic(topicId: "architecture-interior")) { (res: Result<[Topic]?, Error>) in
+                switch res {
+                case .success(let data):
+                    guard let data else { return }
+                    dump(data)
+                    self.topicList[2] = data
+                case .failure(let error):
+                    print(error)
+                }
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            print("=====================끝났어용===================")
+            self.topicView.tableView.reloadData()
+        }
+    }
+}
+
+
 // TableView
 extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,6 +139,8 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self
         cell.collectionView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.id)
+        cell.collectionView.tag = indexPath.row
+        cell.collectionView.reloadData()
         
         return cell
     }
@@ -80,12 +149,14 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
 // CollectionView
 extension TopicViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return topicList[collectionView.tag].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.id, for: indexPath) as? TopicCollectionViewCell else { return TopicCollectionViewCell() }
-        
+
+        let data = topicList[collectionView.tag][indexPath.item]
+        cell.updateCell(data: data)
         
         return cell
     }
