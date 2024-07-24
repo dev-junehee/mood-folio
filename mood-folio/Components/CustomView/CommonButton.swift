@@ -9,17 +9,27 @@ import UIKit
 
 final class CommonButton: UIButton {
     
-    init(title: String) {
+    override var isEnabled: Bool {
+        didSet {
+            updateUI()
+        }
+    }
+    
+    init(title: String, isEnabled: Bool = true) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
-        setTitleColor(Resource.Colors.white, for:.normal)
-        titleLabel?.font = Resource.Fonts.button
-        backgroundColor = isEnabled ? Resource.Colors.primary : Resource.Colors.lightGray
-        layer.cornerRadius = CGFloat(Constants.Integer.buttonRadius)
+        setTitleColor(Resource.Color.white, for:.normal)
+        titleLabel?.font = Resource.Font.button
+        backgroundColor = isEnabled ? Resource.Color.primary : Resource.Color.lightGray
+        layer.cornerRadius = Constants.Integer.commonButtonRadius
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateUI() {
+        backgroundColor = isEnabled ? Resource.Color.primary : Resource.Color.white
     }
     
 }

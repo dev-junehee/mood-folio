@@ -11,5 +11,9 @@ extension UIView: Reusable {
     static var id: String {
         return String(describing: self)
     }
+    
+    @objc func keyboardDismiss() {
+        self.endEditing(true)
+    }
 }
 
