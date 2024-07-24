@@ -94,4 +94,10 @@ extension TopicViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.detailData = viewModel.outputTopicList.value[collectionView.tag][indexPath.item]
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
