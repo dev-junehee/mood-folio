@@ -7,6 +7,24 @@
 
 import Foundation
 
+enum MBTICharType: String {
+    case E, S, T, J, I, N, F, P
+    
+    var converse: MBTICharType {
+        switch self {
+        case .E: return .I
+        case .S: return .N
+        case .T: return .F
+        case .J: return .P
+        case .I: return .E
+        case .N: return .S
+        case .F: return .T
+        case .P: return .J
+        }
+    }
+}
+
+
 final class ProfileViewModel {
     
     // input
@@ -20,6 +38,7 @@ final class ProfileViewModel {
     var outputProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
     var outputNicknameResult = Observable<Bool>(false)
     var outputNicknameInvalidMessage = Observable<Constants.NicknameValidation>(.empty)
+//    var outputMBTIToggle = Observable<MBTICharType>(.E)
     var outputMBTIResult = Observable<Bool>(false)
     var outputUserAccountResult = Observable<Bool>(false)
     
@@ -38,11 +57,11 @@ final class ProfileViewModel {
         }
         
         inputNicknameTextField.bind { [weak self] _ in
-            self?.nicknameValidation()
+//            self?.nicknameValidation()
         }
         
-        inputMBTIButton.bind { [weak self] mbtiChar in
-            self?.mbtiValidation()
+        inputMBTIButton.bind { [weak self] _ in
+            self?.toggleMBTIButton()
         }
         
         inputDoneButton.bind { [weak self] _ in
@@ -79,9 +98,29 @@ final class ProfileViewModel {
     }
     
     // MBTI 유효성 검사
-    private func mbtiValidation() {
+    private func toggleMBTIButton() {
         guard let mbtiChar = inputMBTIButton.value else { return }
-        print(mbtiChar)
+        
+        switch mbtiChar {
+        case "E":
+            print("E")
+        case "S":
+            print("S")
+        case "T":
+            print("T")
+        case "J":
+            print("J")
+        case "I":
+            print("I")
+        case "N":
+            print("N")
+        case "F":
+            print("F")
+        case "P":
+            print("P")
+        default:
+            break
+        }
     }
     
     // 회원가입

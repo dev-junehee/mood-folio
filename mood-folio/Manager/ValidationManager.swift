@@ -59,7 +59,7 @@ final class ValidationManager {
     }
     
     // MBTI 유효성 검사
-    func getMBTIValidation() {
+    func getMBTIValidation(_ mbtiChar: String) {
         
     }
     
