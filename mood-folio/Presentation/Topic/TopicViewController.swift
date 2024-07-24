@@ -19,6 +19,7 @@ final class TopicViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTitleProfileView()
         bindData()
         viewModel.inputViewDidLoad.value = ()
     }
@@ -68,9 +69,23 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         let title = Constants.Topic.titles[indexPath.row]
         cell.configureCellTitle(title: title)
         
-//        cell.collectionView.delegate = self
-//        cell.collectionView.dataSource = self
-//        cell.collectionView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellWithReuseIdentifier: <#T##String#>)
+        cell.collectionView.delegate = self
+        cell.collectionView.dataSource = self
+        cell.collectionView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.id)
+        
+        return cell
+    }
+}
+
+
+extension TopicViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.id, for: indexPath) as? TopicCollectionViewCell else { return TopicCollectionViewCell() }
+        
         
         return cell
     }

@@ -20,7 +20,7 @@ final class TopicTableViewCell: BaseTableViewCell {
     
     private func layout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 120, height: 160)
+        layout.itemSize = CGSize(width: 180, height: 240)
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)

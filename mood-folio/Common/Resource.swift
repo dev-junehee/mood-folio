@@ -41,6 +41,7 @@ enum Resource {
     enum SystemImage {
         static let camera = UIImage(systemName: "camera.fill")!
         static let left = UIImage(systemName: "chevron.left")!
+        static let star = UIImage(systemName: "star")!
         
         static let tabBarImages = ["chart.line.uptrend.xyaxis", "play.square", "magnifyingglass", "heart"]
     }
