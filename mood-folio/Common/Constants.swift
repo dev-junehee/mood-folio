@@ -16,6 +16,10 @@ enum Constants {
         static let editProfile = "EDIT PROFILE"
     }
     
+    enum Topic {
+        static let titles = ["골든 아워", "비즈니스 및 업무", "건축 및 인테리어"]
+    }
+    
     enum Profile {
         static let mbti = "MBTI"
     }

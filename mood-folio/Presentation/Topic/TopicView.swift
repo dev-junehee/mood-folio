@@ -17,8 +17,15 @@ final class TopicView: BaseView {
         return label
     }()
     
+    let tableView = {
+        let view = UITableView()
+        view.separatorStyle = .none
+        return view
+    }()
+    
     override func configureHierarchy() {
-        self.addSubview(titleLabel)
+        let views = [titleLabel, tableView]
+        views.forEach { self.addSubview($0) }
     }
     
     override func configureLayout() {
@@ -26,6 +33,11 @@ final class TopicView: BaseView {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
             $0.height.equalTo(50)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
