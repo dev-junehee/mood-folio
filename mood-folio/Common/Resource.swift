@@ -16,6 +16,7 @@ enum Resource {
     enum Color {
         static let primary: UIColor = .init(rgb: 0x186ff2)
         static let pink: UIColor = .init(rgb: 0xF04452)
+        static let yellow: UIColor = .systemYellow
         static let white: UIColor = .init(rgb: 0xFFFFFF)
         static let whiteSmoke: UIColor = .init(rgb: 0xF2F2F2)
         static let lightGray: UIColor = .init(rgb: 0x8C8C8C)
@@ -25,6 +26,7 @@ enum Resource {
     
     enum Font {
         static let regular13: UIFont = .systemFont(ofSize: 13, weight: .regular)
+        static let bold14: UIFont = .systemFont(ofSize: 14, weight: .bold)
         static let bold16: UIFont = .systemFont(ofSize: 16, weight: .bold)
         static let black20: UIFont = .systemFont(ofSize: 20, weight: .black)
         static let button: UIFont = .systemFont(ofSize: 16, weight: .black)
@@ -41,7 +43,7 @@ enum Resource {
     enum SystemImage {
         static let camera = UIImage(systemName: "camera.fill")!
         static let left = UIImage(systemName: "chevron.left")!
-        static let star = UIImage(systemName: "star")!
+        static let star = UIImage(systemName: "star.fill")!
         
         static let tabBarImages = ["chart.line.uptrend.xyaxis", "play.square", "magnifyingglass", "heart"]
     }

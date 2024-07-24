@@ -53,7 +53,7 @@ final class TopicViewController: BaseViewController {
     
 }
 
-
+// TableView
 extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -77,7 +77,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
+// CollectionView
 extension TopicViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
