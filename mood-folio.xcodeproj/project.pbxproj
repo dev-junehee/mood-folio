@@ -196,7 +196,7 @@
 			children = (
 				C478FCDE2C4E6163006998D6 /* Onboarding */,
 				C478FCFF2C4E757C006998D6 /* Profile */,
-				C478FD912C51075A006998D6 /* Edit */,
+				C478FD912C51075A006998D6 /* EditProfile */,
 				C478FD582C5019D7006998D6 /* Topic */,
 				C478FD5B2C501A17006998D6 /* Random */,
 				C478FD5E2C501A4A006998D6 /* Search */,
@@ -377,12 +377,12 @@
 			path = Like;
 			sourceTree = "<group>";
 		};
-		C478FD912C51075A006998D6 /* Edit */ = {
+		C478FD912C51075A006998D6 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
 				C478FD922C5107C9006998D6 /* EditProfileViewController.swift */,
 			);
-			path = Edit;
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		C478FD942C510FAE006998D6 /* Cell */ = {
