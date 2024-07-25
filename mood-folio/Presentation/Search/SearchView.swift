@@ -45,8 +45,12 @@ final class SearchView: BaseView {
     }()
     
     let emptyView = EmptyView()
-    
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+
+    lazy var collectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout())
+        view.keyboardDismissMode = .onDrag
+        return view
+    }()
     
     private func layout() -> UICollectionViewLayout {
         // 셀 크기

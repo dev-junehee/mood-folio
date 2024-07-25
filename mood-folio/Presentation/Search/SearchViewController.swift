@@ -29,6 +29,7 @@ final class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureHandler()
         bindData()
         configureDataSource()
         updateSnapshot()
@@ -49,6 +50,11 @@ final class SearchViewController: BaseViewController {
     override func configureViewController() {
         navigationItem.title = Constants.Title.search
         searchView.searchBar.delegate = self
+    }
+    
+    private func configureHandler() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
+        view.addGestureRecognizer(tap)
     }
     
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, Photo> {
