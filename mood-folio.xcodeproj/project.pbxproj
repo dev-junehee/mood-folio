@@ -61,6 +61,7 @@
 		C478FDAD2C5150FD006998D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDAC2C5150FD006998D6 /* DetailViewController.swift */; };
 		C478FDB02C515131006998D6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDAF2C515131006998D6 /* DetailView.swift */; };
 		C478FDB22C515F2D006998D6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDB12C515F2D006998D6 /* DetailViewModel.swift */; };
+		C478FDB42C516268006998D6 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDB32C516268006998D6 /* Statistics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		C478FDAC2C5150FD006998D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C478FDAF2C515131006998D6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C478FDB12C515F2D006998D6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		C478FDB32C516268006998D6 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				C478FDA52C513685006998D6 /* Topic.swift */,
+				C478FDB32C516268006998D6 /* Statistics.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				C478FD962C510FC8006998D6 /* TopicTableViewCell.swift in Sources */,
 				C478FD8A2C50C8DA006998D6 /* ProfileTitleView.swift in Sources */,
 				C478FD8C2C50C9DB006998D6 /* OnboardingView.swift in Sources */,
+				C478FDB42C516268006998D6 /* Statistics.swift in Sources */,
 				C478FD012C4E7595006998D6 /* ProfileViewController.swift in Sources */,
 				C478FCE72C4E620F006998D6 /* Reusable.swift in Sources */,
 				C478FD5D2C501A1F006998D6 /* RandomViewController.swift in Sources */,

@@ -30,29 +30,28 @@ final class DetailView: BaseView {
     
     private let userNameLabel = {
         let label = UILabel()
-        label.text = "Kim JuneHee"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
     private let createDateLabel = {
         let label = UILabel()
-        label.text = "2024년 7월 3일 게시됨"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     
-    private let heartButton = {
-        let button = UIImageView()
-        button.image = Resource.SystemImage.heart
-        button.contentMode = .scaleAspectFit
+    let heartButton = {
+        let button = UIButton()
+        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
+        let image = Resource.SystemImage.heart.withConfiguration(config)
+        button.setImage(image, for: .normal)
         return button
     }()
     
     private let mainPhotoImage = {
         let view = UIImageView()
+        view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
-        view.backgroundColor = .green
         return view
     }()
     
@@ -92,7 +91,6 @@ final class DetailView: BaseView {
     
     private let sizeDataLabel = {
         let label = UILabel()
-        label.text = "3098 x 3872"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
@@ -116,7 +114,6 @@ final class DetailView: BaseView {
     
     private let viewDataLabel = {
         let label = UILabel()
-        label.text = "1,548,623"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
@@ -140,7 +137,6 @@ final class DetailView: BaseView {
     
     private let downloadDataLabel = {
         let label = UILabel()
-        label.text = "388,996"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
@@ -159,7 +155,6 @@ final class DetailView: BaseView {
             $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
             $0.size.equalTo(40)
         }
-        userProfileImage.backgroundColor = .red
         
         userInfoStack.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
@@ -167,14 +162,12 @@ final class DetailView: BaseView {
             $0.trailing.equalTo(heartButton.snp.leading)
             $0.height.equalTo(40)
         }
-        userInfoStack.backgroundColor = .yellow
         
         heartButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
             $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
             $0.size.equalTo(40)
         }
-        heartButton.backgroundColor = .lightGray
         
         mainPhotoImage.snp.makeConstraints {
             $0.top.equalTo(userProfileImage.snp.bottom).offset(16)
@@ -187,7 +180,6 @@ final class DetailView: BaseView {
             $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
             $0.width.equalTo(80)
         }
-        photoInfoLabel.backgroundColor = .yellow
         
         photoInfoStack.snp.makeConstraints {
             $0.top.equalTo(mainPhotoImage.snp.bottom).offset(16)
@@ -195,14 +187,21 @@ final class DetailView: BaseView {
             $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
             $0.height.equalTo(80)
         }
-        photoInfoStack.backgroundColor = .lightGray
     }
     
     func updateUI(data: Topic?) {
         guard let data else { return }
         userProfileImage.kf.setImage(with: URL(string: data.user.profile_image.medium))
         userNameLabel.text = data.user.name
-        createDateLabel.text = data.create_at
+        createDateLabel.text = data.create_at ?? "yyyy-MM-dd"
+        sizeDataLabel.text = "\(data.width) x \(data.height)"
+        mainPhotoImage.kf.setImage(with: URL(string: data.urls.small))
+    }
+    
+    func updateDetailUI(data: Statistics?) {
+        guard let data else { return }
+        viewDataLabel.text = data.views.total.formatted()
+        downloadDataLabel.text = data.downloads.total.formatted()
     }
     
 }

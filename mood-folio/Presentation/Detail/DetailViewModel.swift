@@ -10,11 +10,11 @@ import Foundation
 final class DetailViewModel {
     
     // input
-    var inputDetailData = Observable<Topic?>(nil)
     var inputViewDidLoad = Observable<Void?>(nil)
+    var inputTopicData = Observable<Topic?>(nil)
     
     // output
-    var outputTrigger = Observable<Void?>(nil)
+    var outputStatisticsData = Observable<Statistics?>(nil)
     
     init() {
         transform()
@@ -25,13 +25,21 @@ final class DetailViewModel {
             self?.getStatistics()
         }
         
-        inputDetailData.bind { [weak self] _ in
-            self?.outputTrigger.value = ()
-        }
     }
     
     private func getStatistics() {
+        guard let id = inputTopicData.value?.id else { return }
+        print(id)
         
+        NetworkManager.shared.callRequest(api: .statistics(imageId: id)) { [weak self] (res: Result<Statistics?, Error>) in
+            switch res {
+            case .success(let data):
+                self?.outputStatisticsData.value = data
+                dump(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 }
