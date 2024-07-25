@@ -20,12 +20,22 @@ enum Constants {
         static let titles = ["골든 아워", "비즈니스 및 업무", "건축 및 인테리어"]
     }
     
+    enum Search {
+        static let noSearch = "사진을 검색해 보세요!"
+        static let noResult = "검색 결과가 없어요!"
+        static let placeholder = "키워드 검색"
+        static let relevant = "관련순"
+        static let latest = "최신순"
+    }
+    
     enum Profile {
         static let mbti = "MBTI"
     }
     
     enum Button {
         static let start = "시작하기"
+        static let okay = "확인"
+        static let cancel = "취소"
         static let done = "완료"
     }
     

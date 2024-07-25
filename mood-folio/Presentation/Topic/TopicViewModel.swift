@@ -15,7 +15,7 @@ final class TopicViewModel {
     // output
     var outputProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
     var outputCallRequestNotify = Observable<Void?>(nil)
-    var outputTopicList = Observable<[[Topic]]>([[], [], []])
+    var outputTopicList = Observable<[[Photo]]>([[], [], []])
     
     init() {
         transform()
@@ -35,7 +35,7 @@ final class TopicViewModel {
         // 골든 아워
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.callRequest(api: .topic(topicId: "golden-hour")) { (res: Result<[Topic]?, Error>) in
+            NetworkManager.shared.callRequest(api: .topic(topicId: "golden-hour")) { (res: Result<[Photo]?, Error>) in
                 switch res {
                 case .success(let data):
                     guard let data else { return }
@@ -50,7 +50,7 @@ final class TopicViewModel {
         // 비즈니스 및 업무
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.callRequest(api: .topic(topicId: "business-work")) { (res: Result<[Topic]?, Error>) in
+            NetworkManager.shared.callRequest(api: .topic(topicId: "business-work")) { (res: Result<[Photo]?, Error>) in
                 switch res {
                 case .success(let data):
                     guard let data else { return }
@@ -65,7 +65,7 @@ final class TopicViewModel {
         // 건축 및 인테리어
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.callRequest(api: .topic(topicId: "architecture-interior")) { (res: Result<[Topic]?, Error>) in
+            NetworkManager.shared.callRequest(api: .topic(topicId: "architecture-interior")) { (res: Result<[Photo]?, Error>) in
                 switch res {
                 case .success(let data):
                     guard let data else { return }

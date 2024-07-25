@@ -1,8 +1,8 @@
 //
-//  TopicCollectionViewCell.swift
+//  SearchCollectionViewCell.swift
 //  mood-folio
 //
-//  Created by junehee on 7/24/24.
+//  Created by junehee on 7/25/24.
 //
 
 import UIKit
@@ -10,13 +10,13 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-final class TopicCollectionViewCell: BaseCollectionViewCell {
+final class SearchCollectionViewCell: BaseCollectionViewCell {
     
-    let imageView = {
+    private let imageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
-        view.layer.cornerRadius = 12
+        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -42,9 +42,16 @@ final class TopicCollectionViewCell: BaseCollectionViewCell {
         label.font = Resource.Font.bold14
         return label
     }()
+    
+    private let heartButton = {
+        var config = UIButton.Configuration.plain()
+        config.image = .likeCircleInactive
+        let button = UIButton(configuration: config)
+        return button
+    }()
  
     override func configureHierarchy() {
-        let views = [imageView, labelView]
+        let views = [imageView, labelView, heartButton]
         views.forEach { contentView.addSubview($0) }
     }
     
@@ -70,11 +77,23 @@ final class TopicCollectionViewCell: BaseCollectionViewCell {
             $0.trailing.equalTo(labelView.snp.trailing).inset(10)
             $0.centerY.equalTo(labelView)
         }
+        
+        heartButton.snp.makeConstraints {
+            $0.trailing.equalTo(imageView.snp.trailing).inset(8)
+            $0.bottom.equalTo(imageView.snp.bottom).inset(8)
+            $0.size.equalTo(30)
+        }
     }
     
-    func updateCell(data: Photo) {
-        imageView.kf.setImage(with: URL(string: data.urls.small))
-        starCountLabel.text = "\(data.likes.formatted())"
+    func updateUI(data: Photo) {
+        starCountLabel.text = data.likes.formatted()
+        
+        if let image = URL(string: data.urls.small) {
+            imageView.kf.setImage(with: image)
+        } else {
+            imageView.image = UIImage(systemName: "heart")
+        }
+        
     }
     
 }

@@ -19,6 +19,7 @@ enum MBTIValidation {
     
 }
 
+
 final class ValidationManager {
     
     private init() { }

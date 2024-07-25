@@ -42,8 +42,7 @@ final class DetailView: BaseView {
     
     let heartButton = {
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
-        let image = Resource.SystemImage.heart.withConfiguration(config)
+        let image = UIImage(resource: .like)
         button.setImage(image, for: .normal)
         return button
     }()
@@ -189,7 +188,7 @@ final class DetailView: BaseView {
         }
     }
     
-    func updateUI(data: Topic?) {
+    func updateUI(data: Photo?) {
         guard let data else { return }
         userProfileImage.kf.setImage(with: URL(string: data.user.profile_image.medium))
         userNameLabel.text = data.user.name

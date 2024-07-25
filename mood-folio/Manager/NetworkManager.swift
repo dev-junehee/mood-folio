@@ -13,7 +13,7 @@ final class NetworkManager {
     private init() { }
     static let shared = NetworkManager()
     
-    func callRequest<T: Decodable>(api: API_CASE, completion: @escaping (Result<T?, Error>) -> Void) {
+    func callRequest<T: Decodable>(api: Router, completion: @escaping (Result<T?, Error>) -> Void) {
         print("API 확인 ===", api.endPoint)
         
         let decoder = JSONDecoder()
