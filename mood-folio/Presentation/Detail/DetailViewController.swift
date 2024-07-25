@@ -25,7 +25,7 @@ final class DetailViewController: BaseViewController {
     
     private func bindData() {
         viewModel.outputStatisticsData.bind { [weak self] data in
-            self?.detailView.updateUI(data: self?.viewModel.inputTopicData.value)
+            self?.detailView.updateUI(data: self?.viewModel.inputPhotoData.value)
             self?.detailView.updateDetailUI(data: data)
         }
     }

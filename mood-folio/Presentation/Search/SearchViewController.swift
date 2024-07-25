@@ -50,11 +50,12 @@ final class SearchViewController: BaseViewController {
     override func configureViewController() {
         navigationItem.title = Constants.Title.search
         searchView.searchBar.delegate = self
+        searchView.collectionView.delegate = self
     }
     
     private func configureHandler() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
-        view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
+//        view.addGestureRecognizer(tap)
         
         // 정렬 버튼
         searchView.sortButton.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
@@ -119,5 +120,13 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         viewModel.inputSearchText.value = searchBar.text
+    }
+}
+
+extension SearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.viewModel.inputPhotoData.value = viewModel.outputSearchResult.value?.results[indexPath.item]
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

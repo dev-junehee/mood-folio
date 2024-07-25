@@ -97,7 +97,7 @@ extension TopicViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.viewModel.inputTopicData.value = viewModel.outputTopicList.value[collectionView.tag][indexPath.item]
+        detailVC.viewModel.inputPhotoData.value = viewModel.outputTopicList.value[collectionView.tag][indexPath.item]
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

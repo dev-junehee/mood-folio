@@ -11,7 +11,7 @@ final class DetailViewModel {
     
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
-    var inputTopicData = Observable<Photo?>(nil)
+    var inputPhotoData = Observable<Photo?>(nil)
     
     // output
     var outputStatisticsData = Observable<Statistics?>(nil)
@@ -28,7 +28,7 @@ final class DetailViewModel {
     }
     
     private func getStatistics() {
-        guard let id = inputTopicData.value?.id else { return }
+        guard let id = inputPhotoData.value?.id else { return }
         print(id)
         
         NetworkManager.shared.callRequest(api: .statistics(imageId: id)) { [weak self] (res: Result<Statistics?, Error>) in
