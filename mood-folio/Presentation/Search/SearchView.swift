@@ -13,7 +13,7 @@ final class SearchView: BaseView {
     let searchBar = {
         let view = UISearchBar()
         view.searchBarStyle = .minimal
-        view.placeholder = "키워드 검색"
+        view.placeholder = Constants.Search.placeholder
         return view
     }()
     
@@ -33,8 +33,8 @@ final class SearchView: BaseView {
         config.image = .sort
         config.imagePadding = 4
         
-        var title = AttributedString("최신순")
-        title.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        var title = AttributedString(Constants.Search.relevant)
+        title.font = Resource.Font.bold14
         config.attributedTitle = title
         
         var imageConfig = UIImage.SymbolConfiguration(pointSize: 12)
@@ -104,6 +104,19 @@ final class SearchView: BaseView {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(sortButton.snp.bottom).offset(8)
             $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+    }
+    
+    func updateSortButtonUI(changeType: SearchOrder) {
+        switch changeType {
+        case .relevant:
+            var title = AttributedString(Constants.Search.relevant)
+            title.font = Resource.Font.bold14
+            sortButton.configuration?.attributedTitle = title
+        case .latest:
+            var title = AttributedString(Constants.Search.latest)
+            title.font = Resource.Font.bold14
+            sortButton.configuration?.attributedTitle = title
         }
     }
     

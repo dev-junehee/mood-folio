@@ -21,7 +21,7 @@ final class SearchViewController: BaseViewController {
     private let searchView = SearchView()
     private let viewModel = SearchViewModel()
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Photo>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Photo>!
     
     override func loadView() {
         view = searchView
@@ -55,6 +55,9 @@ final class SearchViewController: BaseViewController {
     private func configureHandler() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
         view.addGestureRecognizer(tap)
+        
+        // 정렬 버튼
+        searchView.sortButton.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
     }
     
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, Photo> {
@@ -97,6 +100,18 @@ final class SearchViewController: BaseViewController {
     private func showCollectionView() {
         searchView.collectionView.isHidden = false
         searchView.emptyView.isHidden = true
+    }
+    
+    @objc private func sortButtonClicked(_ sender: UIButton) {
+        // 관련순일 때 - 최신순 변경, 최신순일 때 - 관련순 변경
+        let buttonLabel = sender.titleLabel?.text
+        if buttonLabel == Constants.Search.relevant {
+            viewModel.inputSortButton.value = .latest
+            searchView.updateSortButtonUI(changeType: .latest)
+        } else {
+            viewModel.inputSortButton.value = .relevant
+            searchView.updateSortButtonUI(changeType: .relevant)
+        }
     }
     
 }
