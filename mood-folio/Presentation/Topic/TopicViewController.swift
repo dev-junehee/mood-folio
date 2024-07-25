@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class TopicViewController: BaseViewController {
     
@@ -43,13 +44,15 @@ final class TopicViewController: BaseViewController {
     
     
     private func setTitleProfileView() {
-        let profileButton = UIBarButtonItem(customView: titleView)
-        navigationItem.rightBarButtonItem = profileButton
+        titleView.profileImage.addTarget(self, action: #selector(profileImageClicked), for: .touchUpInside)
+        let button = UIBarButtonItem(customView: titleView.profileImage)
+        navigationItem.rightBarButtonItem = button
+        
     }
     
-    @objc private func profileImageTapped() {
-        print("프로필 클릭")
-//        navigationController?.pushViewController(EditProfileViewController(), animated: true)
+    @objc private func profileImageClicked() {
+        print(#function)
+        navigationController?.pushViewController(EditProfileViewController(), animated: true)
     }
     
 }
