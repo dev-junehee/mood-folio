@@ -42,8 +42,7 @@ final class DetailView: BaseView {
     
     let heartButton = {
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
-        let image = Resource.SystemImage.heart.withConfiguration(config)
+        let image = UIImage(resource: .like)
         button.setImage(image, for: .normal)
         return button
     }()
