@@ -49,6 +49,8 @@ enum Resource {
         static let heartFill = UIImage(systemName: "heart.fill")!
         static let questionmark = UIImage(systemName: "questionmark.circle")!
         
-        static let tabBarImages = ["chart.line.uptrend.xyaxis", "play.square", "magnifyingglass", "heart"]
+        static let tabBarImages: [UIImage] = [
+            .tabTrend, .tabRandom, .tabSearch, .tabLike
+        ]
     }
 }

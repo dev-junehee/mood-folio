@@ -67,7 +67,7 @@ extension UIViewController {
         
         if let items = tabBarController.tabBar.items {
             for i in 0..<items.count {
-                items[i].image = UIImage(systemName: Resource.SystemImage.tabBarImages[i])
+                items[i].image = Resource.SystemImage.tabBarImages[i]
             }
         }
         
