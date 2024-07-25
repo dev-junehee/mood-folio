@@ -10,5 +10,5 @@ import Foundation
 struct Search: Decodable {
     let total: Int
     let total_pages: Int
-    let results: [Photo]
+    var results: [Photo]
 }

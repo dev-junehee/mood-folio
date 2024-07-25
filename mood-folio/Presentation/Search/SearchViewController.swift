@@ -9,12 +9,12 @@ import UIKit
 
 final class SearchViewController: BaseViewController {
     
-    enum EmptyViewType {
+    private enum EmptyViewType {
         case noSearch
         case noResult
     }
     
-    enum Section: CaseIterable {
+    private enum Section: CaseIterable {
         case main
     }
     
@@ -51,6 +51,7 @@ final class SearchViewController: BaseViewController {
         navigationItem.title = Constants.Title.search
         searchView.searchBar.delegate = self
         searchView.collectionView.delegate = self
+        searchView.collectionView.prefetchDataSource = self
     }
     
     private func configureHandler() {
@@ -82,7 +83,7 @@ final class SearchViewController: BaseViewController {
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
         snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(viewModel.outputSearchResult.value?.results ?? [], toSection: .main)
+        snapshot.appendItems(viewModel.outputSearchResult.value.results, toSection: .main)
         dataSource.apply(snapshot)
     }
     
@@ -126,7 +127,17 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.viewModel.inputPhotoData.value = viewModel.outputSearchResult.value?.results[indexPath.item]
+        detailVC.viewModel.inputPhotoData.value = viewModel.outputSearchResult.value.results[indexPath.item]
         navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+extension SearchViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if viewModel.outputSearchResult.value.results.count - 2 == indexPath.item {
+                viewModel.inputInfinityScroll.value = ()
+            }
+        }
     }
 }
