@@ -17,29 +17,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        window?.rootViewController = UINavigationController(rootViewController: OnboardingViewController())
-        window?.makeKeyAndVisible()
-        
-//        let tabBarController = UITabBarController()
-//        tabBarController.view.backgroundColor = Resource.Color.white
-//        tabBarController.tabBar.tintColor = Resource.Color.black
-//        
-//        let topic = UINavigationController(rootViewController: TopicViewController())
-//        let random = UINavigationController(rootViewController: RandomViewController())
-//        let search = UINavigationController(rootViewController: SearchViewController())
-//        let like = UINavigationController(rootViewController: LikeViewController())
-//        
-//        let viewControllers = [topic, random, search, like]
-//        tabBarController.setViewControllers(viewControllers, animated: true)
-//        
-//        if let items = tabBarController.tabBar.items {
-//            for i in 0..<items.count {
-//                items[i].image = UIImage(systemName: Resource.SystemImage.tabBarImages[i])
-//            }
-//        }
-//        
-//        window?.rootViewController = tabBarController
+//        window?.rootViewController = UINavigationController(rootViewController: OnboardingViewController())
 //        window?.makeKeyAndVisible()
+        
+        let tabBarController = UITabBarController()
+        tabBarController.view.backgroundColor = Resource.Color.white
+        tabBarController.tabBar.tintColor = Resource.Color.black
+        
+        let topic = UINavigationController(rootViewController: TopicViewController())
+        let random = UINavigationController(rootViewController: RandomViewController())
+        let search = UINavigationController(rootViewController: SearchViewController())
+        let like = UINavigationController(rootViewController: LikeViewController())
+        
+        let viewControllers = [topic, random, search, like]
+        tabBarController.setViewControllers(viewControllers, animated: true)
+        
+        if let items = tabBarController.tabBar.items {
+            for i in 0..<items.count {
+                items[i].image = UIImage(systemName: Resource.SystemImage.tabBarImages[i])
+            }
+        }
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
         
     }
 

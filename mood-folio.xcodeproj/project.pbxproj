@@ -58,6 +58,10 @@
 		C478FDA42C512F15006998D6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C478FDA32C512F15006998D6 /* Alamofire */; };
 		C478FDA62C513685006998D6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDA52C513685006998D6 /* Topic.swift */; };
 		C478FDAA2C513D16006998D6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C478FDA92C513D16006998D6 /* Kingfisher */; };
+		C478FDAD2C5150FD006998D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDAC2C5150FD006998D6 /* DetailViewController.swift */; };
+		C478FDB02C515131006998D6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDAF2C515131006998D6 /* DetailView.swift */; };
+		C478FDB22C515F2D006998D6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDB12C515F2D006998D6 /* DetailViewModel.swift */; };
+		C478FDB42C516268006998D6 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDB32C516268006998D6 /* Statistics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +114,10 @@
 		C478FD9E2C511D8C006998D6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C478FDA02C511DDF006998D6 /* APICase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICase.swift; sourceTree = "<group>"; };
 		C478FDA52C513685006998D6 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		C478FDAC2C5150FD006998D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C478FDAF2C515131006998D6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C478FDB12C515F2D006998D6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		C478FDB32C516268006998D6 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +191,7 @@
 				C478FD5B2C501A17006998D6 /* Random */,
 				C478FD5E2C501A4A006998D6 /* Search */,
 				C478FD612C501A76006998D6 /* Like */,
+				C478FDAB2C5150EC006998D6 /* Detail */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -386,8 +395,19 @@
 			isa = PBXGroup;
 			children = (
 				C478FDA52C513685006998D6 /* Topic.swift */,
+				C478FDB32C516268006998D6 /* Statistics.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		C478FDAB2C5150EC006998D6 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C478FDAC2C5150FD006998D6 /* DetailViewController.swift */,
+				C478FDAF2C515131006998D6 /* DetailView.swift */,
+				C478FDB12C515F2D006998D6 /* DetailViewModel.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,11 +508,14 @@
 				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
 				C478FDA62C513685006998D6 /* Topic.swift in Sources */,
 				C478FD0F2C4E89B8006998D6 /* ProfileView.swift in Sources */,
+				C478FDB22C515F2D006998D6 /* DetailViewModel.swift in Sources */,
 				C478FD9A2C511548006998D6 /* TopicCollectionViewCell.swift in Sources */,
 				C478FCE02C4E6170006998D6 /* OnboardingViewController.swift in Sources */,
+				C478FDB02C515131006998D6 /* DetailView.swift in Sources */,
 				C478FD962C510FC8006998D6 /* TopicTableViewCell.swift in Sources */,
 				C478FD8A2C50C8DA006998D6 /* ProfileTitleView.swift in Sources */,
 				C478FD8C2C50C9DB006998D6 /* OnboardingView.swift in Sources */,
+				C478FDB42C516268006998D6 /* Statistics.swift in Sources */,
 				C478FD012C4E7595006998D6 /* ProfileViewController.swift in Sources */,
 				C478FCE72C4E620F006998D6 /* Reusable.swift in Sources */,
 				C478FD5D2C501A1F006998D6 /* RandomViewController.swift in Sources */,
@@ -500,6 +523,7 @@
 				C478FD8E2C50FF21006998D6 /* TopicView.swift in Sources */,
 				C478FD9F2C511D8C006998D6 /* NetworkManager.swift in Sources */,
 				C478FD512C4FFE8B006998D6 /* BaseCollectionViewCell.swift in Sources */,
+				C478FDAD2C5150FD006998D6 /* DetailViewController.swift in Sources */,
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
 				C478FD4D2C4FFC1F006998D6 /* ProfileImageView.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
