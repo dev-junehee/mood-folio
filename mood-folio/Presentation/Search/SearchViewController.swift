@@ -54,8 +54,8 @@ final class SearchViewController: BaseViewController {
     }
     
     private func configureHandler() {
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
-//        view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
+        searchView.emptyView.addGestureRecognizer(tap)
         
         // 정렬 버튼
         searchView.sortButton.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
