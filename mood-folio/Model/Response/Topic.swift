@@ -9,7 +9,7 @@ import Foundation
 
 struct Topic: Decodable {
     let id: String
-    let create_at: String?
+    let create_at: Date? // String?
     let width: Int
     let height: Int
     let urls: TopicURLs

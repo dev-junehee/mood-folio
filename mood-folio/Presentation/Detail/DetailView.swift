@@ -193,7 +193,7 @@ final class DetailView: BaseView {
         guard let data else { return }
         userProfileImage.kf.setImage(with: URL(string: data.user.profile_image.medium))
         userNameLabel.text = data.user.name
-        createDateLabel.text = data.create_at ?? "yyyy-MM-dd"
+//        createDateLabel.text = "\(data.create_at)"
         sizeDataLabel.text = "\(data.width) x \(data.height)"
         mainPhotoImage.kf.setImage(with: URL(string: data.urls.small))
     }
@@ -202,6 +202,12 @@ final class DetailView: BaseView {
         guard let data else { return }
         viewDataLabel.text = data.views.total.formatted()
         downloadDataLabel.text = data.downloads.total.formatted()
+        
+        // 임시 날짜 바인딩
+        if let value = data.downloads.historical.values.last {
+            let date = value.date.split(separator: "-")
+            createDateLabel.text = "\(date[0])년 \(date[1])월 \(date[2])일"
+        }
     }
     
 }
