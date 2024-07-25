@@ -7,26 +7,26 @@
 
 import Foundation
 
-struct Topic: Decodable {
+struct Photo: Decodable, Hashable {
     let id: String
     let create_at: Date? // String?
     let width: Int
     let height: Int
-    let urls: TopicURLs
+    let urls: PhotoURL
     let likes: Int
-    let user: TopicUser
+    let user: PhotoUser
 }
 
-struct TopicURLs: Decodable {
+struct PhotoURL: Decodable, Hashable {
     let raw: String
     let small: String
 }
 
-struct TopicUser: Decodable {
+struct PhotoUser: Decodable, Hashable {
     let name: String
-    let profile_image: TopicUserProfileImage
+    let profile_image: PhotoUserProfileImage
 }
 
-struct TopicUserProfileImage: Decodable {
+struct PhotoUserProfileImage: Decodable, Hashable {
     let medium: String
 }

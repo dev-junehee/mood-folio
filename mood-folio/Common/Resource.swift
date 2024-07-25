@@ -18,6 +18,7 @@ enum Resource {
         static let pink: UIColor = .init(rgb: 0xF04452)
         static let yellow: UIColor = .systemYellow
         static let white: UIColor = .init(rgb: 0xFFFFFF)
+        static let whiteTransparent: UIColor = .init(rgb: 0xFFFFFF, alpha: 0.4)
         static let whiteSmoke: UIColor = .init(rgb: 0xF2F2F2)
         static let lightGray: UIColor = .init(rgb: 0x8C8C8C)
         static let gray: UIColor = .init(rgb: 0x4D5652)

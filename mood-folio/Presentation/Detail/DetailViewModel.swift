@@ -11,7 +11,7 @@ final class DetailViewModel {
     
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
-    var inputTopicData = Observable<Topic?>(nil)
+    var inputTopicData = Observable<Photo?>(nil)
     
     // output
     var outputStatisticsData = Observable<Statistics?>(nil)

@@ -189,7 +189,7 @@ final class DetailView: BaseView {
         }
     }
     
-    func updateUI(data: Topic?) {
+    func updateUI(data: Photo?) {
         guard let data else { return }
         userProfileImage.kf.setImage(with: URL(string: data.user.profile_image.medium))
         userNameLabel.text = data.user.name

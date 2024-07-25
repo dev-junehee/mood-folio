@@ -12,6 +12,12 @@ enum BarButtonPosition {
     case right
 }
 
+enum AlertButtonType {
+    case oneButton
+    case twoButton
+}
+
+
 extension UIViewController {
     // Navigation Bar Button Setting
     func setTextBarButtoon(title: String?, target: Any?, action: Selector?, type: BarButtonPosition) {
@@ -69,6 +75,27 @@ extension UIViewController {
             
         sceneDeleagate?.window?.rootViewController = rootViewController
         sceneDeleagate?.window?.makeKeyAndVisible()
+    }
+    
+    // Alert
+    func showAlert(title: String?, message: String? = nil, buttonType: AlertButtonType, okHandler: ((UIAlertAction) -> Void)? = nil) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+        
+        switch buttonType {
+        case .oneButton:
+            let okay = UIAlertAction(title: Constants.Button.okay, style: .default, handler: okHandler)
+            alert.addAction(okay)
+        case .twoButton:
+            let okay = UIAlertAction(title: Constants.Button.okay, style: .default, handler: okHandler)
+            let cancel = UIAlertAction(title: Constants.Button.cancel, style: .cancel)
+            alert.addAction(okay)
+            alert.addAction(cancel)
+        }
+        
+        present(alert, animated: true)
     }
     
     // 여러 뷰컨에서 공통적으로 많이 사용하는 핸들러
