@@ -62,6 +62,39 @@ final class EditProfileViewController: BaseViewController {
             self?.editView.invalidMessage.text = validation.rawValue
         }
         
+        viewModel.outputOppositeMBTI.bind { [weak self] type in
+            switch type {
+            case .E:
+                self?.editView.mbtiButtonE.isSelected = false
+            case .S:
+                self?.editView.mbtiButtonS.isSelected = false
+            case .T:
+                self?.editView.mbtiButtonT.isSelected = false
+            case .J:
+                self?.editView.mbtiButtonJ.isSelected = false
+            case .I:
+                self?.editView.mbtiButtonI.isSelected = false
+            case .N:
+                self?.editView.mbtiButtonN.isSelected = false
+            case .F:
+                self?.editView.mbtiButtonF.isSelected = false
+            case .P:
+                self?.editView.mbtiButtonP.isSelected = false
+            default: break
+            }
+        }
+        
+
+        viewModel.outputMBTIResult.bind { [weak self] res in
+            if res {
+                // MBTI 성공
+                self?.navigationItem.rightBarButtonItem?.setButtonEnabled()
+            } else {
+                // MBTI 실패
+                self?.navigationItem.rightBarButtonItem?.setButtonDisabled()
+            }
+        }
+        
         viewModel.outputDeleteAccount.bind { [weak self] _ in
             self?.showAlert(title: Constants.Alert.ToOnboarding.title,
                             message: Constants.Alert.ToOnboarding.message,
@@ -115,8 +148,13 @@ final class EditProfileViewController: BaseViewController {
         
     }
     
-    @objc private func mbtiButtonClicked() {
-        
+    @objc private func mbtiButtonClicked(_ sender: MBTIButtton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            viewModel.inputActiveMBTIButton.value = sender.titleLabel?.text
+        } else {
+            viewModel.inputInactiveMBTIButton.value = sender.titleLabel?.text
+        }
     }
     
     
@@ -139,6 +177,10 @@ final class EditProfileViewController: BaseViewController {
         
         if let changeProfileNum {
             UserDefaultsManager.shared.profile = changeProfileNum
+        }
+        
+        if viewModel.outputMBTIResult.value {
+            UserDefaultsManager.shared.mbti = viewModel.outputMBTI.value
         }
         
         showAlert(title: Constants.Alert.EditProfile.title, message: Constants.Alert.EditProfile.message, buttonType: .oneButton) { [weak self] _ in
