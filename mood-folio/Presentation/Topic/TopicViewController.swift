@@ -51,8 +51,9 @@ final class TopicViewController: BaseViewController {
     }
     
     @objc private func profileImageClicked() {
-        print(#function)
-        navigationController?.pushViewController(EditProfileViewController(), animated: true)
+        let editProfileVC = EditProfileViewController()
+        editProfileVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(editProfileVC, animated: true)
     }
     
 }

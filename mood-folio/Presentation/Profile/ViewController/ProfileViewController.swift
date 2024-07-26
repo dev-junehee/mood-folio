@@ -33,6 +33,7 @@ final class ProfileViewController: BaseViewController {
         // viewWillAppear 시점마다 프로필 이미지 랜덤
         viewModel.outputProfileImage.bind { [weak self] num in
             self?.profileView.profileImage.image = Resource.Image.profileImages[num]
+            self?.profileView.isEditing = false
         }
         
         // 닉네임 유효성 검사 결과

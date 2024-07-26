@@ -39,6 +39,7 @@ struct UserDefaultsManager {
         _nickname.delete()
         _profile.delete()
         _mbti.delete()
+        _joinDate.delete()
         _isUser.delete()
     }
     
