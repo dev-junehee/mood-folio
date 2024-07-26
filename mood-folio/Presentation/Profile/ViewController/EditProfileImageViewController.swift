@@ -30,6 +30,7 @@ final class EditProfileImageViewController: BaseViewController {
         }
         
         viewModel.outputChangedProfileImage.bind { [weak self] num in
+            self?.closure?(num)
             self?.editProfileImageView.profileImage.image = Resource.Image.profileImages[num]
         }
         
@@ -46,7 +47,6 @@ final class EditProfileImageViewController: BaseViewController {
     }
     
     @objc private func popViewControllerWithClosure() {
-        closure?(viewModel.outputChangedProfileImage.value)
         navigationController?.popViewController(animated: true)
     }
     
@@ -64,7 +64,7 @@ extension EditProfileImageViewController: UICollectionViewDelegate, UICollection
         let idx = indexPath.item
         let image = Resource.Image.profileImages[idx]
         
-        if idx == viewModel.inputProfileImageSelected.value {
+        if idx == viewModel.outputOriginProfileImage.value {
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
             cell.configureSelectedUI()

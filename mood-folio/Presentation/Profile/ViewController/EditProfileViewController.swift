@@ -16,8 +16,7 @@ final class EditProfileViewController: BaseViewController {
         didSet {
             guard let num = changeProfileNum else { return }
             editView.profileImage.image = Resource.Image.profileImages[num]
-            navigationItem.rightBarButtonItem?.isEnabled = true
-            navigationItem.rightBarButtonItem?.tintColor = Resource.Color.primary
+            navigationItem.rightBarButtonItem?.setButtonEnabled()
         }
     }
     
@@ -37,7 +36,7 @@ final class EditProfileViewController: BaseViewController {
             self?.editView.profileImage.image = Resource.Image.profileImages[profile]
             self?.editView.nicknameField.text = nickname
             self?.editView.isEditing = true
-            self?.navigationItem.rightBarButtonItem?.isEnabled = false
+            self?.navigationItem.rightBarButtonItem?.setButtonDisabled()
             
             guard let buttons = self?.editView.mbtiButtons else { return }
             for button in buttons {
@@ -47,6 +46,20 @@ final class EditProfileViewController: BaseViewController {
                     button.isSelected = false
                 }
             }
+        }
+        
+        viewModel.outputNicknameResult.bind { [weak self] res in
+            if res {
+                self?.editView.invalidMessage.textColor = Resource.Color.primary
+                self?.navigationItem.rightBarButtonItem?.setButtonEnabled()
+            } else {
+                self?.editView.invalidMessage.textColor = Resource.Color.pink
+                self?.navigationItem.rightBarButtonItem?.setButtonDisabled()
+            }
+        }
+        
+        viewModel.outputNicknameInvalidMessage.bind { [weak self] validation in
+            self?.editView.invalidMessage.text = validation.rawValue
         }
         
         viewModel.outputDeleteAccount.bind { [weak self] _ in
@@ -97,6 +110,8 @@ final class EditProfileViewController: BaseViewController {
     }
     
     @objc private func nicknameFieldEditing() {
+        print(#function)
+        viewModel.inputNicknameTextField.value = editView.nicknameField.text
         
     }
     
@@ -117,8 +132,14 @@ final class EditProfileViewController: BaseViewController {
     @objc private func saveButtonClicked() {
         print(#function)
         // 새로운 정보 저장
-        guard let changeProfileNum else { return }
-        UserDefaultsManager.shared.profile = changeProfileNum
+        if viewModel.outputNicknameResult.value {
+            guard let nickname = viewModel.inputNicknameTextField.value else { return }
+            UserDefaultsManager.shared.nickname = nickname
+        }
+        
+        if let changeProfileNum {
+            UserDefaultsManager.shared.profile = changeProfileNum
+        }
         
         showAlert(title: Constants.Alert.EditProfile.title, message: Constants.Alert.EditProfile.message, buttonType: .oneButton) { [weak self] _ in
             self?.navigationController?.popViewController(animated: true)

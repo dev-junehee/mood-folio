@@ -72,6 +72,7 @@
 		C478FDE02C53967A006998D6 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDDF2C53967A006998D6 /* UIButton+.swift */; };
 		C478FDE22C53B303006998D6 /* EditProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */; };
 		C478FDE42C53B34B006998D6 /* EditProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */; };
+		C478FDE62C53CC07006998D6 /* UIBarButtonItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +139,7 @@
 		C478FDDF2C53967A006998D6 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageViewController.swift; sourceTree = "<group>"; };
 		C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageViewModel.swift; sourceTree = "<group>"; };
+		C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				C478FD052C4E8367006998D6 /* TextFieldEffets+.swift */,
 				C478FD072C4E863A006998D6 /* UIViewController+.swift */,
 				C478FDDF2C53967A006998D6 /* UIButton+.swift */,
+				C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				C478FDAD2C5150FD006998D6 /* DetailViewController.swift in Sources */,
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
 				C478FD4D2C4FFC1F006998D6 /* ProfileImageView.swift in Sources */,
+				C478FDE62C53CC07006998D6 /* UIBarButtonItem+.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
 				C478FD552C500CAC006998D6 /* DateFormatterManager.swift in Sources */,
 				C478FD572C500EAF006998D6 /* ValidationManager.swift in Sources */,
