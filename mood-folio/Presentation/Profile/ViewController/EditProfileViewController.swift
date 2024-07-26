@@ -24,11 +24,20 @@ final class EditProfileViewController: BaseViewController {
     }
     
     private func bindData() {
-        viewModel.outputOriginInfo.bind { [weak self] (profile, nickname) in
+        viewModel.outputOriginInfo.bind { [weak self] (profile, nickname, mbti) in
             self?.editView.profileImage.image = Resource.Image.profileImages[profile]
             self?.editView.nicknameField.text = nickname
             self?.editView.isEditing = true
             self?.navigationItem.rightBarButtonItem?.isEnabled = false
+            
+            guard let buttons = self?.editView.mbtiButtons else { return }
+            for button in buttons {
+                if let title = button.title(for: .normal), mbti.contains(title) {
+                    button.isSelected = true
+                } else {
+                    button.isSelected = false
+                }
+            }
         }
         
         viewModel.outputDeleteAccount.bind { [weak self] _ in

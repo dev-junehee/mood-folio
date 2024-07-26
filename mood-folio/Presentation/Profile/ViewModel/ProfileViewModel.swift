@@ -7,29 +7,29 @@
 
 import Foundation
 
-final class ProfileViewModel {
+enum MBTICharType: String {
+    case E, S, T, J, I, N, F, P
     
-    enum MBTICharType: String {
-        case E, S, T, J, I, N, F, P
-        
-        var opposite: MBTICharType {
-            switch self {
-            case .E: return .I
-            case .S: return .N
-            case .T: return .F
-            case .J: return .P
-            case .I: return .E
-            case .N: return .S
-            case .F: return .T
-            case .P: return .J
-            }
+    var opposite: MBTICharType {
+        switch self {
+        case .E: return .I
+        case .S: return .N
+        case .T: return .F
+        case .J: return .P
+        case .I: return .E
+        case .N: return .S
+        case .F: return .T
+        case .P: return .J
         }
     }
+}
 
-    enum MBTIType: String {
-        case ESTJ, ESTP, ESFJ, ESFP, ENTP, ENTJ, ENFJ, ENFP
-        case INTP, INTJ, INFP, INFJ, ISTP, ISTJ, ISFP, ISFJ
-    }
+enum MBTIType: String {
+    case ESTJ, ESTP, ESFJ, ESFP, ENTP, ENTJ, ENFJ, ENFP
+    case INTP, INTJ, INFP, INFJ, ISTP, ISTJ, ISFP, ISFJ
+}
+
+final class ProfileViewModel {
     
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
@@ -165,7 +165,7 @@ final class ProfileViewModel {
         
         UserDefaultsManager.shared.nickname = nickname
         UserDefaultsManager.shared.profile = outputProfileImage.value
-        UserDefaultsManager.shared.mbti = outputMBTI.value.joined()
+        UserDefaultsManager.shared.mbti = outputMBTI.value
         UserDefaultsManager.shared.joinDate = DateFormatterManager.shared.getTodayString(formatType: "yyyy. MM. dd")
         UserDefaultsManager.shared.isUser = true
         

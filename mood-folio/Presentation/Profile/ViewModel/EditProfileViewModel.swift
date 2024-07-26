@@ -14,7 +14,7 @@ final class EditProfileViewModel {
     var inputDeleteAccountButton = Observable<Void?>(nil)
     
     // output
-    var outputOriginInfo = Observable<(Int, String)>((0, ""))
+    var outputOriginInfo = Observable<(Int, String, [String])>((0, "", ["", "", "", ""]))
     var outputDeleteAccount = Observable<Void?>(nil)
 
     init() {
@@ -25,7 +25,8 @@ final class EditProfileViewModel {
         inputViewDidLoad.bind { [weak self] _ in
             self?.outputOriginInfo.value = (
                 UserDefaultsManager.shared.profile,
-                UserDefaultsManager.shared.nickname
+                UserDefaultsManager.shared.nickname,
+                UserDefaultsManager.shared.mbti
             )
         }
         

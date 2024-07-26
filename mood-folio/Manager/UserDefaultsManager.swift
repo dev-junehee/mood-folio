@@ -26,8 +26,8 @@ struct UserDefaultsManager {
     @UserDefaultsWrapper (key: .profile, defaultValue: Int.random(in: 0..<Resource.Image.profileImages.count))
     var profile: Int
     
-    @UserDefaultsWrapper (key: .mbti, defaultValue: "-")
-    var mbti: String
+    @UserDefaultsWrapper (key: .mbti, defaultValue: ["", "", "", ""])
+    var mbti: [String]
     
     @UserDefaultsWrapper (key: .joinDate, defaultValue: "0000. 00. 00")
     var joinDate: String
