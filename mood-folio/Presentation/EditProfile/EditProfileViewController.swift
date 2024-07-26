@@ -10,6 +10,7 @@ import Foundation
 final class EditProfileViewController: BaseViewController {
     
     override func configureViewController() {
+        super.configureViewController()
         navigationItem.title = "EDIT PROFILE"
         setImgBarButton(image: Resource.SystemImage.left, target: self, action: #selector(popViewController), type: .left)
     }

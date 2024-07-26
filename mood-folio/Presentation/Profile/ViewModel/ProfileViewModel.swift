@@ -7,38 +7,44 @@
 
 import Foundation
 
-enum MBTICharType: String {
-    case E, S, T, J, I, N, F, P
+final class ProfileViewModel {
     
-    var converse: MBTICharType {
-        switch self {
-        case .E: return .I
-        case .S: return .N
-        case .T: return .F
-        case .J: return .P
-        case .I: return .E
-        case .N: return .S
-        case .F: return .T
-        case .P: return .J
+    enum MBTICharType: String {
+        case E, S, T, J, I, N, F, P
+        
+        var opposite: MBTICharType {
+            switch self {
+            case .E: return .I
+            case .S: return .N
+            case .T: return .F
+            case .J: return .P
+            case .I: return .E
+            case .N: return .S
+            case .F: return .T
+            case .P: return .J
+            }
         }
     }
-}
 
-
-final class ProfileViewModel {
+    enum MBTIType: String {
+        case ESTJ, ESTP, ESFJ, ESFP, ENTP, ENTJ, ENFJ, ENFP
+        case INTP, INTJ, INFP, INFJ, ISTP, ISTJ, ISFP, ISFJ
+    }
     
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
     var inputViewWillAppear = Observable<Void?>(nil)
     var inputNicknameTextField = Observable<String?>(nil)
-    var inputMBTIButton = Observable<String?>(nil)
+    var inputActiveMBTIButton = Observable<String?>(nil)    // MBTI 버튼 활성화
+    var inputInactiveMBTIButton = Observable<String?>(nil)  // MBTI 버튼 비활성화
     var inputDoneButton = Observable<Void?>(nil)
     
-    // input
+    // output
     var outputProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
     var outputNicknameResult = Observable<Bool>(false)
     var outputNicknameInvalidMessage = Observable<Constants.NicknameValidation>(.empty)
-//    var outputMBTIToggle = Observable<MBTICharType>(.E)
+    var outputMBTI = Observable<[MBTICharType.RawValue]>(["", "", "", ""])
+    var outputOppositeMBTI = Observable<MBTICharType?>(.none)
     var outputMBTIResult = Observable<Bool>(false)
     var outputUserAccountResult = Observable<Bool>(false)
     
@@ -60,8 +66,12 @@ final class ProfileViewModel {
             self?.nicknameValidation()
         }
         
-        inputMBTIButton.bind { [weak self] _ in
-            self?.toggleMBTIButton()
+        inputActiveMBTIButton.bind { [weak self] _ in
+            self?.setActiveMBTIChar()
+        }
+        
+        inputInactiveMBTIButton.bind { [weak self] _ in
+            self?.setInactiveMBTIChar()
         }
         
         inputDoneButton.bind { [weak self] _ in
@@ -97,29 +107,54 @@ final class ProfileViewModel {
         }
     }
     
-    // MBTI 유효성 검사
-    private func toggleMBTIButton() {
-        guard let mbtiChar = inputMBTIButton.value else { return }
-        
-        switch mbtiChar {
-        case "E":
-            print("E")
-        case "S":
-            print("S")
-        case "T":
-            print("T")
-        case "J":
-            print("J")
-        case "I":
-            print("I")
-        case "N":
-            print("N")
-        case "F":
-            print("F")
-        case "P":
-            print("P")
-        default:
-            break
+    // MBTI 값 저장 + 반대 버튼 해제
+    private func setActiveMBTIChar() {
+        if let label = inputActiveMBTIButton.value, let char = MBTICharType(rawValue: label) {
+            switch char {
+            case .E, .I:
+                self.outputMBTI.value[0] = char.rawValue
+            case .S, .N:
+                self.outputMBTI.value[1] = char.rawValue
+            case .F, .T:
+                self.outputMBTI.value[2] = char.rawValue
+            case .J, .P:
+                self.outputMBTI.value[3] = char.rawValue
+            }
+            print(self.outputMBTI.value)
+            print(self.outputMBTI.value.joined())
+            outputOppositeMBTI.value = char.opposite
+            self.mbtiValidation()
+        } else {
+            outputOppositeMBTI.value = .none
+        }
+    }
+    
+    private func setInactiveMBTIChar() {
+        if let label = inputInactiveMBTIButton.value, let char = MBTICharType(rawValue: label) {
+            switch char {
+            case .E, .I:
+                self.outputMBTI.value[0] = ""
+            case .S, .N:
+                self.outputMBTI.value[1] = ""
+            case .F, .T:
+                self.outputMBTI.value[2] = ""
+            case .J, .P:
+                self.outputMBTI.value[3] = ""
+            }
+            print(self.outputMBTI.value)
+            print(self.outputMBTI.value.joined())
+            self.mbtiValidation()
+        }
+    }
+    
+    private func mbtiValidation() {
+        let mbti = MBTIType(rawValue: self.outputMBTI.value.joined())
+        if mbti == nil {
+            print("MBTI 실패")
+            self.outputMBTIResult.value = false
+        } else {
+            print("MBTI 성공")
+            self.outputMBTIResult.value = true
         }
     }
     
@@ -127,21 +162,14 @@ final class ProfileViewModel {
     private func saveUserAccount() {
         // UserDefaults에 유저 데이터 저장
         guard let nickname = inputNicknameTextField.value else { return }
+        
         UserDefaultsManager.shared.nickname = nickname
         UserDefaultsManager.shared.profile = outputProfileImage.value
-        UserDefaultsManager.shared.mbti = "INTP"
+        UserDefaultsManager.shared.mbti = outputMBTI.value.joined()
         UserDefaultsManager.shared.joinDate = DateFormatterManager.shared.getTodayString(formatType: "yyyy. MM. dd")
         UserDefaultsManager.shared.isUser = true
         
-        print("잘 저장됐는지 확인")
-        print("UD - ", UserDefaultsManager.shared.nickname)
-        print("UD - ", UserDefaultsManager.shared.profile)
-        print("UD - ", UserDefaultsManager.shared.mbti)
-        print("UD - ", UserDefaultsManager.shared.joinDate)
-        print("UD - ", UserDefaultsManager.shared.isUser)
-        
         outputUserAccountResult.value = true
     }
-    
     
 }

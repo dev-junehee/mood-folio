@@ -29,7 +29,7 @@ final class CommonButton: UIButton {
     }
     
     func updateUI() {
-        backgroundColor = isEnabled ? Resource.Color.primary : Resource.Color.white
+        backgroundColor = isEnabled ? Resource.Color.primary : Resource.Color.lightGray
     }
     
 }

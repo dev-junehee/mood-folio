@@ -15,11 +15,6 @@ enum NicknameValidationError: Error {
     case same
 }
 
-enum MBTIValidation {
-    
-}
-
-
 final class ValidationManager {
     
     private init() { }
@@ -57,11 +52,6 @@ final class ValidationManager {
         } else {
             return true
         }
-    }
-    
-    // MBTI 유효성 검사
-    func getMBTIValidation(_ mbtiChar: String) {
-        
     }
     
 }
