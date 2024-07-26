@@ -49,6 +49,11 @@ enum Constants {
             static let message = "무드폴리오를 찾아주셔서 감사해요! =^^="
         }
         
+        enum EditProfile {
+            static let title = "프로필 수정 완료!"
+            static let message = "프로필 성공적으로 수정되었어요.\n이전 화면으로 돌아갈게요."
+        }
+        
         enum Cancelation {
             static let title = "탈퇴하기"
             static let message = "저장된 데이터가 모두 초기화됩니다.\n탈퇴하시겠습니까?"

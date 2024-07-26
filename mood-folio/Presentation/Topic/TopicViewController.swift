@@ -25,6 +25,11 @@ final class TopicViewController: BaseViewController {
         viewModel.inputViewDidLoad.value = ()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.inputViewWillAppear.value = ()
+    }
+    
     private func bindData() {
         viewModel.outputProfileImage.bind { [weak self] profile in
             self?.titleView.profileImage.setImage(Resource.Image.profileImages[profile], for: .normal)

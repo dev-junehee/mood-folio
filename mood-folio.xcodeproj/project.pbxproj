@@ -70,6 +70,8 @@
 		C478FDDB2C5334A6006998D6 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDDA2C5334A6006998D6 /* TargetType.swift */; };
 		C478FDDE2C5380BB006998D6 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDDD2C5380BB006998D6 /* EditProfileViewModel.swift */; };
 		C478FDE02C53967A006998D6 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDDF2C53967A006998D6 /* UIButton+.swift */; };
+		C478FDE22C53B303006998D6 /* EditProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */; };
+		C478FDE42C53B34B006998D6 /* EditProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +136,8 @@
 		C478FDDA2C5334A6006998D6 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		C478FDDD2C5380BB006998D6 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		C478FDDF2C53967A006998D6 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageViewController.swift; sourceTree = "<group>"; };
+		C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +311,7 @@
 				C478FD002C4E7595006998D6 /* ProfileViewController.swift */,
 				C478FD1D2C4F36AB006998D6 /* ProfileImageViewController.swift */,
 				C478FD922C5107C9006998D6 /* EditProfileViewController.swift */,
+				C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				C478FD122C4E8B4C006998D6 /* ProfileViewModel.swift */,
 				C478FD522C500020006998D6 /* ProfileImageViewModel.swift */,
 				C478FDDD2C5380BB006998D6 /* EditProfileViewModel.swift */,
+				C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -522,6 +528,7 @@
 				C478FD902C51046D006998D6 /* TopicViewModel.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,
 				C478FDDB2C5334A6006998D6 /* TargetType.swift in Sources */,
+				C478FDE22C53B303006998D6 /* EditProfileImageViewController.swift in Sources */,
 				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
 				C478FDBD2C521A6B006998D6 /* Search.swift in Sources */,
 				C478FDE02C53967A006998D6 /* UIButton+.swift in Sources */,
@@ -558,6 +565,7 @@
 				C478FD5A2C5019E9006998D6 /* TopicViewController.swift in Sources */,
 				C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */,
 				C478FD162C4E8FF2006998D6 /* User.swift in Sources */,
+				C478FDE42C53B34B006998D6 /* EditProfileImageViewModel.swift in Sources */,
 				C478FCC42C4E54C2006998D6 /* SceneDelegate.swift in Sources */,
 				C478FCF62C4E646B006998D6 /* UIColor+.swift in Sources */,
 				C478FDB92C5201B7006998D6 /* EmptyView.swift in Sources */,

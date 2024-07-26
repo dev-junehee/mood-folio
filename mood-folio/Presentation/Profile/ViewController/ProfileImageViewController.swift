@@ -9,11 +9,11 @@ import UIKit
 
 final class ProfileImageViewController: BaseViewController {
     
-    private let mainView = ProfileImageView()
+    private let profileImageView = ProfileImageView()
     private let viewModel = ProfileImageViewModel()
     
     override func loadView() {
-        view = mainView
+        view = profileImageView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,14 +37,14 @@ final class ProfileImageViewController: BaseViewController {
         navigationItem.title = Constants.Title.profileSetting
         setImgBarButton(image: Resource.SystemImage.left, target: self, action: #selector(popViewController), type: .left)
         
-        mainView.profileCollectionView.delegate = self
-        mainView.profileCollectionView.dataSource = self
-        mainView.profileCollectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfileImageCollectionViewCell.id)
+        profileImageView.profileCollectionView.delegate = self
+        profileImageView.profileCollectionView.dataSource = self
+        profileImageView.profileCollectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfileImageCollectionViewCell.id)
     }
     
     override func configureUI() {
         let image = viewModel.outputProfileImage.value
-        mainView.profileImage.image = Resource.Image.profileImages[image]
+        profileImageView.profileImage.image = Resource.Image.profileImages[image]
     }
 }
 

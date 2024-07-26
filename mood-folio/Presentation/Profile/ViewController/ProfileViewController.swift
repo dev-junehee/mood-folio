@@ -116,6 +116,7 @@ final class ProfileViewController: BaseViewController {
         
         // 닉네임 텍스트필드 입력
         profileView.nicknameField.addTarget(self, action: #selector(nicknameFieldEditing), for: .editingChanged)
+        
         // MBTI 버튼 클릭
         profileView.mbtiButtons.forEach {
             $0.addTarget(self, action: #selector(mbtiButtonClicked), for: .touchUpInside)

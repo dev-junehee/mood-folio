@@ -11,6 +11,7 @@ final class TopicViewModel {
     
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
+    var inputViewWillAppear = Observable<Void?>(nil)
     
     // output
     var outputProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
@@ -24,6 +25,12 @@ final class TopicViewModel {
     private func transform() {
         // 저장된 프로필 이미지 가져오기 + TOPIC API 호출
         inputViewDidLoad.bind { [weak self] _ in
+            self?.outputProfileImage.value = UserDefaultsManager.shared.profile
+            self?.getTopics()
+        }
+        
+        // 새로 바뀐 프로필 이미지 가져오기
+        inputViewWillAppear.bind { [weak self] _ in
             self?.outputProfileImage.value = UserDefaultsManager.shared.profile
             self?.getTopics()
         }

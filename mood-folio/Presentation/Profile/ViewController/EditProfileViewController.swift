@@ -5,12 +5,21 @@
 //  Created by junehee on 7/24/24.
 //
 
-import Foundation
+import UIKit
 
 final class EditProfileViewController: BaseViewController {
     
     private let editView = ProfileView()
     private let viewModel = EditProfileViewModel()
+    
+    private var changeProfileNum: Int? {
+        didSet {
+            guard let num = changeProfileNum else { return }
+            editView.profileImage.image = Resource.Image.profileImages[num]
+            navigationItem.rightBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItem?.tintColor = Resource.Color.primary
+        }
+    }
     
     override func loadView() {
         view = editView
@@ -58,8 +67,43 @@ final class EditProfileViewController: BaseViewController {
     }
     
     private func configureHandler() {
+        // 배경 탭
+        let backgroundTap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
+        view.addGestureRecognizer(backgroundTap)
+        
+        // 프로필 이미지 탭
+        let profileTap =  UITapGestureRecognizer(target: self, action: #selector(profileImageClicked))
+        editView.profileImageView.addGestureRecognizer(profileTap)
+        
+        // 닉네임 텍스트필드 입력
+        editView.nicknameField.addTarget(self, action: #selector(nicknameFieldEditing), for: .editingChanged)
+        
+        // MBTI 버튼 클릭
+        editView.mbtiButtons.forEach {
+            $0.addTarget(self, action: #selector(mbtiButtonClicked), for: .touchUpInside)
+        }
+        
+        // 회원탈퇴 버튼
         editView.deleteAccountButton.addTarget(self, action: #selector(deleteAccountButtonClicked), for: .touchUpInside)
     }
+    
+    @objc private func profileImageClicked() {
+        let editProfileImageVC = EditProfileImageViewController()
+        editProfileImageVC.closure = { [weak self] profile in
+            // 바꾸려고 하는 프로필 사진을 보여주기만 하는 상황 (아직 UD에 저장 안됨!)
+            self?.changeProfileNum = profile
+        }
+        navigationController?.pushViewController(editProfileImageVC, animated: true)
+    }
+    
+    @objc private func nicknameFieldEditing() {
+        
+    }
+    
+    @objc private func mbtiButtonClicked() {
+        
+    }
+    
     
     @objc private func deleteAccountButtonClicked() {
         print(#function)
@@ -72,6 +116,13 @@ final class EditProfileViewController: BaseViewController {
     
     @objc private func saveButtonClicked() {
         print(#function)
+        // 새로운 정보 저장
+        guard let changeProfileNum else { return }
+        UserDefaultsManager.shared.profile = changeProfileNum
+        
+        showAlert(title: Constants.Alert.EditProfile.title, message: Constants.Alert.EditProfile.message, buttonType: .oneButton) { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
     
 }
