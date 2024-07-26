@@ -83,42 +83,42 @@ final class ProfileView: BaseView {
         return view
     }()
     
-    private let mbtiButtonE = {
+    let mbtiButtonE = {
         let button = MBTIButtton(title: "E")
         return button
     }()
     
-    private let mbtiButtonS = {
+    let mbtiButtonS = {
         let button = MBTIButtton(title: "S")
         return button
     }()
     
-    private let mbtiButtonT = {
+    let mbtiButtonT = {
         let button = MBTIButtton(title: "T")
         return button
     }()
     
-    private let mbtiButtonJ = {
+    let mbtiButtonJ = {
         let button = MBTIButtton(title: "J")
         return button
     }()
     
-    private let mbtiButtonI = {
+    let mbtiButtonI = {
         let button = MBTIButtton(title: "I")
         return button
     }()
     
-    private let mbtiButtonN = {
+    let mbtiButtonN = {
         let button = MBTIButtton(title: "N")
         return button
     }()
     
-    private let mbtiButtonF = {
+    let mbtiButtonF = {
         let button = MBTIButtton(title: "F")
         return button
     }()
     
-    private let mbtiButtonP = {
+    let mbtiButtonP = {
         let button = MBTIButtton(title: "P")
         return button
     }()

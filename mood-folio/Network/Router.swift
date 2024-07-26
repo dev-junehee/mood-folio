@@ -19,7 +19,8 @@ enum Router {
     case statistics(imageId: String)
 }
 
-extension Router {
+extension Router: TargetType {
+    
     var base: String {
         return API.URL.base
     }

@@ -19,10 +19,10 @@ final class MBTIButtton: UIButton {
     init(title: String, size: CGFloat = 50) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
-        setTitleColor(isSelected ? Resource.Color.white : Resource.Color.lightGray, for:.normal)
+        setTitleColor(Resource.Color.lightGray, for:.normal)
         titleLabel?.font = Resource.Font.bold16
-        backgroundColor = isSelected ? Resource.Color.primary : Resource.Color.white
-        layer.borderColor = isSelected ? Resource.Color.primary.cgColor : Resource.Color.lightGray.cgColor
+        backgroundColor = Resource.Color.white
+        layer.borderColor = Resource.Color.lightGray.cgColor
         layer.borderWidth = isSelected ? 0 : 1
         layer.cornerRadius = size / 2
         self.snp.makeConstraints {

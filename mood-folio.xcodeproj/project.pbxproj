@@ -67,6 +67,7 @@
 		C478FDBB2C520383006998D6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDBA2C520383006998D6 /* SearchViewModel.swift */; };
 		C478FDBD2C521A6B006998D6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDBC2C521A6B006998D6 /* Search.swift */; };
 		C478FDBF2C521FCA006998D6 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDBE2C521FCA006998D6 /* SearchCollectionViewCell.swift */; };
+		C478FDDB2C5334A6006998D6 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDDA2C5334A6006998D6 /* TargetType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		C478FDBA2C520383006998D6 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C478FDBC2C521A6B006998D6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		C478FDBE2C521FCA006998D6 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		C478FDDA2C5334A6006998D6 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 		C478FCC02C4E54C2006998D6 /* mood-folio */ = {
 			isa = PBXGroup;
 			children = (
+				C478FCD52C4E5546006998D6 /* Application */,
 				C478FD9D2C511D13006998D6 /* Network */,
 				C478FD172C4E9019006998D6 /* Observable */,
 				C478FD142C4E8FE9006998D6 /* Model */,
@@ -174,7 +177,6 @@
 				C478FCE52C4E61F5006998D6 /* Protocol */,
 				C478FCF72C4E69EA006998D6 /* Components */,
 				C478FCDD2C4E615B006998D6 /* Presentation */,
-				C478FCD52C4E5546006998D6 /* Application */,
 				C478FCCA2C4E54C2006998D6 /* Assets.xcassets */,
 				C478FCCC2C4E54C2006998D6 /* LaunchScreen.storyboard */,
 				C478FCCF2C4E54C2006998D6 /* Info.plist */,
@@ -231,6 +233,7 @@
 			children = (
 				C478FCE62C4E620F006998D6 /* Reusable.swift */,
 				C478FCF02C4E63B8006998D6 /* Base.swift */,
+				C478FDDA2C5334A6006998D6 /* TargetType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				C478FD1C2C4E9340006998D6 /* UserDefaultsManager.swift in Sources */,
 				C478FD902C51046D006998D6 /* TopicViewModel.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,
+				C478FDDB2C5334A6006998D6 /* TargetType.swift in Sources */,
 				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
 				C478FDBD2C521A6B006998D6 /* Search.swift in Sources */,
 				C478FDA62C513685006998D6 /* Photo.swift in Sources */,
