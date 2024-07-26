@@ -45,6 +45,10 @@ enum Constants {
     }
     
     enum Alert {
+        enum Welcome {
+            static let message = "무드폴리오를 찾아주셔서 감사해요! =^^="
+        }
+        
         enum Cancelation {
             static let title = "탈퇴하기"
             static let message = "저장된 데이터가 모두 초기화됩니다.\n탈퇴하시겠습니까?"

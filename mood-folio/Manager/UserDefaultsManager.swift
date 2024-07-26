@@ -35,6 +35,10 @@ struct UserDefaultsManager {
     @UserDefaultsWrapper (key: .isUser, defaultValue: false)
     var isUser: Bool
     
+    func getWelcomeMessage() -> String {
+        return "환영해요, \(UserDefaultsManager.shared.nickname)님"
+    }
+    
     func deleteAllUserDefaults() {
         _nickname.delete()
         _profile.delete()

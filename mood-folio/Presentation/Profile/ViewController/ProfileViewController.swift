@@ -87,7 +87,15 @@ final class ProfileViewController: BaseViewController {
         
         // 유저 가입 완료
         viewModel.outputUserAccountResult.bind { [weak self] res in
-            self?.changeRootViewController()
+            if !res { return }
+            self?.showAlert(
+                title: UserDefaultsManager.shared.getWelcomeMessage(),
+                message: Constants.Alert.Welcome.message,
+                buttonType: .oneButton,
+                okHandler: { [weak self] _ in
+                    self?.changeRootViewController()
+                }
+            )
         }
     }
     
