@@ -128,10 +128,26 @@ final class ProfileView: BaseView {
         return button
     }()
     
+    let deleteAccountButton = {
+        let button = UIButton()
+        button.setTitle("회원탈퇴", for: .normal)
+        button.setTitleColor(Resource.Color.primary, for: .normal)
+        button.titleLabel?.font = Resource.Font.regular13
+        button.setUnderline()
+        return button
+    }()
+    
     lazy var mbtiButtons = [
         mbtiButtonE, mbtiButtonS, mbtiButtonT, mbtiButtonJ,
         mbtiButtonI, mbtiButtonN, mbtiButtonF, mbtiButtonP,
     ]
+    
+    var isEditing = false {
+        didSet {
+            doneButton.isHidden = isEditing
+            deleteAccountButton.isHidden = !isEditing
+        }
+    }
     
     override func configureHierarchy() {
         cameraImageView.addSubview(cameraImage)
@@ -141,7 +157,7 @@ final class ProfileView: BaseView {
         let subviews = [
             profileImageView, nicknameField, invalidMessage,
             mbtiLabel, mbtiESTJBox, mbtiESTJBox, mbtiINFPBox,
-            doneButton
+            doneButton, deleteAccountButton
         ]
         subviews.forEach { self.addSubview($0) }
     }
@@ -203,6 +219,12 @@ final class ProfileView: BaseView {
         }
         
         doneButton.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.height.equalTo(50)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)
+        }
+        
+        deleteAccountButton.snp.makeConstraints {
             $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
             $0.height.equalTo(50)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)

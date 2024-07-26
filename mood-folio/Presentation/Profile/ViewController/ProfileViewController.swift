@@ -33,6 +33,7 @@ final class ProfileViewController: BaseViewController {
         // viewWillAppear 시점마다 프로필 이미지 랜덤
         viewModel.outputProfileImage.bind { [weak self] num in
             self?.profileView.profileImage.image = Resource.Image.profileImages[num]
+            self?.profileView.isEditing = false
         }
         
         // 닉네임 유효성 검사 결과
@@ -86,7 +87,15 @@ final class ProfileViewController: BaseViewController {
         
         // 유저 가입 완료
         viewModel.outputUserAccountResult.bind { [weak self] res in
-            self?.changeRootViewController()
+            if !res { return }
+            self?.showAlert(
+                title: UserDefaultsManager.shared.getWelcomeMessage(),
+                message: Constants.Alert.Welcome.message,
+                buttonType: .oneButton,
+                okHandler: { [weak self] _ in
+                    self?.changeRootViewController()
+                }
+            )
         }
     }
     
@@ -107,6 +116,7 @@ final class ProfileViewController: BaseViewController {
         
         // 닉네임 텍스트필드 입력
         profileView.nicknameField.addTarget(self, action: #selector(nicknameFieldEditing), for: .editingChanged)
+        
         // MBTI 버튼 클릭
         profileView.mbtiButtons.forEach {
             $0.addTarget(self, action: #selector(mbtiButtonClicked), for: .touchUpInside)

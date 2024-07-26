@@ -26,8 +26,8 @@ struct UserDefaultsManager {
     @UserDefaultsWrapper (key: .profile, defaultValue: Int.random(in: 0..<Resource.Image.profileImages.count))
     var profile: Int
     
-    @UserDefaultsWrapper (key: .mbti, defaultValue: "-")
-    var mbti: String
+    @UserDefaultsWrapper (key: .mbti, defaultValue: ["", "", "", ""])
+    var mbti: [String]
     
     @UserDefaultsWrapper (key: .joinDate, defaultValue: "0000. 00. 00")
     var joinDate: String
@@ -35,10 +35,15 @@ struct UserDefaultsManager {
     @UserDefaultsWrapper (key: .isUser, defaultValue: false)
     var isUser: Bool
     
+    func getWelcomeMessage() -> String {
+        return "환영해요, \(UserDefaultsManager.shared.nickname)님"
+    }
+    
     func deleteAllUserDefaults() {
         _nickname.delete()
         _profile.delete()
         _mbti.delete()
+        _joinDate.delete()
         _isUser.delete()
     }
     

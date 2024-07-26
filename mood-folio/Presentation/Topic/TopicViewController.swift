@@ -25,6 +25,11 @@ final class TopicViewController: BaseViewController {
         viewModel.inputViewDidLoad.value = ()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.inputViewWillAppear.value = ()
+    }
+    
     private func bindData() {
         viewModel.outputProfileImage.bind { [weak self] profile in
             self?.titleView.profileImage.setImage(Resource.Image.profileImages[profile], for: .normal)
@@ -51,8 +56,9 @@ final class TopicViewController: BaseViewController {
     }
     
     @objc private func profileImageClicked() {
-        print(#function)
-        navigationController?.pushViewController(EditProfileViewController(), animated: true)
+        let editProfileVC = EditProfileViewController()
+        editProfileVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(editProfileVC, animated: true)
     }
     
 }

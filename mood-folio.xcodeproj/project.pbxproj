@@ -68,6 +68,11 @@
 		C478FDBD2C521A6B006998D6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDBC2C521A6B006998D6 /* Search.swift */; };
 		C478FDBF2C521FCA006998D6 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDBE2C521FCA006998D6 /* SearchCollectionViewCell.swift */; };
 		C478FDDB2C5334A6006998D6 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDDA2C5334A6006998D6 /* TargetType.swift */; };
+		C478FDDE2C5380BB006998D6 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDDD2C5380BB006998D6 /* EditProfileViewModel.swift */; };
+		C478FDE02C53967A006998D6 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDDF2C53967A006998D6 /* UIButton+.swift */; };
+		C478FDE22C53B303006998D6 /* EditProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */; };
+		C478FDE42C53B34B006998D6 /* EditProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */; };
+		C478FDE62C53CC07006998D6 /* UIBarButtonItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +135,11 @@
 		C478FDBC2C521A6B006998D6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		C478FDBE2C521FCA006998D6 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		C478FDDA2C5334A6006998D6 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		C478FDDD2C5380BB006998D6 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		C478FDDF2C53967A006998D6 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageViewController.swift; sourceTree = "<group>"; };
+		C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageViewModel.swift; sourceTree = "<group>"; };
+		C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +208,6 @@
 			children = (
 				C478FCDE2C4E6163006998D6 /* Onboarding */,
 				C478FCFF2C4E757C006998D6 /* Profile */,
-				C478FD912C51075A006998D6 /* EditProfile */,
 				C478FD582C5019D7006998D6 /* Topic */,
 				C478FD5B2C501A17006998D6 /* Random */,
 				C478FD5E2C501A4A006998D6 /* Search */,
@@ -245,6 +254,8 @@
 				C478FCF52C4E646B006998D6 /* UIColor+.swift */,
 				C478FD052C4E8367006998D6 /* TextFieldEffets+.swift */,
 				C478FD072C4E863A006998D6 /* UIViewController+.swift */,
+				C478FDDF2C53967A006998D6 /* UIButton+.swift */,
+				C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -302,6 +313,8 @@
 			children = (
 				C478FD002C4E7595006998D6 /* ProfileViewController.swift */,
 				C478FD1D2C4F36AB006998D6 /* ProfileImageViewController.swift */,
+				C478FD922C5107C9006998D6 /* EditProfileViewController.swift */,
+				C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -311,6 +324,8 @@
 			children = (
 				C478FD122C4E8B4C006998D6 /* ProfileViewModel.swift */,
 				C478FD522C500020006998D6 /* ProfileImageViewModel.swift */,
+				C478FDDD2C5380BB006998D6 /* EditProfileViewModel.swift */,
+				C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -378,14 +393,6 @@
 				C478FD622C501A8A006998D6 /* LikeViewController.swift */,
 			);
 			path = Like;
-			sourceTree = "<group>";
-		};
-		C478FD912C51075A006998D6 /* EditProfile */ = {
-			isa = PBXGroup;
-			children = (
-				C478FD922C5107C9006998D6 /* EditProfileViewController.swift */,
-			);
-			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		C478FD942C510FAE006998D6 /* Cell */ = {
@@ -524,8 +531,10 @@
 				C478FD902C51046D006998D6 /* TopicViewModel.swift in Sources */,
 				C478FCC22C4E54C2006998D6 /* AppDelegate.swift in Sources */,
 				C478FDDB2C5334A6006998D6 /* TargetType.swift in Sources */,
+				C478FDE22C53B303006998D6 /* EditProfileImageViewController.swift in Sources */,
 				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
 				C478FDBD2C521A6B006998D6 /* Search.swift in Sources */,
+				C478FDE02C53967A006998D6 /* UIButton+.swift in Sources */,
 				C478FDA62C513685006998D6 /* Photo.swift in Sources */,
 				C478FD0F2C4E89B8006998D6 /* ProfileView.swift in Sources */,
 				C478FDB22C515F2D006998D6 /* DetailViewModel.swift in Sources */,
@@ -533,6 +542,7 @@
 				C478FCE02C4E6170006998D6 /* OnboardingViewController.swift in Sources */,
 				C478FDB02C515131006998D6 /* DetailView.swift in Sources */,
 				C478FD962C510FC8006998D6 /* TopicTableViewCell.swift in Sources */,
+				C478FDDE2C5380BB006998D6 /* EditProfileViewModel.swift in Sources */,
 				C478FDBF2C521FCA006998D6 /* SearchCollectionViewCell.swift in Sources */,
 				C478FD8A2C50C8DA006998D6 /* ProfileTitleView.swift in Sources */,
 				C478FD8C2C50C9DB006998D6 /* OnboardingView.swift in Sources */,
@@ -547,6 +557,7 @@
 				C478FDAD2C5150FD006998D6 /* DetailViewController.swift in Sources */,
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
 				C478FD4D2C4FFC1F006998D6 /* ProfileImageView.swift in Sources */,
+				C478FDE62C53CC07006998D6 /* UIBarButtonItem+.swift in Sources */,
 				C478FCF12C4E63B8006998D6 /* Base.swift in Sources */,
 				C478FD552C500CAC006998D6 /* DateFormatterManager.swift in Sources */,
 				C478FD572C500EAF006998D6 /* ValidationManager.swift in Sources */,
@@ -558,6 +569,7 @@
 				C478FD5A2C5019E9006998D6 /* TopicViewController.swift in Sources */,
 				C478FD132C4E8B4C006998D6 /* ProfileViewModel.swift in Sources */,
 				C478FD162C4E8FF2006998D6 /* User.swift in Sources */,
+				C478FDE42C53B34B006998D6 /* EditProfileImageViewModel.swift in Sources */,
 				C478FCC42C4E54C2006998D6 /* SceneDelegate.swift in Sources */,
 				C478FCF62C4E646B006998D6 /* UIColor+.swift in Sources */,
 				C478FDB92C5201B7006998D6 /* EmptyView.swift in Sources */,

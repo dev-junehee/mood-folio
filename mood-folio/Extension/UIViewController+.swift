@@ -46,7 +46,7 @@ extension UIViewController {
         }
     }
     
-    // RootViewController 변경
+    // RootViewController - TabBar 변경
     func changeRootViewController() {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDeleagate = windowScene?.delegate as? SceneDelegate
@@ -74,6 +74,16 @@ extension UIViewController {
         rootViewController = tabBarController
             
         sceneDeleagate?.window?.rootViewController = rootViewController
+        sceneDeleagate?.window?.makeKeyAndVisible()
+    }
+    
+    // RootViewController - Onboarding 변경
+    func changeRootViewControllerToOnboarding() {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDeleagate = windowScene?.delegate as? SceneDelegate
+        
+        let onboardingVC = UINavigationController(rootViewController: OnboardingViewController())
+        sceneDeleagate?.window?.rootViewController = onboardingVC
         sceneDeleagate?.window?.makeKeyAndVisible()
     }
     
