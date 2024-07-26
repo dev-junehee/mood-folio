@@ -87,11 +87,9 @@ final class EditProfileViewController: BaseViewController {
 
         viewModel.outputMBTIResult.bind { [weak self] res in
             if res {
-                // MBTI 성공
-                self?.navigationItem.rightBarButtonItem?.setButtonEnabled()
+                self?.navigationItem.rightBarButtonItem?.setButtonEnabled() // MBTI 성공
             } else {
-                // MBTI 실패
-                self?.navigationItem.rightBarButtonItem?.setButtonDisabled()
+                self?.navigationItem.rightBarButtonItem?.setButtonDisabled() // MBTI 실패
             }
         }
         
@@ -136,14 +134,12 @@ final class EditProfileViewController: BaseViewController {
     @objc private func profileImageClicked() {
         let editProfileImageVC = EditProfileImageViewController()
         editProfileImageVC.closure = { [weak self] profile in
-            // 바꾸려고 하는 프로필 사진을 보여주기만 하는 상황 (아직 UD에 저장 안됨!)
             self?.changeProfileNum = profile
         }
         navigationController?.pushViewController(editProfileImageVC, animated: true)
     }
     
     @objc private func nicknameFieldEditing() {
-        print(#function)
         viewModel.inputNicknameTextField.value = editView.nicknameField.text
         
     }
@@ -159,7 +155,6 @@ final class EditProfileViewController: BaseViewController {
     
     
     @objc private func deleteAccountButtonClicked() {
-        print(#function)
         showAlert(title: Constants.Alert.Cancelation.title,
                   message: Constants.Alert.Cancelation.message,
                   buttonType: .twoButton) { [weak self] _ in
@@ -168,8 +163,7 @@ final class EditProfileViewController: BaseViewController {
     }
     
     @objc private func saveButtonClicked() {
-        print(#function)
-        // 새로운 정보 저장
+        // 수정된 프로필 저장
         if viewModel.outputNicknameResult.value {
             guard let nickname = viewModel.inputNicknameTextField.value else { return }
             UserDefaultsManager.shared.nickname = nickname
@@ -183,7 +177,9 @@ final class EditProfileViewController: BaseViewController {
             UserDefaultsManager.shared.mbti = viewModel.outputMBTI.value
         }
         
-        showAlert(title: Constants.Alert.EditProfile.title, message: Constants.Alert.EditProfile.message, buttonType: .oneButton) { [weak self] _ in
+        showAlert(title: Constants.Alert.EditProfile.title, 
+                  message: Constants.Alert.EditProfile.message,
+                  buttonType: .oneButton) { [weak self] _ in
             self?.navigationController?.popViewController(animated: true)
         }
     }

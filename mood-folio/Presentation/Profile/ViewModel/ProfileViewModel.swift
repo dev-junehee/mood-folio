@@ -120,8 +120,6 @@ final class ProfileViewModel {
             case .J, .P:
                 self.outputMBTI.value[3] = char.rawValue
             }
-            print(self.outputMBTI.value)
-            print(self.outputMBTI.value.joined())
             outputOppositeMBTI.value = char.opposite
             self.mbtiValidation()
         } else {
@@ -141,8 +139,6 @@ final class ProfileViewModel {
             case .J, .P:
                 self.outputMBTI.value[3] = ""
             }
-            print(self.outputMBTI.value)
-            print(self.outputMBTI.value.joined())
             self.mbtiValidation()
         }
     }
@@ -150,10 +146,8 @@ final class ProfileViewModel {
     private func mbtiValidation() {
         let mbti = MBTIType(rawValue: self.outputMBTI.value.joined())
         if mbti == nil {
-            print("MBTI 실패")
             self.outputMBTIResult.value = false
         } else {
-            print("MBTI 성공")
             self.outputMBTIResult.value = true
         }
     }
