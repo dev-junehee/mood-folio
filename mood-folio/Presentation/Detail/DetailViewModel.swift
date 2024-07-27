@@ -19,6 +19,7 @@ final class DetailViewModel {
     // output
     var outputStatisticsData = Observable<Statistics?>(nil)
     var outputCreateLikePhotoTrigger = Observable<Void?>(nil)
+    var outputDeleteLikePhotoTrigger = Observable<Void?>(nil)
     
     init() {
         transform()
@@ -30,7 +31,13 @@ final class DetailViewModel {
         }
         
         inputHeartButton.bind { [weak self] _ in
-            self?.createLikePhoto()
+            guard let id = self?.inputPhotoData.value?.id else { return }
+            let isLikePhoto = self?.repo.isLikePhoto(id: id)
+            if isLikePhoto != true {
+                self?.createLikePhoto()
+            } else {
+                self?.deleteLikePhoto()
+            }
         }
     }
     
@@ -54,6 +61,15 @@ final class DetailViewModel {
         let likePhoto = LikePhoto(photo: photo)
         self.repo.createLikePhoto(likePhoto)
         self.outputCreateLikePhotoTrigger.value = ()
+    }
+    
+    private func deleteLikePhoto() {
+        guard let photo = self.inputPhotoData.value else { return }
+        
+        if let item = self.repo.getLikePhoto(id: photo.id) {
+            self.repo.deleteLikePhoto(photo: item)
+            self.outputDeleteLikePhotoTrigger.value = ()
+        }
     }
     
 }

@@ -32,6 +32,10 @@ final class DetailViewController: BaseViewController {
         viewModel.outputCreateLikePhotoTrigger.bind { [weak self] _ in
             self?.detailView.updateHeartButtonUI(id: self?.viewModel.inputPhotoData.value?.id ?? "")
         }
+        
+        viewModel.outputDeleteLikePhotoTrigger.bind { [weak self] _ in
+            self?.detailView.updateHeartButtonUI(id: self?.viewModel.inputPhotoData.value?.id ?? "")
+        }
     }
     
     override func configureViewController() {
