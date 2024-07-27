@@ -13,14 +13,19 @@ enum SearchResult {
 
 final class SearchViewModel {
     
+    private let repo = LikePhotoRepository()
+    
     // input
     var inputSearchText = Observable<String?>(nil)
     var inputSortButton = Observable<SearchOrder>(.relevant)    // 검색 결과 정렬
     var inputInfinityScroll = Observable<Void?>(nil)
+    var inputHeartButton = Observable<Int?>(nil)
     
     // output
     var outputSearchResult = Observable<Search>(Search(total: 0, total_pages: 0, results: []))
     var outputSearchNoResult = Observable<Void?>(nil)
+    var outputCreateLikePhotoTrigger = Observable<Void?>(nil)
+    var outputDeleteLikePhotoTrigger = Observable<Void?>(nil)
     
     // 검색 결과 데이터 페이지
     private var page = 1
@@ -44,6 +49,21 @@ final class SearchViewModel {
             if self?.page == self?.outputSearchResult.value.total_pages { return }
             self?.page += 1
             self?.getSearch()
+        }
+        
+        inputHeartButton.bind { [weak self] tag in
+            guard let tag else { return }
+            
+            if let data = self?.outputSearchResult.value.results[tag] {
+                let isLikePhoto = self?.repo.isLikePhoto(id: data.id)
+                
+                if isLikePhoto != true {
+                    self?.createLikePhoto(data)
+                } else {
+                    guard let likePhoto = self?.repo.getLikePhoto(id: data.id)  else { return }
+                    self?.deleteLikePhoto(likePhoto)
+                }
+            }
         }
     }
     
@@ -74,6 +94,17 @@ final class SearchViewModel {
                 print(error)
             }
         }
+    }
+    
+    private func createLikePhoto(_ data: Photo) {
+        let likePhoto = LikePhoto(photo: data)
+        self.repo.createLikePhoto(likePhoto)
+        self.outputCreateLikePhotoTrigger.value = ()
+    }
+    
+    private func deleteLikePhoto(_ data: LikePhoto) {
+        self.repo.deleteLikePhoto(photo: data)
+        self.outputDeleteLikePhotoTrigger.value = ()
     }
     
 }

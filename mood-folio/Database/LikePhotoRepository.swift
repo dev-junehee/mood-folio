@@ -42,10 +42,10 @@ final class LikePhotoRepository {
     
     // 찜한 사진 여부 판별하기
     func isLikePhoto(id: String) -> Bool {
-        if getLikePhoto(id: id) != nil {
-            return true
-        } else {
+        if getLikePhoto(id: id) == nil {
             return false
+        } else {
+            return true
         }
     }
     

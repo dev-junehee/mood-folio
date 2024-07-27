@@ -55,10 +55,10 @@ final class LikeViewController: BaseViewController {
     }
     
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, LikePhoto> {
-        return UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
+        return UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
             cell.updateLikePhotoCell(data: itemIdentifier)
             cell.heartButton.tag = indexPath.item
-            cell.heartButton.addTarget(self, action: #selector(self.heartButtonClicked), for: .touchUpInside)
+            cell.heartButton.addTarget(self, action: #selector(self?.heartButtonClicked), for: .touchUpInside)
         }
     }
     

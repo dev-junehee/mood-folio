@@ -45,6 +45,14 @@ final class SearchViewController: BaseViewController {
         viewModel.outputSearchNoResult.bind { [weak self] _ in
             self?.showEmptyView(type: .noResult)
         }
+        
+        viewModel.outputCreateLikePhotoTrigger.bind { [weak self] _ in
+            self?.updateSnapshot()
+        }
+        
+        viewModel.outputCreateLikePhotoTrigger.bind { [weak self] _ in
+            self?.updateSnapshot()
+        }
     }
     
     override func configureViewController() {
@@ -63,8 +71,10 @@ final class SearchViewController: BaseViewController {
     }
     
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, Photo> {
-        return UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
+        return UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
             cell.updateSearchCellUI(data: itemIdentifier)
+            cell.heartButton.tag = indexPath.item
+            cell.heartButton.addTarget(self, action: #selector(self?.heartButtonClicked), for: .touchUpInside)
         }
     }
     
@@ -114,6 +124,10 @@ final class SearchViewController: BaseViewController {
             viewModel.inputSortButton.value = .relevant
             searchView.updateSortButtonUI(changeType: .relevant)
         }
+    }
+    
+    @objc private func heartButtonClicked(_ sender: UIButton) {
+        viewModel.inputHeartButton.value = sender.tag
     }
     
 }

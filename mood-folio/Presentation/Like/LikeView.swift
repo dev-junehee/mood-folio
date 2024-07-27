@@ -40,22 +40,16 @@ final class LikeView: BaseView {
     }()
     
     private func layout() -> UICollectionViewLayout {
-        // 셀 크기
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalHeight(1.0))
-        // 아이템
         let item = NSCollectionLayoutItem(layoutSize: size)
-        
-        // 아이템(셀)을 담을 그룹 사이즈
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(250))
-        // 수평으로 그릴지, 수직으로 그릴지
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = .fixed(4) // 그룹 내 셀 사이 간격 설정
+        group.interItemSpacing = .fixed(4)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 4 // 그룹 간의 간격 설정
         
         let layout = UICollectionViewCompositionalLayout(section: section)
-                                                         
         return layout
     }
     
@@ -94,6 +88,5 @@ final class LikeView: BaseView {
             sortButton.configuration?.attributedTitle = title
         }
     }
-    
     
 }
