@@ -43,7 +43,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    private let heartButton = {
+    let heartButton = {
         var config = UIButton.Configuration.plain()
         config.image = .likeCircleInactive
         let button = UIButton(configuration: config)

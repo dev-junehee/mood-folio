@@ -30,6 +30,7 @@ final class LikeViewController: BaseViewController {
         configureDataSource()
         updateSnapshot()
         bindData()
+        viewModel.inputViewDidLoad.value = likeOrder
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +47,7 @@ final class LikeViewController: BaseViewController {
     
     override func configureViewController() {
         navigationItem.title = Constants.Title.like
+        likeView.collectionView.delegate = self
     }
     
     private func configureHandler() {
@@ -55,7 +57,8 @@ final class LikeViewController: BaseViewController {
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, LikePhoto> {
         return UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
             cell.updateLikePhotoCell(data: itemIdentifier)
-            
+            cell.heartButton.tag = indexPath.item
+            cell.heartButton.addTarget(self, action: #selector(self.heartButtonClicked), for: .touchUpInside)
         }
     }
     
@@ -74,12 +77,12 @@ final class LikeViewController: BaseViewController {
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<LikeSection, LikePhoto>()
         snapshot.appendSections(LikeSection.allCases)
-        snapshot.appendItems(viewModel.outputLikePhotoList.value, toSection: .main)
+        snapshot.appendItems(viewModel.outputLikePhotoList.value ?? [], toSection: .main)
         dataSource.apply(snapshot)
     }
     
     private func viewToggle() {
-        let isEmpty = viewModel.outputLikePhotoList.value.isEmpty
+        guard let isEmpty = viewModel.outputLikePhotoList.value?.isEmpty else { return }
         if isEmpty {
             likeView.collectionView.isHidden = true
             likeView.emptyView.isHidden = false
@@ -89,7 +92,6 @@ final class LikeViewController: BaseViewController {
             likeView.emptyView.isHidden = true
         }
     }
-    
     
     @objc private func sortButtonClicked(_ sender: UIButton) {
         let buttonLabel = sender.titleLabel?.text
@@ -102,5 +104,18 @@ final class LikeViewController: BaseViewController {
         viewModel.inputSortButton.value = likeOrder
     }
     
+    @objc private func heartButtonClicked(_ sender: UIButton) {
+        print(#function, "testtest")
+        viewModel.inputHeartButton.value = sender.tag
+    }
+    
 }
 
+extension LikeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.detailType = .likePhoto
+        detailVC.viewModel.inputLikePhotoData.value = viewModel.outputLikePhotoList.value?[indexPath.item]
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+}

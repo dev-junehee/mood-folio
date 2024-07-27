@@ -201,7 +201,8 @@ final class DetailView: BaseView {
         updateHeartButtonUI(id: data.id)
     }
     
-    func updateLikePhotoUI(data: LikePhoto) {
+    func updateLikePhotoUI(data: LikePhoto?) {
+        guard let data else { return }
         userProfileImage.kf.setImage(with: URL(string: data.userProfileImage))
         userNameLabel.text = data.userName
         // createDateLabel.text = "\(data.create_at)"

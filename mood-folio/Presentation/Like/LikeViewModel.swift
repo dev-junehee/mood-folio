@@ -17,11 +17,13 @@ final class LikeViewModel {
     private let repo = LikePhotoRepository()
     
     // input
+    var inputViewDidLoad = Observable<LikeOrder>(.latest)
     var inputViewWillAppear = Observable<LikeOrder>(.latest)
     var inputSortButton = Observable<LikeOrder>(.latest)
+    var inputHeartButton = Observable<Int?>(nil)
     
     // output
-    var outputLikePhotoList = Observable<[LikePhoto]>([])
+    var outputLikePhotoList = Observable<[LikePhoto]?>([])
     
     
     init() {
@@ -29,27 +31,53 @@ final class LikeViewModel {
     }
     
     private func transform() {
-        inputViewWillAppear.bind { [weak self] order in
+        inputViewDidLoad.bind { [weak self] order in
+            let allLikePhoto = self?.repo.getAllLikePhoto() ?? []
+            
             switch order {
             case .latest:
-                let allLikePhoto: [LikePhoto] = self?.repo.getAllLikePhoto() ?? []
                 let sorted = allLikePhoto.sorted { $0.regData > $1.regData }
                 self?.outputLikePhotoList.value = sorted
             case .past:
-                let allLikePhoto: [LikePhoto] = self?.repo.getAllLikePhoto() ?? []
+                let sorted = allLikePhoto.sorted { $0.regData < $1.regData }
+                self?.outputLikePhotoList.value = sorted
+            }
+        }
+        
+        inputViewWillAppear.bind { [weak self] order in
+            let allLikePhoto = self?.repo.getAllLikePhoto() ?? []
+            
+            switch order {
+            case .latest:
+                let sorted = allLikePhoto.sorted { $0.regData > $1.regData }
+                self?.outputLikePhotoList.value = sorted
+            case .past:
                 let sorted = allLikePhoto.sorted { $0.regData < $1.regData }
                 self?.outputLikePhotoList.value = sorted
             }
         }
         
         inputSortButton.bind { [weak self] order in
+            guard let originList = self?.outputLikePhotoList.value else { return }
             switch order {
             case .latest:
-                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData > $1.regData }
-                self?.outputLikePhotoList.value = sorted ?? []
+                let sorted = originList.sorted { $0.regData > $1.regData }
+                self?.outputLikePhotoList.value = sorted
             case .past:
-                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData < $1.regData }
-                self?.outputLikePhotoList.value = sorted ?? []
+                let sorted = originList.sorted { $0.regData < $1.regData }
+                self?.outputLikePhotoList.value = sorted
+            }
+        }
+        
+        inputHeartButton.bind { [weak self] tag in
+            guard let tag else { return }
+            let likePhoto = self?.outputLikePhotoList.value?[tag]
+            
+            if let likePhoto {
+                self?.repo.deleteLikePhoto(photo: likePhoto)
+                self?.outputLikePhotoList.value = self?.repo.getAllLikePhoto() ?? []
+            } else {
+                
             }
         }
     }

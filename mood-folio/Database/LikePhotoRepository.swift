@@ -30,7 +30,7 @@ final class LikePhotoRepository {
         return realm.objects(LikePhoto.self)
     }
     
-    func getAllLikePhoto() -> [LikePhoto] {
+    func getAllLikePhoto() -> [LikePhoto]? {
         let likePhotos = realm.objects(LikePhoto.self)
         return Array(likePhotos)
     }

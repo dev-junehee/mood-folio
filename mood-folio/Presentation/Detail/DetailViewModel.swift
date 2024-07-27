@@ -7,16 +7,20 @@
 
 import Foundation
 
+
 final class DetailViewModel {
     
     private let repo = LikePhotoRepository()
     
     // input
-    var inputViewDidLoad = Observable<Void?>(nil)
+    var inputViewDidLoad = Observable<DetailType>(.photo)
+    var inputViewWillAppear = Observable<DetailType>(.photo)
     var inputPhotoData = Observable<Photo?>(nil)
-    var inputHeartButton = Observable<Void?>(nil)
+    var inputLikePhotoData = Observable<LikePhoto?>(nil)
+    var inputHeartButton = Observable<DetailType>(.photo)
     
     // output
+    var outputViewWillAppear = Observable<String>("")
     var outputStatisticsData = Observable<Statistics?>(nil)
     var outputCreateLikePhotoTrigger = Observable<Void?>(nil)
     var outputDeleteLikePhotoTrigger = Observable<Void?>(nil)
@@ -26,12 +30,35 @@ final class DetailViewModel {
     }
     
     private func transform() {
-        inputViewDidLoad.bind { [weak self] _ in
-            self?.getStatistics()
+        inputViewDidLoad.bind { [weak self] type in
+            self?.getStatistics(type)
         }
         
-        inputHeartButton.bind { [weak self] _ in
-            guard let id = self?.inputPhotoData.value?.id else { return }
+        inputViewWillAppear.bind { [weak self] type in
+            var id: String?
+            
+            switch type {
+            case .photo:
+                id = self?.inputPhotoData.value?.id
+            case .likePhoto:
+                id = self?.inputLikePhotoData.value?.id
+            }
+            
+            guard let id else { return }
+            self?.outputViewWillAppear.value = id
+        }
+        
+        inputHeartButton.bind { [weak self] type in
+            var id: String?
+            
+            switch type {
+            case .photo:
+                id = self?.inputPhotoData.value?.id
+            case .likePhoto:
+                id = self?.inputLikePhotoData.value?.id
+            }
+            
+            guard let id else { return }
             let isLikePhoto = self?.repo.isLikePhoto(id: id)
             if isLikePhoto != true {
                 self?.createLikePhoto()
@@ -41,10 +68,17 @@ final class DetailViewModel {
         }
     }
     
-    private func getStatistics() {
-        guard let id = inputPhotoData.value?.id else { return }
-        print(id)
+    private func getStatistics(_ type: DetailType) {
+        var id: String?
         
+        switch type {
+        case .photo:
+            id = self.inputPhotoData.value?.id
+        case .likePhoto:
+            id = self.inputLikePhotoData.value?.id
+        }
+        
+        guard let id else { return }
         NetworkManager.shared.callRequest(api: .statistics(imageId: id)) { [weak self] (res: Result<Statistics?, Error>) in
             switch res {
             case .success(let data):
