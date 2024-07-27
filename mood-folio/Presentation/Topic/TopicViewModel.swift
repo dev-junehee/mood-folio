@@ -9,6 +9,8 @@ import Foundation
 
 final class TopicViewModel {
     
+    private let repo = LikePhotoRepository()
+    
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
     var inputViewWillAppear = Observable<Void?>(nil)
@@ -27,12 +29,14 @@ final class TopicViewModel {
         inputViewDidLoad.bind { [weak self] _ in
             self?.outputProfileImage.value = UserDefaultsManager.shared.profile
             self?.getTopics()
+            self?.repo.getSchemaVersion()
+            self?.repo.getFileURL()
         }
         
         // 새로 바뀐 프로필 이미지 가져오기
         inputViewWillAppear.bind { [weak self] _ in
             self?.outputProfileImage.value = UserDefaultsManager.shared.profile
-            self?.getTopics()
+            self?.outputCallRequestNotify.value = ()
         }
     }
     

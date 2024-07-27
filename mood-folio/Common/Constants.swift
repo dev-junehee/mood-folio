@@ -11,7 +11,7 @@ enum Constants {
     enum Title {
         static let topic = "OUR TOPIC"
         static let search = "SEARCH PHOTO"
-        static let like = "MY POLAROID"
+        static let like = "MY MOOD FOLIO"
         static let profileSetting = "PROFILE SETTING"
         static let editProfile = "EDIT PROFILE"
     }
@@ -26,6 +26,18 @@ enum Constants {
         static let placeholder = "키워드 검색"
         static let relevant = "관련순"
         static let latest = "최신순"
+    }
+    
+    enum Like {
+        static let latest = "최신순"
+        static let past = "과거순"
+    }
+    
+    enum Detail {
+        static let info = "정보"
+        static let size = "크기"
+        static let view = "조회수"
+        static let download = "다운로드"
     }
     
     enum Profile {

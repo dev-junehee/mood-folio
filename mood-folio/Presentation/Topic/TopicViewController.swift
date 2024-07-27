@@ -31,12 +31,12 @@ final class TopicViewController: BaseViewController {
     }
     
     private func bindData() {
-        viewModel.outputProfileImage.bind { [weak self] profile in
-            self?.titleView.profileImage.setImage(Resource.Image.profileImages[profile], for: .normal)
-        }
-        
         viewModel.outputCallRequestNotify.bind { [weak self] _ in
             self?.topicView.tableView.reloadData()
+        }
+        
+        viewModel.outputProfileImage.bind { [weak self] profile in
+            self?.titleView.profileImage.setImage(Resource.Image.profileImages[profile], for: .normal)
         }
     }
     

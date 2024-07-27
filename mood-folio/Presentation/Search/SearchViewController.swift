@@ -14,14 +14,14 @@ final class SearchViewController: BaseViewController {
         case noResult
     }
     
-    private enum Section: CaseIterable {
+    private enum SearchSection: CaseIterable {
         case main
     }
     
     private let searchView = SearchView()
     private let viewModel = SearchViewModel()
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Photo>!
+    private var dataSource: UICollectionViewDiffableDataSource<SearchSection, Photo>!
     
     override func loadView() {
         view = searchView
@@ -45,6 +45,14 @@ final class SearchViewController: BaseViewController {
         viewModel.outputSearchNoResult.bind { [weak self] _ in
             self?.showEmptyView(type: .noResult)
         }
+        
+        viewModel.outputCreateLikePhotoTrigger.bind { [weak self] _ in
+            self?.updateSnapshot()
+        }
+        
+        viewModel.outputCreateLikePhotoTrigger.bind { [weak self] _ in
+            self?.updateSnapshot()
+        }
     }
     
     override func configureViewController() {
@@ -63,8 +71,10 @@ final class SearchViewController: BaseViewController {
     }
     
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, Photo> {
-        return UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
-            cell.updateUI(data: itemIdentifier)
+        return UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
+            cell.updateSearchCellUI(data: itemIdentifier)
+            cell.heartButton.tag = indexPath.item
+            cell.heartButton.addTarget(self, action: #selector(self?.heartButtonClicked), for: .touchUpInside)
         }
     }
     
@@ -81,8 +91,8 @@ final class SearchViewController: BaseViewController {
     }
     
     private func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
-        snapshot.appendSections(Section.allCases)
+        var snapshot = NSDiffableDataSourceSnapshot<SearchSection, Photo>()
+        snapshot.appendSections(SearchSection.allCases)
         snapshot.appendItems(viewModel.outputSearchResult.value.results, toSection: .main)
         dataSource.apply(snapshot)
     }
@@ -114,6 +124,10 @@ final class SearchViewController: BaseViewController {
             viewModel.inputSortButton.value = .relevant
             searchView.updateSortButtonUI(changeType: .relevant)
         }
+    }
+    
+    @objc private func heartButtonClicked(_ sender: UIButton) {
+        viewModel.inputHeartButton.value = sender.tag
     }
     
 }

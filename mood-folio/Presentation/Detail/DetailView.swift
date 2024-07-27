@@ -12,6 +12,8 @@ import SnapKit
 
 final class DetailView: BaseView {
     
+    private let repo = LikePhotoRepository()
+    
     private let userProfileImage = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
@@ -42,8 +44,8 @@ final class DetailView: BaseView {
     
     let heartButton = {
         let button = UIButton()
-        let image = UIImage(resource: .like)
-        button.setImage(image, for: .normal)
+        // let image = UIImage(resource: .like)
+        // button.setImage(image, for: .normal)
         return button
     }()
     
@@ -56,8 +58,8 @@ final class DetailView: BaseView {
     
     private let photoInfoLabel = {
         let label = UILabel()
-        label.text = "정보"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.text = Constants.Detail.info
+        label.font = Resource.Font.bold18
         return label
     }()
     
@@ -83,14 +85,14 @@ final class DetailView: BaseView {
     
     private let sizeLabel = {
         let label = UILabel()
-        label.text = "크기"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.text = Constants.Detail.size
+        label.font = Resource.Font.bold14
         return label
     }()
     
     private let sizeDataLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = Resource.Font.regular14
         return label
     }()
     
@@ -106,14 +108,14 @@ final class DetailView: BaseView {
     
     private let viewLabel = {
         let label = UILabel()
-        label.text = "조회수"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.text = Constants.Detail.view
+        label.font = Resource.Font.bold14
         return label
     }()
     
     private let viewDataLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = Resource.Font.regular14
         return label
     }()
     
@@ -129,14 +131,14 @@ final class DetailView: BaseView {
     
     private let downloadLabel = {
         let label = UILabel()
-        label.text = "다운로드"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.text = Constants.Detail.download
+        label.font = Resource.Font.bold14
         return label
     }()
     
     private let downloadDataLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = Resource.Font.regular14
         return label
     }()
     
@@ -195,6 +197,28 @@ final class DetailView: BaseView {
 //        createDateLabel.text = "\(data.create_at)"
         sizeDataLabel.text = "\(data.width) x \(data.height)"
         mainPhotoImage.kf.setImage(with: URL(string: data.urls.small))
+        
+        updateHeartButtonUI(id: data.id)
+    }
+    
+    func updateLikePhotoUI(data: LikePhoto?) {
+        guard let data else { return }
+        userProfileImage.kf.setImage(with: URL(string: data.userProfileImage))
+        userNameLabel.text = data.userName
+        // createDateLabel.text = "\(data.create_at)"
+        sizeDataLabel.text = "\(data.width) x \(data.height)"
+        mainPhotoImage.kf.setImage(with: URL(string: data.urlSmall))
+        
+        updateHeartButtonUI(id: data.id)
+    }
+    
+    func updateHeartButtonUI(id: String) {
+        let isLikePhoto = repo.isLikePhoto(id: id)
+        let buttonImage = isLikePhoto ? Resource.Image.like : Resource.Image.likeInactive
+        let buttonColor = isLikePhoto ? Resource.Color.primary : Resource.Color.whiteSmoke
+        
+        heartButton.setImage(buttonImage, for: .normal)
+        heartButton.tintColor = buttonColor
     }
     
     func updateDetailUI(data: Statistics?) {
@@ -203,7 +227,7 @@ final class DetailView: BaseView {
         downloadDataLabel.text = data.downloads.total.formatted()
         
         // 임시 날짜 바인딩
-        if let value = data.downloads.historical.values.last {
+        if let value = data.downloads.historical.values.first {
             let date = value.date.split(separator: "-")
             createDateLabel.text = "\(date[0])년 \(date[1])월 \(date[2])일"
         }

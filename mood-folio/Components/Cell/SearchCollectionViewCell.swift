@@ -43,10 +43,8 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    private let heartButton = {
-        var config = UIButton.Configuration.plain()
-        config.image = .likeCircleInactive
-        let button = UIButton(configuration: config)
+    let heartButton = {
+        let button = UIButton()
         return button
     }()
  
@@ -85,7 +83,8 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func updateUI(data: Photo) {
+    // 검색
+    func updateSearchCellUI(data: Photo) {
         starCountLabel.text = data.likes.formatted()
         
         if let image = URL(string: data.urls.small) {
@@ -94,6 +93,28 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
             imageView.image = UIImage(systemName: "heart")
         }
         
+        updateHeartButtonUI(id: data.id)
     }
+    
+    func updateHeartButtonUI(id: String) {
+        let repo = LikePhotoRepository()
+        let isLikePhoto = repo.isLikePhoto(id: id)
+        let buttonImage = isLikePhoto ? Resource.Image.likeCircle : Resource.Image.likeCircleInactive
+        heartButton.setImage(buttonImage, for: .normal)
+    }
+    
+    // 찜한 사진 셀
+    func updateLikePhotoCell(data: LikePhoto) {
+        labelView.isHidden = true
+        
+        if let image = URL(string: data.urlSmall) {
+            imageView.kf.setImage(with: image)
+        } else {
+            imageView.image = UIImage(systemName: "heart")
+        }
+        
+        heartButton.setImage(Resource.Image.likeCircle, for: .normal)
+    }
+    
     
 }
