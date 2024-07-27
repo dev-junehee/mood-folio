@@ -9,12 +9,16 @@ import Foundation
 
 final class DetailViewModel {
     
+    private let repo = LikePhotoRepository()
+    
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
     var inputPhotoData = Observable<Photo?>(nil)
+    var inputHeartButton = Observable<Void?>(nil)
     
     // output
     var outputStatisticsData = Observable<Statistics?>(nil)
+    var outputCreateLikePhotoTrigger = Observable<Void?>(nil)
     
     init() {
         transform()
@@ -25,6 +29,9 @@ final class DetailViewModel {
             self?.getStatistics()
         }
         
+        inputHeartButton.bind { [weak self] _ in
+            self?.createLikePhoto()
+        }
     }
     
     private func getStatistics() {
@@ -40,6 +47,13 @@ final class DetailViewModel {
                 print(error)
             }
         }
+    }
+    
+    private func createLikePhoto() {
+        guard let photo = self.inputPhotoData.value else { return }
+        let likePhoto = LikePhoto(photo: photo)
+        self.repo.createLikePhoto(likePhoto)
+        self.outputCreateLikePhotoTrigger.value = ()
     }
     
 }

@@ -27,8 +27,10 @@ enum Resource {
     
     enum Font {
         static let regular13: UIFont = .systemFont(ofSize: 13, weight: .regular)
+        static let regular14: UIFont = .systemFont(ofSize: 14, weight: .regular)
         static let bold14: UIFont = .systemFont(ofSize: 14, weight: .bold)
         static let bold16: UIFont = .systemFont(ofSize: 16, weight: .bold)
+        static let bold18: UIFont = .systemFont(ofSize: 18, weight: .bold)
         static let black20: UIFont = .systemFont(ofSize: 20, weight: .black)
         static let button: UIFont = .systemFont(ofSize: 16, weight: .black)
     }
@@ -39,6 +41,9 @@ enum Resource {
             .profile4, .profile5, .profile6, .profile7,
             .profile8, .profile9, .profile10, .profile11,
         ]
+        
+        static let like: UIImage = .like
+        static let likeInactive: UIImage = .tabLikeInactive
     }
     
     enum SystemImage {

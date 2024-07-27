@@ -28,6 +28,10 @@ final class DetailViewController: BaseViewController {
             self?.detailView.updateUI(data: self?.viewModel.inputPhotoData.value)
             self?.detailView.updateDetailUI(data: data)
         }
+        
+        viewModel.outputCreateLikePhotoTrigger.bind { [weak self] _ in
+            self?.detailView.updateHeartButtonUI(id: self?.viewModel.inputPhotoData.value?.id ?? "")
+        }
     }
     
     override func configureViewController() {
@@ -41,7 +45,7 @@ final class DetailViewController: BaseViewController {
     
     @objc private func heartButtonClicked() {
         print(#function)
-        // 사진 좋아요 기능 연결 예정
+        viewModel.inputHeartButton.value = ()
     }
     
 }

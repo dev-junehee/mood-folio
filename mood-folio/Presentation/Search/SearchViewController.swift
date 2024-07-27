@@ -14,14 +14,14 @@ final class SearchViewController: BaseViewController {
         case noResult
     }
     
-    private enum Section: CaseIterable {
+    private enum SearchSection: CaseIterable {
         case main
     }
     
     private let searchView = SearchView()
     private let viewModel = SearchViewModel()
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Photo>!
+    private var dataSource: UICollectionViewDiffableDataSource<SearchSection, Photo>!
     
     override func loadView() {
         view = searchView
@@ -81,8 +81,8 @@ final class SearchViewController: BaseViewController {
     }
     
     private func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
-        snapshot.appendSections(Section.allCases)
+        var snapshot = NSDiffableDataSourceSnapshot<SearchSection, Photo>()
+        snapshot.appendSections(SearchSection.allCases)
         snapshot.appendItems(viewModel.outputSearchResult.value.results, toSection: .main)
         dataSource.apply(snapshot)
     }

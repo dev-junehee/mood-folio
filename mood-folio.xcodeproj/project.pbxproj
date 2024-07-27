@@ -73,6 +73,11 @@
 		C478FDE22C53B303006998D6 /* EditProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */; };
 		C478FDE42C53B34B006998D6 /* EditProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */; };
 		C478FDE62C53CC07006998D6 /* UIBarButtonItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */; };
+		C478FDE82C53F0D9006998D6 /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE72C53F0D9006998D6 /* LikeView.swift */; };
+		C478FDEA2C53F337006998D6 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDE92C53F337006998D6 /* LikeViewModel.swift */; };
+		C478FDED2C53F912006998D6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C478FDEC2C53F912006998D6 /* RealmSwift */; };
+		C478FDF02C549803006998D6 /* LikePhotoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDEF2C549803006998D6 /* LikePhotoTable.swift */; };
+		C478FDF22C54A915006998D6 /* LikePhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +145,10 @@
 		C478FDE12C53B303006998D6 /* EditProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageViewController.swift; sourceTree = "<group>"; };
 		C478FDE32C53B34B006998D6 /* EditProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageViewModel.swift; sourceTree = "<group>"; };
 		C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+.swift"; sourceTree = "<group>"; };
+		C478FDE72C53F0D9006998D6 /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
+		C478FDE92C53F337006998D6 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
+		C478FDEF2C549803006998D6 /* LikePhotoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhotoTable.swift; sourceTree = "<group>"; };
+		C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhotoRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +159,7 @@
 				C478FDAA2C513D16006998D6 /* Kingfisher in Frameworks */,
 				C478FDA42C512F15006998D6 /* Alamofire in Frameworks */,
 				C478FCEF2C4E636A006998D6 /* SnapKit in Frameworks */,
+				C478FDED2C53F912006998D6 /* RealmSwift in Frameworks */,
 				C478FD042C4E81AD006998D6 /* TextFieldEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +189,7 @@
 			children = (
 				C478FCD52C4E5546006998D6 /* Application */,
 				C478FD9D2C511D13006998D6 /* Network */,
+				C478FDEE2C53F922006998D6 /* Database */,
 				C478FD172C4E9019006998D6 /* Observable */,
 				C478FD142C4E8FE9006998D6 /* Model */,
 				C478FCF22C4E6425006998D6 /* Common */,
@@ -391,6 +402,8 @@
 			isa = PBXGroup;
 			children = (
 				C478FD622C501A8A006998D6 /* LikeViewController.swift */,
+				C478FDE72C53F0D9006998D6 /* LikeView.swift */,
+				C478FDE92C53F337006998D6 /* LikeViewModel.swift */,
 			);
 			path = Like;
 			sourceTree = "<group>";
@@ -435,6 +448,15 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		C478FDEE2C53F922006998D6 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				C478FDEF2C549803006998D6 /* LikePhotoTable.swift */,
+				C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,6 +478,7 @@
 				C478FD032C4E81AD006998D6 /* TextFieldEffects */,
 				C478FDA32C512F15006998D6 /* Alamofire */,
 				C478FDA92C513D16006998D6 /* Kingfisher */,
+				C478FDEC2C53F912006998D6 /* RealmSwift */,
 			);
 			productName = "mood-folio";
 			productReference = C478FCBE2C4E54C2006998D6 /* mood-folio.app */;
@@ -490,6 +513,7 @@
 				C478FD022C4E81AD006998D6 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				C478FDA22C512F15006998D6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C478FDA82C513D16006998D6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C478FDEB2C53F912006998D6 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = C478FCBF2C4E54C2006998D6 /* Products */;
 			projectDirPath = "";
@@ -522,6 +546,7 @@
 				C478FD082C4E863A006998D6 /* UIViewController+.swift in Sources */,
 				C478FD062C4E8367006998D6 /* TextFieldEffets+.swift in Sources */,
 				C478FCEB2C4E62CA006998D6 /* UIView+.swift in Sources */,
+				C478FDF02C549803006998D6 /* LikePhotoTable.swift in Sources */,
 				C478FCFC2C4E6A3F006998D6 /* Constants.swift in Sources */,
 				C478FCF42C4E642E006998D6 /* Resource.swift in Sources */,
 				C478FD4B2C4FE2CA006998D6 /* MBTIButtton.swift in Sources */,
@@ -534,6 +559,7 @@
 				C478FDE22C53B303006998D6 /* EditProfileImageViewController.swift in Sources */,
 				C478FCE42C4E61D0006998D6 /* BaseViewController.swift in Sources */,
 				C478FDBD2C521A6B006998D6 /* Search.swift in Sources */,
+				C478FDEA2C53F337006998D6 /* LikeViewModel.swift in Sources */,
 				C478FDE02C53967A006998D6 /* UIButton+.swift in Sources */,
 				C478FDA62C513685006998D6 /* Photo.swift in Sources */,
 				C478FD0F2C4E89B8006998D6 /* ProfileView.swift in Sources */,
@@ -553,6 +579,7 @@
 				C478FD9C2C511CB3006998D6 /* API.swift in Sources */,
 				C478FD8E2C50FF21006998D6 /* TopicView.swift in Sources */,
 				C478FD9F2C511D8C006998D6 /* NetworkManager.swift in Sources */,
+				C478FDF22C54A915006998D6 /* LikePhotoRepository.swift in Sources */,
 				C478FD512C4FFE8B006998D6 /* BaseCollectionViewCell.swift in Sources */,
 				C478FDAD2C5150FD006998D6 /* DetailViewController.swift in Sources */,
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,
@@ -575,6 +602,7 @@
 				C478FDB92C5201B7006998D6 /* EmptyView.swift in Sources */,
 				C478FD982C510FE1006998D6 /* BaseTableViewCell.swift in Sources */,
 				C478FDBB2C520383006998D6 /* SearchViewModel.swift in Sources */,
+				C478FDE82C53F0D9006998D6 /* LikeView.swift in Sources */,
 				C478FDA12C511DDF006998D6 /* Router.swift in Sources */,
 				C478FD112C4E89D2006998D6 /* BaseView.swift in Sources */,
 			);
@@ -835,6 +863,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		C478FDEB2C53F912006998D6 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -857,6 +893,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C478FDA82C513D16006998D6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		C478FDEC2C53F912006998D6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C478FDEB2C53F912006998D6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
