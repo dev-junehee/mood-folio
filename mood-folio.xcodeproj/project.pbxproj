@@ -78,7 +78,22 @@
 		C478FDED2C53F912006998D6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C478FDEC2C53F912006998D6 /* RealmSwift */; };
 		C478FDF02C549803006998D6 /* LikePhotoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDEF2C549803006998D6 /* LikePhotoTable.swift */; };
 		C478FDF22C54A915006998D6 /* LikePhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */; };
+		C4F876B82C553DD2003B7A5A /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C478FDEC2C53F912006998D6 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C4F876B92C553DD2003B7A5A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C4F876B82C553DD2003B7A5A /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C478FCBE2C4E54C2006998D6 /* mood-folio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mood-folio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -467,6 +482,7 @@
 				C478FCBA2C4E54C1006998D6 /* Sources */,
 				C478FCBB2C4E54C1006998D6 /* Frameworks */,
 				C478FCBC2C4E54C1006998D6 /* Resources */,
+				C4F876B92C553DD2003B7A5A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
