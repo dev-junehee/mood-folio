@@ -85,7 +85,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func updateUI(data: Photo) {
+    func updateSearchCellUI(data: Photo) {
         starCountLabel.text = data.likes.formatted()
         
         if let image = URL(string: data.urls.small) {
@@ -94,6 +94,18 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
             imageView.image = UIImage(systemName: "heart")
         }
         
+    }
+    
+    func updateLikePhotoCell(data: LikePhoto) {
+        labelView.isHidden = true
+        
+        if let image = URL(string: data.urlSmall) {
+            imageView.kf.setImage(with: image)
+        } else {
+            imageView.image = UIImage(systemName: "heart")
+        }
+        
+        heartButton.setImage(Resource.Image.likeCircle, for: .normal)
     }
     
 }

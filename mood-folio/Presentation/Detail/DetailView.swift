@@ -201,6 +201,16 @@ final class DetailView: BaseView {
         updateHeartButtonUI(id: data.id)
     }
     
+    func updateLikePhotoUI(data: LikePhoto) {
+        userProfileImage.kf.setImage(with: URL(string: data.userProfileImage))
+        userNameLabel.text = data.userName
+        // createDateLabel.text = "\(data.create_at)"
+        sizeDataLabel.text = "\(data.width) x \(data.height)"
+        mainPhotoImage.kf.setImage(with: URL(string: data.urlSmall))
+        
+        updateHeartButtonUI(id: data.id)
+    }
+    
     func updateHeartButtonUI(id: String) {
         let isLikePhoto = repo.isLikePhoto(id: id)
         let buttonImage = isLikePhoto ? Resource.Image.like : Resource.Image.likeInactive

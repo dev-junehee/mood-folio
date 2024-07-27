@@ -30,6 +30,11 @@ final class LikePhotoRepository {
         return realm.objects(LikePhoto.self)
     }
     
+    func getAllLikePhoto() -> [LikePhoto] {
+        let likePhotos = realm.objects(LikePhoto.self)
+        return Array(likePhotos)
+    }
+    
     // 찜한 사진 불러오기 (단일)
     func getLikePhoto(id: String) -> LikePhoto? {
         return realm.object(ofType: LikePhoto.self, forPrimaryKey: id)

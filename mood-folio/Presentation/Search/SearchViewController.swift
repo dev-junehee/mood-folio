@@ -64,7 +64,7 @@ final class SearchViewController: BaseViewController {
     
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, Photo> {
         return UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
-            cell.updateUI(data: itemIdentifier)
+            cell.updateSearchCellUI(data: itemIdentifier)
         }
     }
     

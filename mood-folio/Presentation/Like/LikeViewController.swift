@@ -16,7 +16,7 @@ final class LikeViewController: BaseViewController {
     private let likeView = LikeView()
     private let viewModel = LikeViewModel()
     
-    private var dataSource: UICollectionViewDiffableDataSource<LikeSection, Photo>!
+    private var dataSource: UICollectionViewDiffableDataSource<LikeSection, LikePhoto>!
     
     override func loadView() {
         view = likeView
@@ -25,11 +25,16 @@ final class LikeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHandler()
+        configureDataSource()
+        updateSnapshot()
         bindData()
+        viewModel.inputViewDidLoad.value = ()
     }
     
     private func bindData() {
-        
+        viewModel.outputLikePhotoList.bind { [weak self] _ in
+            self?.updateSnapshot()
+        }
     }
     
     override func configureViewController() {
@@ -40,9 +45,10 @@ final class LikeViewController: BaseViewController {
         likeView.sortButton.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
     }
     
-    private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, Photo> {
+    private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, LikePhoto> {
         return UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
-            cell.updateUI(data: itemIdentifier)
+            cell.updateLikePhotoCell(data: itemIdentifier)
+            
         }
     }
     
@@ -59,9 +65,9 @@ final class LikeViewController: BaseViewController {
     }
     
     private func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<LikeSection, Photo>()
+        var snapshot = NSDiffableDataSourceSnapshot<LikeSection, LikePhoto>()
         snapshot.appendSections(LikeSection.allCases)
-        snapshot.appendItems(viewModel.outputLikePhotoList.value, toSection: .main)
+        snapshot.appendItems(viewModel.outputLikePhotoList.value ?? [], toSection: .main)
         dataSource.apply(snapshot)
     }
     

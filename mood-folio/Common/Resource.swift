@@ -44,6 +44,8 @@ enum Resource {
         
         static let like: UIImage = .like
         static let likeInactive: UIImage = .tabLikeInactive
+        static let likeCircle: UIImage = .likeCircle
+        static let likeCircleInactive: UIImage = .likeCircleInactive
     }
     
     enum SystemImage {
