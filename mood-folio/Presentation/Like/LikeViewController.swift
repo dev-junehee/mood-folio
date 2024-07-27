@@ -18,6 +18,8 @@ final class LikeViewController: BaseViewController {
     
     private var dataSource: UICollectionViewDiffableDataSource<LikeSection, LikePhoto>!
     
+    private var likeOrder: LikeOrder = .latest
+    
     override func loadView() {
         view = likeView
     }
@@ -28,12 +30,17 @@ final class LikeViewController: BaseViewController {
         configureDataSource()
         updateSnapshot()
         bindData()
-        viewModel.inputViewDidLoad.value = ()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.inputViewWillAppear.value = likeOrder
     }
     
     private func bindData() {
         viewModel.outputLikePhotoList.bind { [weak self] _ in
             self?.updateSnapshot()
+            self?.viewToggle()
         }
     }
     
@@ -67,22 +74,32 @@ final class LikeViewController: BaseViewController {
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<LikeSection, LikePhoto>()
         snapshot.appendSections(LikeSection.allCases)
-        snapshot.appendItems(viewModel.outputLikePhotoList.value ?? [], toSection: .main)
+        snapshot.appendItems(viewModel.outputLikePhotoList.value, toSection: .main)
         dataSource.apply(snapshot)
     }
     
     private func viewToggle() {
-        likeView.collectionView.isHidden = !likeView.emptyView.isHidden
+        let isEmpty = viewModel.outputLikePhotoList.value.isEmpty
+        if isEmpty {
+            likeView.collectionView.isHidden = true
+            likeView.emptyView.isHidden = false
+            likeView.emptyView.emptyText = "저장된 사진이 없어요!"
+        } else {
+            likeView.collectionView.isHidden = false
+            likeView.emptyView.isHidden = true
+        }
     }
     
     
     @objc private func sortButtonClicked(_ sender: UIButton) {
         let buttonLabel = sender.titleLabel?.text
         if buttonLabel == Constants.Like.latest {
-            likeView.updateSortButtonUI(changeType: .past)
+            likeOrder = .past
         } else {
-            likeView.updateSortButtonUI(changeType: .latest)
+            likeOrder = .latest
         }
+        likeView.updateSortButtonUI(changeType: likeOrder)
+        viewModel.inputSortButton.value = likeOrder
     }
     
 }

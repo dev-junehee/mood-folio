@@ -10,11 +10,6 @@ import SnapKit
 
 final class LikeView: BaseView {
     
-    enum LikeOrder {
-        case latest
-        case past
-    }
-    
     let sortButton = {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = Resource.Color.white

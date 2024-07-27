@@ -7,15 +7,21 @@
 
 import Foundation
 
+enum LikeOrder {
+    case latest
+    case past
+}
+
 final class LikeViewModel {
     
     private let repo = LikePhotoRepository()
     
     // input
-    var inputViewDidLoad = Observable<Void?>(nil)
+    var inputViewWillAppear = Observable<LikeOrder>(.latest)
+    var inputSortButton = Observable<LikeOrder>(.latest)
     
     // output
-    var outputLikePhotoList = Observable<[LikePhoto]?>([])
+    var outputLikePhotoList = Observable<[LikePhoto]>([])
     
     
     init() {
@@ -23,8 +29,28 @@ final class LikeViewModel {
     }
     
     private func transform() {
-        inputViewDidLoad.bind { [weak self] _ in
-            self?.outputLikePhotoList.value = self?.repo.getAllLikePhoto()
+        inputViewWillAppear.bind { [weak self] order in
+            switch order {
+            case .latest:
+                let allLikePhoto: [LikePhoto] = self?.repo.getAllLikePhoto() ?? []
+                let sorted = allLikePhoto.sorted { $0.regData > $1.regData }
+                self?.outputLikePhotoList.value = sorted
+            case .past:
+                let allLikePhoto: [LikePhoto] = self?.repo.getAllLikePhoto() ?? []
+                let sorted = allLikePhoto.sorted { $0.regData < $1.regData }
+                self?.outputLikePhotoList.value = sorted
+            }
+        }
+        
+        inputSortButton.bind { [weak self] order in
+            switch order {
+            case .latest:
+                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData > $1.regData }
+                self?.outputLikePhotoList.value = sorted ?? []
+            case .past:
+                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData < $1.regData }
+                self?.outputLikePhotoList.value = sorted ?? []
+            }
         }
     }
     
