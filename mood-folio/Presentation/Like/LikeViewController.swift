@@ -43,6 +43,12 @@ final class LikeViewController: BaseViewController {
             self?.updateSnapshot()
             self?.viewToggle()
         }
+        
+        viewModel.outputLikePhotoListSorted.bind { [weak self] _ in
+            self?.updateSnapshot()
+            self?.viewToggle()
+            
+        }
     }
     
     override func configureViewController() {
@@ -77,12 +83,12 @@ final class LikeViewController: BaseViewController {
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<LikeSection, LikePhoto>()
         snapshot.appendSections(LikeSection.allCases)
-        snapshot.appendItems(viewModel.outputLikePhotoList.value ?? [], toSection: .main)
+        snapshot.appendItems(viewModel.outputLikePhotoListSorted.value, toSection: .main)
         dataSource.apply(snapshot)
     }
     
     private func viewToggle() {
-        guard let isEmpty = viewModel.outputLikePhotoList.value?.isEmpty else { return }
+        let isEmpty = viewModel.outputLikePhotoList.value.isEmpty
         if isEmpty {
             likeView.collectionView.isHidden = true
             likeView.emptyView.isHidden = false
@@ -105,7 +111,7 @@ final class LikeViewController: BaseViewController {
     }
     
     @objc private func heartButtonClicked(_ sender: UIButton) {
-        print(#function, "testtest")
+        print(#function)
         viewModel.inputHeartButton.value = sender.tag
     }
     
@@ -115,7 +121,7 @@ extension LikeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.detailType = .likePhoto
-        detailVC.viewModel.inputLikePhotoData.value = viewModel.outputLikePhotoList.value?[indexPath.item]
+        detailVC.viewModel.inputLikePhotoData.value = viewModel.outputLikePhotoListSorted.value[indexPath.item]
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
