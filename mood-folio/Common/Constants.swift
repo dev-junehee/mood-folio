@@ -52,6 +52,7 @@ enum Constants {
         static let cancel = "취소"
         static let done = "완료"
         static let save = "저장"
+        static let cancelation = "회원탈퇴"
     }
     
     enum Placeholder {

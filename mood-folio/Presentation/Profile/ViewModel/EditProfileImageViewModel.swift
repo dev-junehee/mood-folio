@@ -28,7 +28,6 @@ final class EditProfileImageViewModel {
         
         inputProfileImageSelected.bind { [weak self] selected in
             guard let selected else { return }
-            print("선택한 이미지", selected)
             self?.outputChangedProfileImage.value = selected
         }
     }

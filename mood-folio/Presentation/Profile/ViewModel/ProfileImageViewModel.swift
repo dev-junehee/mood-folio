@@ -27,10 +27,8 @@ final class ProfileImageViewModel {
         
         inputProfileImageSelected.bind { [weak self] selected in
             guard let selected else { return }
-            print("선택한 이미지", selected)
             UserDefaultsManager.profile = selected
             self?.outputProfileImage.value = UserDefaultsManager.profile
-            print("확인", UserDefaultsManager.profile)
         }
         
     }

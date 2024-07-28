@@ -57,7 +57,7 @@ final class DetailViewModel {
             case .photo:
                 id = self?.inputPhotoData.value?.id
             case .likePhoto:
-                id = self?.inputLikePhotoData.value?.id
+                id = self?.inputLikePhotoData.value?.id // 찜한 사진에서 찜 해제할 경우 바로 삭제 후 함수 종료
                 guard let id else { return }
                 self?.deleteLikePhoto(id: id)
                 return

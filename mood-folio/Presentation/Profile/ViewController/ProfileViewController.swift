@@ -144,7 +144,6 @@ final class ProfileViewController: BaseViewController {
     }
     
     @objc private func doneButtonClicked() {
-        // print(#function)
         viewModel.inputDoneButton.value = ()
     }
 }

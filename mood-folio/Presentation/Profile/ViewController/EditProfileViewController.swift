@@ -141,7 +141,6 @@ final class EditProfileViewController: BaseViewController {
     
     @objc private func nicknameFieldEditing() {
         viewModel.inputNicknameTextField.value = editView.nicknameField.text
-        
     }
     
     @objc private func mbtiButtonClicked(_ sender: MBTIButtton) {

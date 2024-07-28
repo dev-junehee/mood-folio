@@ -130,7 +130,7 @@ final class ProfileView: BaseView {
     
     let deleteAccountButton = {
         let button = UIButton()
-        button.setTitle("회원탈퇴", for: .normal)
+        button.setTitle(Constants.Button.cancelation, for: .normal)
         button.setTitleColor(Resource.Color.primary, for: .normal)
         button.titleLabel?.font = Resource.Font.regular13
         button.setUnderline()
@@ -163,10 +163,12 @@ final class ProfileView: BaseView {
     }
     
     override func configureLayout() {
+        let safeArea = self.safeAreaLayoutGuide
+        
         profileImageView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(safeArea).inset(16)
             $0.size.equalTo(100)
-            $0.centerX.equalTo(self.safeAreaLayoutGuide)
+            $0.centerX.equalTo(safeArea)
         }
         
         profileImage.snp.makeConstraints {
@@ -188,46 +190,46 @@ final class ProfileView: BaseView {
         
         nicknameField.snp.makeConstraints {
             $0.top.equalTo(profileImageView.snp.bottom).offset(24)
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(24)
+            $0.horizontalEdges.equalTo(safeArea).inset(24)
             $0.height.equalTo(50)
         }
         
         invalidMessage.snp.makeConstraints {
             $0.top.equalTo(nicknameField.snp.bottom).offset(8)
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(24)
+            $0.horizontalEdges.equalTo(safeArea).inset(24)
             $0.height.equalTo(30)
         }
         
         mbtiLabel.snp.makeConstraints {
             $0.top.equalTo(invalidMessage.snp.bottom).offset(32)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(24)
+            $0.leading.equalTo(safeArea).offset(24)
             $0.width.equalTo(50)
         }
         
         mbtiESTJBox.snp.makeConstraints {
             $0.top.equalTo(invalidMessage.snp.bottom).offset(32)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(24)
+            $0.trailing.equalTo(safeArea).inset(24)
             $0.width.equalTo(220)
             $0.height.equalTo(50)
         }
         
         mbtiINFPBox.snp.makeConstraints {
             $0.top.equalTo(mbtiESTJBox.snp.bottom).offset(8)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(24)
+            $0.trailing.equalTo(safeArea).inset(24)
             $0.width.equalTo(220)
             $0.height.equalTo(50)
         }
         
         doneButton.snp.makeConstraints {
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.horizontalEdges.equalTo(safeArea).inset(16)
             $0.height.equalTo(50)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.bottom.equalTo(safeArea).inset(16)
         }
         
         deleteAccountButton.snp.makeConstraints {
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.horizontalEdges.equalTo(safeArea).inset(16)
             $0.height.equalTo(50)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.bottom.equalTo(safeArea).inset(16)
         }
     }
     
