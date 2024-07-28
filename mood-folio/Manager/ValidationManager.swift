@@ -47,7 +47,7 @@ final class ValidationManager {
             throw NicknameValidationError.hasNumber
         } else if nickname.count < 2 || nickname.count >= 10 {
             throw NicknameValidationError.invalidLength
-        } else if nickname == UserDefaultsManager.shared.nickname {
+        } else if nickname == UserDefaultsManager.nickname {
             throw NicknameValidationError.same
         } else {
             return true

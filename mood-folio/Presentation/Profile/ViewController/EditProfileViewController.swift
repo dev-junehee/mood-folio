@@ -166,15 +166,15 @@ final class EditProfileViewController: BaseViewController {
         // 수정된 프로필 저장
         if viewModel.outputNicknameResult.value {
             guard let nickname = viewModel.inputNicknameTextField.value else { return }
-            UserDefaultsManager.shared.nickname = nickname
+            UserDefaultsManager.nickname = nickname
         }
         
         if let changeProfileNum {
-            UserDefaultsManager.shared.profile = changeProfileNum
+            UserDefaultsManager.profile = changeProfileNum
         }
         
         if viewModel.outputMBTIResult.value {
-            UserDefaultsManager.shared.mbti = viewModel.outputMBTI.value
+            UserDefaultsManager.mbti = viewModel.outputMBTI.value
         }
         
         showAlert(title: Constants.Alert.EditProfile.title, 

@@ -14,7 +14,7 @@ final class ProfileImageViewModel {
     var inputProfileImageSelected = Observable<Int?>(nil)
     
     // output
-    var outputProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
+    var outputProfileImage = Observable<Int>(UserDefaultsManager.profile)
     
     init() {
         transform()
@@ -22,15 +22,15 @@ final class ProfileImageViewModel {
     
     private func transform() {
         inputViewWillAppear.bind { [weak self] _ in
-            self?.outputProfileImage.value = UserDefaultsManager.shared.profile
+            self?.outputProfileImage.value = UserDefaultsManager.profile
         }
         
         inputProfileImageSelected.bind { [weak self] selected in
             guard let selected else { return }
             print("선택한 이미지", selected)
-            UserDefaultsManager.shared.profile = selected
-            self?.outputProfileImage.value = UserDefaultsManager.shared.profile
-            print("확인", UserDefaultsManager.shared.profile)
+            UserDefaultsManager.profile = selected
+            self?.outputProfileImage.value = UserDefaultsManager.profile
+            print("확인", UserDefaultsManager.profile)
         }
         
     }

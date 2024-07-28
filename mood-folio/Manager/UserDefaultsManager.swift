@@ -17,29 +17,26 @@ enum UserDefaultsKey: String {
 
 struct UserDefaultsManager {
     
-    private init() { }
-    static var shared = UserDefaultsManager()
-    
     @UserDefaultsWrapper (key: .nickname, defaultValue: "손님")
-    var nickname: String
+    static var nickname: String
     
     @UserDefaultsWrapper (key: .profile, defaultValue: Int.random(in: 0..<Resource.Image.profileImages.count))
-    var profile: Int
+    static var profile: Int
     
     @UserDefaultsWrapper (key: .mbti, defaultValue: ["", "", "", ""])
-    var mbti: [String]
+    static var mbti: [String]
     
     @UserDefaultsWrapper (key: .joinDate, defaultValue: "0000. 00. 00")
-    var joinDate: String
+    static var joinDate: String
     
     @UserDefaultsWrapper (key: .isUser, defaultValue: false)
-    var isUser: Bool
+    static var isUser: Bool
     
-    func getWelcomeMessage() -> String {
-        return "환영해요, \(UserDefaultsManager.shared.nickname)님"
+    static func getWelcomeMessage() -> String {
+        return "환영합니다, \(UserDefaultsManager.nickname)님!"
     }
     
-    func deleteAllUserDefaults() {
+    static func deleteAllUserDefaults() {
         _nickname.delete()
         _profile.delete()
         _mbti.delete()

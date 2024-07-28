@@ -22,7 +22,7 @@ final class EditProfileViewModel {
     var outputOriginInfo = Observable<(Int, String, [String])>((0, "", ["", "", "", ""]))
     var outputNicknameResult = Observable<Bool>(false)
     var outputNicknameInvalidMessage = Observable<Constants.NicknameValidation>(.empty)
-    var outputMBTI = Observable<[MBTICharType.RawValue]>(UserDefaultsManager.shared.mbti)
+    var outputMBTI = Observable<[MBTICharType.RawValue]>(UserDefaultsManager.mbti)
     var outputOppositeMBTI = Observable<MBTICharType?>(.none)
     var outputMBTIResult = Observable<Bool>(false)
     var outputDeleteAccount = Observable<Void?>(nil)
@@ -34,9 +34,9 @@ final class EditProfileViewModel {
     private func transform() {
         inputViewDidLoad.bind { [weak self] _ in
             self?.outputOriginInfo.value = (
-                UserDefaultsManager.shared.profile,
-                UserDefaultsManager.shared.nickname,
-                UserDefaultsManager.shared.mbti
+                UserDefaultsManager.profile,
+                UserDefaultsManager.nickname,
+                UserDefaultsManager.mbti
             )
         }
         
@@ -60,7 +60,7 @@ final class EditProfileViewModel {
             self?.repo.deleteAllRealm()
             
             // UserDefaults 데이터 삭제
-            UserDefaultsManager.shared.deleteAllUserDefaults()
+            UserDefaultsManager.deleteAllUserDefaults()
             self?.outputDeleteAccount.value = ()
         }
     }

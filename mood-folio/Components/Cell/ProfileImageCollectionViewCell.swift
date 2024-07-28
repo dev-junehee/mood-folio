@@ -14,7 +14,7 @@ final class ProfileImageCollectionViewCell: BaseCollectionViewCell {
     let profileImage = UIImageView()
     
     var itemNum: Int?
-    let profileNum = UserDefaultsManager.shared.profile
+    let profileNum = UserDefaultsManager.profile
 
     override func layoutSubviews() {
         super.layoutSubviews()
