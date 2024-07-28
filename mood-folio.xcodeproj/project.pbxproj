@@ -79,6 +79,7 @@
 		C478FDF02C549803006998D6 /* LikePhotoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDEF2C549803006998D6 /* LikePhotoTable.swift */; };
 		C478FDF22C54A915006998D6 /* LikePhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */; };
 		C4F876B82C553DD2003B7A5A /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C478FDEC2C53F912006998D6 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C4F876BB2C564DC6003B7A5A /* DocumentFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F876BA2C564DC6003B7A5A /* DocumentFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -164,6 +165,7 @@
 		C478FDE92C53F337006998D6 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		C478FDEF2C549803006998D6 /* LikePhotoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhotoTable.swift; sourceTree = "<group>"; };
 		C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhotoRepository.swift; sourceTree = "<group>"; };
+		C4F876BA2C564DC6003B7A5A /* DocumentFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +378,7 @@
 		C478FD1A2C4E9332006998D6 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				C4F876BA2C564DC6003B7A5A /* DocumentFileManager.swift */,
 				C478FD1B2C4E9340006998D6 /* UserDefaultsManager.swift */,
 				C478FD542C500CAC006998D6 /* DateFormatterManager.swift */,
 				C478FD562C500EAF006998D6 /* ValidationManager.swift */,
@@ -577,6 +580,7 @@
 				C478FDBD2C521A6B006998D6 /* Search.swift in Sources */,
 				C478FDEA2C53F337006998D6 /* LikeViewModel.swift in Sources */,
 				C478FDE02C53967A006998D6 /* UIButton+.swift in Sources */,
+				C4F876BB2C564DC6003B7A5A /* DocumentFileManager.swift in Sources */,
 				C478FDA62C513685006998D6 /* Photo.swift in Sources */,
 				C478FD0F2C4E89B8006998D6 /* ProfileView.swift in Sources */,
 				C478FDB22C515F2D006998D6 /* DetailViewModel.swift in Sources */,

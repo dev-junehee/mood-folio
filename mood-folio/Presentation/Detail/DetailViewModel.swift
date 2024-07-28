@@ -5,8 +5,8 @@
 //  Created by junehee on 7/25/24.
 //
 
-import Foundation
-
+import UIKit
+import Kingfisher
 
 final class DetailViewModel {
     
@@ -17,7 +17,9 @@ final class DetailViewModel {
     var inputViewWillAppear = Observable<DetailType>(.photo)
     var inputPhotoData = Observable<Photo?>(nil)
     var inputLikePhotoData = Observable<LikePhoto?>(nil)
-    var inputHeartButton = Observable<DetailType>(.photo)
+    var inputHeartButton = Observable<(DetailType)>(.photo)
+    
+    var inputSaveImage = Observable<UIImage?>(nil)
     
     // output
     var outputViewWillAppear = Observable<String>("")
@@ -94,6 +96,10 @@ final class DetailViewModel {
         guard let photo = self.inputPhotoData.value else { return }
         let likePhoto = LikePhoto(photo: photo)
         self.repo.createLikePhoto(likePhoto)
+  
+        guard let url = URL(string: photo.urls.raw) else { return }
+        DocumentFileManager.shared.saveImageToDocument(imageURL: url, filename: photo.id)
+        
         self.outputCreateLikePhotoTrigger.value = ()
     }
     
@@ -101,7 +107,9 @@ final class DetailViewModel {
         guard let photo = self.inputPhotoData.value else { return }
         
         if let item = self.repo.getLikePhoto(id: photo.id) {
+            DocumentFileManager.shared.removeImageFromDocument(filename: item.id)   // 사진 먼저 삭제
             self.repo.deleteLikePhoto(photo: item)
+            
             self.outputDeleteLikePhotoTrigger.value = ()
         }
     }

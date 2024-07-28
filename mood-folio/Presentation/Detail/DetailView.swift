@@ -49,7 +49,7 @@ final class DetailView: BaseView {
         return button
     }()
     
-    private let mainPhotoImage = {
+    let mainPhotoImage = {
         let view = UIImageView()
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
