@@ -74,6 +74,7 @@ final class LikeViewModel {
             let likePhoto = self?.outputLikePhotoList.value?[tag]
             
             if let likePhoto {
+                DocumentFileManager.shared.removeImageFromDocument(filename: likePhoto.id)
                 self?.repo.deleteLikePhoto(photo: likePhoto)
                 self?.outputLikePhotoList.value = self?.repo.getAllLikePhoto() ?? []
             } else {
