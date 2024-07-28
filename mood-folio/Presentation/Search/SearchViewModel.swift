@@ -23,6 +23,8 @@ final class SearchViewModel {
     
     // output
     var outputSearchResult = Observable<Search>(Search(total: 0, total_pages: 0, results: []))
+    
+    
     var outputSearchNoResult = Observable<Void?>(nil)
     var outputCreateLikePhotoTrigger = Observable<Void?>(nil)
     var outputDeleteLikePhotoTrigger = Observable<Void?>(nil)
@@ -99,10 +101,15 @@ final class SearchViewModel {
     private func createLikePhoto(_ data: Photo) {
         let likePhoto = LikePhoto(photo: data)
         self.repo.createLikePhoto(likePhoto)
+        
+        guard let url = URL(string: likePhoto.urlRaw) else { return }
+        DocumentFileManager.shared.saveImageToDocument(imageURL: url, filename: likePhoto.id)
+        
         self.outputCreateLikePhotoTrigger.value = ()
     }
     
     private func deleteLikePhoto(_ data: LikePhoto) {
+        DocumentFileManager.shared.removeImageFromDocument(filename: data.id)
         self.repo.deleteLikePhoto(photo: data)
         self.outputDeleteLikePhotoTrigger.value = ()
     }
