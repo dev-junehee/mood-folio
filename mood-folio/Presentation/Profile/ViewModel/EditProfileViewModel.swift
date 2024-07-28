@@ -9,6 +9,8 @@ import Foundation
 
 final class EditProfileViewModel {
     
+    private let repo = LikePhotoRepository()
+    
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
     var inputNicknameTextField = Observable<String?>(nil)
@@ -50,13 +52,16 @@ final class EditProfileViewModel {
             self?.setInactiveMBTIChar()
         }
         
-        inputDeleteAccountButton.bind { _ in
+        inputDeleteAccountButton.bind { [weak self] _ in
             print("모든 데이터가 삭제될 예정")
+            DocumentFileManager.shared.removeAllImageFromDocument()
+            
             // Realm 데이터 먼저 삭제
+            self?.repo.deleteAllRealm()
             
             // UserDefaults 데이터 삭제
             UserDefaultsManager.shared.deleteAllUserDefaults()
-            self.outputDeleteAccount.value = ()
+            self?.outputDeleteAccount.value = ()
         }
     }
     

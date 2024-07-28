@@ -163,6 +163,9 @@ final class ProfileViewModel {
         UserDefaultsManager.shared.joinDate = DateFormatterManager.shared.getTodayString(formatType: "yyyy. MM. dd")
         UserDefaultsManager.shared.isUser = true
         
+        // 사진 저장할 디렉토리 생성
+        DocumentFileManager.shared.createMoodFolioDirectoryToDocument()
+        
         outputUserAccountResult.value = true
     }
     

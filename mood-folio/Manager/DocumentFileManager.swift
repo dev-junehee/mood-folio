@@ -13,9 +13,34 @@ final class DocumentFileManager {
     private init() { }
     static let shared = DocumentFileManager()
     
+    // Document 경로 확인
+    func getDocumentPath() -> URL? {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+    }
+    
+    // moodfolio 경로 확인
+    func getMoodFolioPath() -> URL? {
+        guard let documentURL = getDocumentPath() else { return nil }
+        return documentURL.appendingPathComponent("moodfolio")
+        
+    }
+    
+    // 디렉토리 생성
+    func createMoodFolioDirectoryToDocument() {
+        guard let document = getDocumentPath() else { return }
+        let directoryPath = document.appendingPathComponent("moodfolio")
+        
+        do {
+            try FileManager.default.createDirectory(at: directoryPath, withIntermediateDirectories: false, attributes: nil)
+        } catch {
+            print("Create Directory Error", error)
+        }
+    }
+    
+    
     // 사진 저장 (URL 형식)
     func saveImageToDocument(imageURL: URL, filename: String) {
-        guard let directory = getDocumentPath() else { return }
+        guard let directory = getMoodFolioPath() else { return }
         print(directory)
         
         AF.request(imageURL).responseData { response in
@@ -42,7 +67,7 @@ final class DocumentFileManager {
     
     // 사진 로드
     func loadImageToDocument(filename: String) -> UIImage? {
-        guard let directory = getDocumentPath() else { return nil }
+        guard let directory = getMoodFolioPath() else { return nil }
         print(directory)
         let fileURL = directory.appendingPathComponent("\(filename).jpg")
 
@@ -51,20 +76,20 @@ final class DocumentFileManager {
             if FileManager.default.fileExists(atPath: fileURL.path()) {
                 return UIImage(contentsOfFile: fileURL.path())
             } else {
-                return UIImage(systemName: "star.fill")
+                return Resource.SystemImage.questionmark
             }
         } else {
             if FileManager.default.fileExists(atPath: fileURL.path) {
                 return UIImage(contentsOfFile: fileURL.path)
             } else {
-                return UIImage(systemName: "star.fill")
+                return Resource.SystemImage.questionmark
             }
         }
     }
 
     // 사진 삭제
     func removeImageFromDocument(filename: String) {
-        guard let directory = getDocumentPath() else { return }
+        guard let directory = getMoodFolioPath() else { return }
         print(directory)
         let fileURL = directory.appendingPathComponent("\(filename).jpg")
 
@@ -91,8 +116,16 @@ final class DocumentFileManager {
         }
     }
     
-    // 경로 확인
-    func getDocumentPath() -> URL? {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+    // 전체 삭제
+    func removeAllImageFromDocument() {
+        guard let url = getMoodFolioPath() else { return }
+        print(url)
+        do {
+            try FileManager.default.removeItem(at: url)
+            print("FileManager All File Remove Succeed")
+        } catch {
+            print("FileManager All File Remove Error", error)
+        }
     }
+    
 }
