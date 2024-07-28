@@ -107,10 +107,14 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
     func updateLikePhotoCell(data: LikePhoto) {
         labelView.isHidden = true
         
-        if let image = URL(string: data.urlSmall) {
-            imageView.kf.setImage(with: image)
-        } else {
-            imageView.image = UIImage(systemName: "heart")
+        // if let image = URL(string: data.urlSmall) {
+        //     imageView.kf.setImage(with: image)
+        // } else {
+        //     imageView.image = UIImage(systemName: "heart")
+        // }
+        
+        if let image = DocumentFileManager.shared.loadImageToDocument(filename: data.id) {
+            imageView.image = image
         }
         
         heartButton.setImage(Resource.Image.likeCircle, for: .normal)
