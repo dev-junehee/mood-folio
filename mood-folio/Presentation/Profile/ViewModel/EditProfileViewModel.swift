@@ -21,7 +21,7 @@ final class EditProfileViewModel {
     // output
     var outputOriginInfo = Observable<(Int, String, [String])>((0, "", ["", "", "", ""]))
     var outputNicknameResult = Observable<Bool>(false)
-    var outputNicknameInvalidMessage = Observable<Constants.NicknameValidation>(.empty)
+    var outputNicknameInvalidMessage = Observable<NicknameValidation>(.empty)
     var outputMBTI = Observable<[MBTICharType.RawValue]>(UserDefaultsManager.mbti)
     var outputOppositeMBTI = Observable<MBTICharType?>(.none)
     var outputMBTIResult = Observable<Bool>(false)
@@ -77,15 +77,15 @@ final class EditProfileViewModel {
         } catch  {
             outputNicknameResult.value = false
             switch error {
-            case NicknameValidationError.empty:
+            case NicknameValidation.empty:
                 outputNicknameInvalidMessage.value = .empty
-            case NicknameValidationError.hasSpecialChar:
+            case NicknameValidation.hasSpecialChar:
                 outputNicknameInvalidMessage.value = .hasSpecialChar
-            case NicknameValidationError.hasNumber:
+            case NicknameValidation.hasNumber:
                 outputNicknameInvalidMessage.value = .hasNumber
-            case NicknameValidationError.invalidLength:
+            case NicknameValidation.invalidLength:
                 outputNicknameInvalidMessage.value = .invalidLength
-            case NicknameValidationError.same:
+            case NicknameValidation.same:
                 outputNicknameInvalidMessage.value = .same
             default:
                 break

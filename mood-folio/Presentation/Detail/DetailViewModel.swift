@@ -58,14 +58,18 @@ final class DetailViewModel {
                 id = self?.inputPhotoData.value?.id
             case .likePhoto:
                 id = self?.inputLikePhotoData.value?.id
+                guard let id else { return }
+                self?.deleteLikePhoto(id: id)
+                return
             }
             
             guard let id else { return }
-            let isLikePhoto = self?.repo.isLikePhoto(id: id)
+            guard let isLikePhoto = self?.repo.isLikePhoto(id: id) else { return }
+
             if isLikePhoto != true {
                 self?.createLikePhoto()
             } else {
-                self?.deleteLikePhoto()
+                self?.deleteLikePhoto(id: id)
             }
         }
     }
@@ -85,7 +89,6 @@ final class DetailViewModel {
             switch res {
             case .success(let data):
                 self?.outputStatisticsData.value = data
-                dump(data)
             case .failure(let error):
                 print(error)
             }
@@ -103,15 +106,11 @@ final class DetailViewModel {
         self.outputCreateLikePhotoTrigger.value = ()
     }
     
-    private func deleteLikePhoto() {
-        guard let photo = self.inputPhotoData.value else { return }
-        
-        if let item = self.repo.getLikePhoto(id: photo.id) {
-            DocumentFileManager.shared.removeImageFromDocument(filename: item.id)   // 사진 먼저 삭제
-            self.repo.deleteLikePhoto(photo: item)
-            
-            self.outputDeleteLikePhotoTrigger.value = ()
-        }
+    private func deleteLikePhoto(id: String) {
+        guard let item = self.repo.getLikePhoto(id: id) else { return }
+        DocumentFileManager.shared.removeImageFromDocument(filename: id)   // 사진 먼저 삭제
+        self.repo.deleteLikePhoto(photo: item)
+        self.outputDeleteLikePhotoTrigger.value = ()
     }
     
 }

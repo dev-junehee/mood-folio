@@ -21,14 +21,14 @@ final class DocumentFileManager {
     // moodfolio 경로 확인
     func getMoodFolioPath() -> URL? {
         guard let documentURL = getDocumentPath() else { return nil }
-        return documentURL.appendingPathComponent("moodfolio")
+        return documentURL.appendingPathComponent(Constants.moodfolio)
         
     }
     
     // 디렉토리 생성
     func createMoodFolioDirectoryToDocument() {
         guard let document = getDocumentPath() else { return }
-        let directoryPath = document.appendingPathComponent("moodfolio")
+        let directoryPath = document.appendingPathComponent(Constants.moodfolio)
         
         do {
             try FileManager.default.createDirectory(at: directoryPath, withIntermediateDirectories: false, attributes: nil)
@@ -41,7 +41,6 @@ final class DocumentFileManager {
     // 사진 저장 (URL 형식)
     func saveImageToDocument(imageURL: URL, filename: String) {
         guard let directory = getMoodFolioPath() else { return }
-        print(directory)
         
         AF.request(imageURL).responseData { response in
             switch response.result {
@@ -68,7 +67,7 @@ final class DocumentFileManager {
     // 사진 로드
     func loadImageToDocument(filename: String) -> UIImage? {
         guard let directory = getMoodFolioPath() else { return nil }
-        print(directory)
+        
         let fileURL = directory.appendingPathComponent("\(filename).jpg")
 
         // 이 경로에 실제 파일이 존재하는지 확인
@@ -90,7 +89,7 @@ final class DocumentFileManager {
     // 사진 삭제
     func removeImageFromDocument(filename: String) {
         guard let directory = getMoodFolioPath() else { return }
-        print(directory)
+        
         let fileURL = directory.appendingPathComponent("\(filename).jpg")
 
         if #available(iOS 16.0, *) {
@@ -119,7 +118,7 @@ final class DocumentFileManager {
     // 전체 삭제
     func removeAllImageFromDocument() {
         guard let url = getMoodFolioPath() else { return }
-        print(url)
+        
         do {
             try FileManager.default.removeItem(at: url)
             print("FileManager All File Remove Succeed")

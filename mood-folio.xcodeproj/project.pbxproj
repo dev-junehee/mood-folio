@@ -80,6 +80,7 @@
 		C478FDF22C54A915006998D6 /* LikePhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */; };
 		C4F876B82C553DD2003B7A5A /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C478FDEC2C53F912006998D6 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C4F876BB2C564DC6003B7A5A /* DocumentFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F876BA2C564DC6003B7A5A /* DocumentFileManager.swift */; };
+		C4F876BD2C568E66003B7A5A /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F876BC2C568E66003B7A5A /* UIImageView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -166,6 +167,7 @@
 		C478FDEF2C549803006998D6 /* LikePhotoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhotoTable.swift; sourceTree = "<group>"; };
 		C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhotoRepository.swift; sourceTree = "<group>"; };
 		C4F876BA2C564DC6003B7A5A /* DocumentFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileManager.swift; sourceTree = "<group>"; };
+		C4F876BC2C568E66003B7A5A /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 				C478FD072C4E863A006998D6 /* UIViewController+.swift */,
 				C478FDDF2C53967A006998D6 /* UIButton+.swift */,
 				C478FDE52C53CC07006998D6 /* UIBarButtonItem+.swift */,
+				C4F876BC2C568E66003B7A5A /* UIImageView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				C478FD8E2C50FF21006998D6 /* TopicView.swift in Sources */,
 				C478FD9F2C511D8C006998D6 /* NetworkManager.swift in Sources */,
 				C478FDF22C54A915006998D6 /* LikePhotoRepository.swift in Sources */,
+				C4F876BD2C568E66003B7A5A /* UIImageView+.swift in Sources */,
 				C478FD512C4FFE8B006998D6 /* BaseCollectionViewCell.swift in Sources */,
 				C478FDAD2C5150FD006998D6 /* DetailViewController.swift in Sources */,
 				C478FCF92C4E6A06006998D6 /* CommonButton.swift in Sources */,

@@ -8,6 +8,8 @@
 import Foundation
 
 enum Constants {
+    static let moodfolio = "moodfolio"
+    
     enum Title {
         static let topic = "OUR TOPIC"
         static let search = "SEARCH PHOTO"
@@ -75,16 +77,6 @@ enum Constants {
             static let title = "회원탈퇴 완료"
             static let message = "그동안 무드폴리오를 이용해 주셔서 감사해요.\n언제든 다시 찾아주세요.👋"
         }
-    }
-    
-    enum NicknameValidation: String {
-        case success = "사용할 수 있는 닉네임이에요."
-        case empty = ""
-        case hasSpecialChar = "닉네임에 @, #, $, %할 포함될 수 없어요."
-        case hasNumber = "닉네임에 숫자는 포함할 수 없어요."
-        case invalidLength = "2글자 이상 10글자 미만으로 설정해 주세요."
-        case same = "이미 사용 중인 닉네임이에요."
-        case etc = "알 수 없는 오류에요🥲"
     }
     
     enum Integer {

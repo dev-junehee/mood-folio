@@ -65,10 +65,8 @@ final class DetailViewController: BaseViewController {
     }
     
     @objc private func heartButtonClicked() {
-        print("Tetetet")
-        viewModel.inputHeartButton.value = (detailType)
+        viewModel.inputHeartButton.value = detailType
         viewModel.inputSaveImage.value = detailView.mainPhotoImage.image
-        print(detailView.mainPhotoImage.image)
     }
     
 }
