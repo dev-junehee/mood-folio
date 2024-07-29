@@ -11,6 +11,10 @@ class BaseViewController: UIViewController, Base {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewController()
+        configureHierarchy()
+        configureLayout()
+        configureUI()
         
         if !NetworkMonitorManager.shared.isConnected {
             showAlert(title: Constants.Alert.NetworkFail.title, message: Constants.Alert.NetworkFail.message, buttonType: .twoButton) { _ in
@@ -22,11 +26,6 @@ class BaseViewController: UIViewController, Base {
             }
             return
         }
-        
-        configureViewController()
-        configureHierarchy()
-        configureLayout()
-        configureUI()
     }
     
     func configureViewController() {
