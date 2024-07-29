@@ -15,6 +15,17 @@ class BaseViewController: UIViewController, Base {
         configureHierarchy()
         configureLayout()
         configureUI()
+        
+        if !NetworkMonitorManager.shared.isConnected {
+            showAlert(title: Constants.Alert.NetworkFail.title, message: Constants.Alert.NetworkFail.message, buttonType: .twoButton) { _ in
+                // 설정으로 연결
+                guard let setting = URL(string: UIApplication.openSettingsURLString) else { return }
+                if UIApplication.shared.canOpenURL(setting) {
+                    UIApplication.shared.open(setting, options: [:], completionHandler: nil)
+                }
+            }
+            return
+        }
     }
     
     func configureViewController() {
