@@ -92,7 +92,7 @@ final class LikeViewController: BaseViewController {
         if isEmpty {
             likeView.collectionView.isHidden = true
             likeView.emptyView.isHidden = false
-            likeView.emptyView.emptyText = "저장된 사진이 없어요!"
+            likeView.emptyView.emptyText = Constants.Like.empty
         } else {
             likeView.collectionView.isHidden = false
             likeView.emptyView.isHidden = true
