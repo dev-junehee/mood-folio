@@ -78,6 +78,11 @@ enum Constants {
             static let title = "회원탈퇴 완료"
             static let message = "그동안 무드폴리오를 이용해 주셔서 감사해요.\n언제든 다시 찾아주세요.👋"
         }
+        
+        enum NetworkFail {
+            static let title = "인터넷 연결이 원활하지 않습니다."
+            static let message = "WiFi 또는 셀룰러를 활성화 해주세요."
+        }
     }
     
     enum Integer {

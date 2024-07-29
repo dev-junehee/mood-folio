@@ -81,6 +81,7 @@
 		C4F876B82C553DD2003B7A5A /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C478FDEC2C53F912006998D6 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C4F876BB2C564DC6003B7A5A /* DocumentFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F876BA2C564DC6003B7A5A /* DocumentFileManager.swift */; };
 		C4F876BD2C568E66003B7A5A /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F876BC2C568E66003B7A5A /* UIImageView+.swift */; };
+		C4F876CD2C57AF6F003B7A5A /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F876CC2C57AF6F003B7A5A /* NetworkMonitorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -168,6 +169,7 @@
 		C478FDF12C54A915006998D6 /* LikePhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhotoRepository.swift; sourceTree = "<group>"; };
 		C4F876BA2C564DC6003B7A5A /* DocumentFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileManager.swift; sourceTree = "<group>"; };
 		C4F876BC2C568E66003B7A5A /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		C4F876CC2C57AF6F003B7A5A /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +388,7 @@
 				C478FD542C500CAC006998D6 /* DateFormatterManager.swift */,
 				C478FD562C500EAF006998D6 /* ValidationManager.swift */,
 				C478FD9E2C511D8C006998D6 /* NetworkManager.swift */,
+				C4F876CC2C57AF6F003B7A5A /* NetworkMonitorManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				C478FCF62C4E646B006998D6 /* UIColor+.swift in Sources */,
 				C478FDB92C5201B7006998D6 /* EmptyView.swift in Sources */,
 				C478FD982C510FE1006998D6 /* BaseTableViewCell.swift in Sources */,
+				C4F876CD2C57AF6F003B7A5A /* NetworkMonitorManager.swift in Sources */,
 				C478FDBB2C520383006998D6 /* SearchViewModel.swift in Sources */,
 				C478FDE82C53F0D9006998D6 /* LikeView.swift in Sources */,
 				C478FDA12C511DDF006998D6 /* Router.swift in Sources */,
