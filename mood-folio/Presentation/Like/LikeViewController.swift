@@ -120,7 +120,7 @@ extension LikeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.detailType = .likePhoto
-        detailVC.viewModel.inputLikePhotoData.value = viewModel.outputLikePhotoListSorted.value[indexPath.item]
+        detailVC.viewModel.inputLikePhotoData.value = viewModel.outputLikePhotoList.value[indexPath.item]
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
