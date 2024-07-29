@@ -20,11 +20,14 @@ final class LikeViewModel {
     var inputViewDidLoad = Observable<LikeOrder>(.latest)
     var inputViewWillAppear = Observable<LikeOrder>(.latest)
     var inputSortButton = Observable<LikeOrder>(.latest)
-    var inputHeartButton = Observable<Int?>(nil)
+    var inputHeartButton = Observable<(String, LikeOrder)>(("", .latest))
     
     // output
-    var outputLikePhotoList = Observable<[LikePhoto]>([])        // 원본
-    var outputLikePhotoListSorted = Observable<[LikePhoto]>([])  // 정렬
+    var outputLikePhotoList = Observable<[LikePhoto]>([])              // 원본
+    
+    var outputLikePhotoListSortedLatest = Observable<[LikePhoto]>([])  // 최신순
+    var outputLikePhotoListSortedPast = Observable<[LikePhoto]>([])    // 관련순
+    var outputLikePhotoListSorted = Observable<[LikePhoto]>([])        // 실제 보여줄 값
     
     init() {
         transform()
@@ -33,61 +36,53 @@ final class LikeViewModel {
     private func transform() {
         // 화면이 처음 로드됐을 때
         inputViewDidLoad.bind { [weak self] order in
-            let allLikePhoto = self?.repo.getAllLikePhoto()
-            self?.outputLikePhotoList.value = allLikePhoto ?? [] // 원본 데이터 저장
-            
+            let allLikePhoto = self?.repo.getAllLikePhoto() ?? []
+                        
             switch order {
             case .latest:
-                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData > $1.regData }
-                self?.outputLikePhotoListSorted.value = sorted ?? []
+                let sorted = allLikePhoto.sorted { $0.regData > $1.regData }
+                self?.outputLikePhotoList.value = sorted
             case .past:
-                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData < $1.regData }
-                self?.outputLikePhotoListSorted.value = sorted ?? []
+                let sorted = allLikePhoto.sorted { $0.regData < $1.regData }
+                self?.outputLikePhotoList.value = sorted
             }
         }
         
         inputViewWillAppear.bind { [weak self] order in
-            print("다시뜨나")
             let allLikePhoto = self?.repo.getAllLikePhoto() ?? []
-            self?.outputLikePhotoList.value = allLikePhoto // 원본 데이터 저장
-            
+                        
             switch order {
             case .latest:
-                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData > $1.regData }
-                self?.outputLikePhotoListSorted.value = sorted ?? []
+                let sorted = allLikePhoto.sorted { $0.regData > $1.regData }
+                self?.outputLikePhotoList.value = sorted
             case .past:
-                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData < $1.regData }
-                self?.outputLikePhotoListSorted.value = sorted ?? []
+                let sorted = allLikePhoto.sorted { $0.regData < $1.regData }
+                self?.outputLikePhotoList.value = sorted
             }
         }
         
         inputSortButton.bind { [weak self] order in
             print("바뀐 값", order)
-            guard let originList = self?.outputLikePhotoList.value else { return }
-            print(originList)
             
+            guard let originList = self?.outputLikePhotoList.value else { return }
             switch order {
             case .latest:
-                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData > $1.regData }
-                self?.outputLikePhotoListSorted.value = sorted ?? []
+                let sorted = originList.sorted { $0.regData > $1.regData }
+                self?.outputLikePhotoList.value = sorted
             case .past:
-                let sorted = self?.outputLikePhotoList.value.sorted { $0.regData < $1.regData }
-                self?.outputLikePhotoListSorted.value = sorted ?? []
+                let sorted = originList.sorted { $0.regData < $1.regData }
+                self?.outputLikePhotoList.value = sorted
             }
         }
         
-        inputHeartButton.bind { [weak self] tag in // indexPath.item
-            guard let tag else { return }
-            let likePhoto = self?.outputLikePhotoList.value[tag]
-            print(likePhoto)
-            print(self?.outputLikePhotoListSorted.value)
+        inputHeartButton.bind { [weak self] (id, order) in
+            print("id", id)
             
-            // if let likePhoto {
-            //     DocumentFileManager.shared.removeImageFromDocument(filename: likePhoto.id)
-            //     self?.repo.deleteLikePhoto(photo: likePhoto)
-            //     
-            //     self?.outputLikePhotoList.value = self?.repo.getAllLikePhoto() ?? []
-            // }
+            // 앱이 계속 종료되는 오류..발생...
+            guard let likePhoto = self?.repo.getLikePhoto(id: id) else { return }
+            DocumentFileManager.shared.removeImageFromDocument(filename: likePhoto.id)
+            self?.repo.deleteLikePhoto(photo: likePhoto)
+            self?.outputLikePhotoList.value = self?.repo.getAllLikePhoto() ?? []
         }
     }
     

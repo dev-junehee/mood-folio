@@ -12,6 +12,8 @@ import SnapKit
 
 final class SearchCollectionViewCell: BaseCollectionViewCell {
     
+    var heartButtonAction: (() -> Void)?
+    
     private let imageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
@@ -43,8 +45,9 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    let heartButton = {
+    lazy var heartButton = {
         let button = UIButton()
+        button.addTarget(self, action: #selector(heartButtonClicked), for: .touchUpInside)
         return button
     }()
  
@@ -112,6 +115,10 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         }
         
         heartButton.setImage(Resource.Image.likeCircle, for: .normal)
+    }
+    
+    @objc private func heartButtonClicked() {
+        heartButtonAction?()
     }
     
 }

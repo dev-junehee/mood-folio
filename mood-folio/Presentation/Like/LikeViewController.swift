@@ -44,11 +44,10 @@ final class LikeViewController: BaseViewController {
             self?.viewToggle()
         }
         
-        viewModel.outputLikePhotoListSorted.bind { [weak self] _ in
-            self?.updateSnapshot()
-            self?.viewToggle()
-            
-        }
+        // viewModel.outputLikePhotoListSorted.bind { [weak self] _ in
+        //     self?.updateSnapshot()
+        //     self?.viewToggle()
+        // }
     }
     
     override func configureViewController() {
@@ -63,8 +62,9 @@ final class LikeViewController: BaseViewController {
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, LikePhoto> {
         return UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
             cell.updateLikePhotoCell(data: itemIdentifier)
-            cell.heartButton.tag = indexPath.item
-            cell.heartButton.addTarget(self, action: #selector(self?.heartButtonClicked), for: .touchUpInside)
+            cell.heartButtonAction = {
+                self?.heartButtonClicked(for: itemIdentifier)
+            }
         }
     }
     
@@ -83,7 +83,7 @@ final class LikeViewController: BaseViewController {
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<LikeSection, LikePhoto>()
         snapshot.appendSections(LikeSection.allCases)
-        snapshot.appendItems(viewModel.outputLikePhotoListSorted.value, toSection: .main)
+        snapshot.appendItems(viewModel.outputLikePhotoList.value, toSection: .main)
         dataSource.apply(snapshot)
     }
     
@@ -110,9 +110,9 @@ final class LikeViewController: BaseViewController {
         viewModel.inputSortButton.value = likeOrder
     }
     
-    @objc private func heartButtonClicked(_ sender: UIButton) {
-        print(#function)
-        viewModel.inputHeartButton.value = sender.tag
+    @objc private func heartButtonClicked(for likePhoto: LikePhoto) {
+        viewModel.inputHeartButton.value = (likePhoto.id, likeOrder)
+                                            
     }
     
 }
