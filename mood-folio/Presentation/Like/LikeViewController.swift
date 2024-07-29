@@ -112,7 +112,6 @@ final class LikeViewController: BaseViewController {
     
     @objc private func heartButtonClicked(for likePhoto: LikePhoto) {
         viewModel.inputHeartButton.value = (likePhoto.id, likeOrder)
-                                            
     }
     
 }
