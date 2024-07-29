@@ -73,8 +73,9 @@ final class SearchViewController: BaseViewController {
     private func configureCellRegistration() -> UICollectionView.CellRegistration<SearchCollectionViewCell, Photo> {
         return UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
             cell.updateSearchCellUI(data: itemIdentifier)
-            cell.heartButton.tag = indexPath.item
-            cell.heartButton.addTarget(self, action: #selector(self?.heartButtonClicked), for: .touchUpInside)
+            cell.heartButtonAction = {
+                self?.heartButtonClicked(for: itemIdentifier)
+            }
         }
     }
     
@@ -126,8 +127,8 @@ final class SearchViewController: BaseViewController {
         }
     }
     
-    @objc private func heartButtonClicked(_ sender: UIButton) {
-        viewModel.inputHeartButton.value = sender.tag
+    private func heartButtonClicked(for Photo: Photo) {
+        viewModel.inputHeartButton.value = Photo
     }
     
 }

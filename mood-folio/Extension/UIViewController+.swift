@@ -17,7 +17,6 @@ enum AlertButtonType {
     case twoButton
 }
 
-
 extension UIViewController {
     // Navigation Bar Button Setting
     func setTextBarButtoon(title: String?, target: Any?, action: Selector?, type: BarButtonPosition) {

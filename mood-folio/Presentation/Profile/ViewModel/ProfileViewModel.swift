@@ -40,9 +40,9 @@ final class ProfileViewModel {
     var inputDoneButton = Observable<Void?>(nil)
     
     // output
-    var outputProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
+    var outputProfileImage = Observable<Int>(UserDefaultsManager.profile)
     var outputNicknameResult = Observable<Bool>(false)
-    var outputNicknameInvalidMessage = Observable<Constants.NicknameValidation>(.empty)
+    var outputNicknameInvalidMessage = Observable<NicknameValidation>(.empty)
     var outputMBTI = Observable<[MBTICharType.RawValue]>(["", "", "", ""])
     var outputOppositeMBTI = Observable<MBTICharType?>(.none)
     var outputMBTIResult = Observable<Bool>(false)
@@ -54,12 +54,12 @@ final class ProfileViewModel {
     
     private func transform() {
         inputViewDidLoad.bind { [weak self] _ in
-            UserDefaultsManager.shared.profile = Int.random(in: 0..<Resource.Image.profileImages.count)
-            self?.outputProfileImage.value = UserDefaultsManager.shared.profile
+            UserDefaultsManager.profile = Int.random(in: 0..<Resource.Image.profileImages.count)
+            self?.outputProfileImage.value = UserDefaultsManager.profile
         }
         
         inputViewWillAppear.bind { [weak self] _ in
-            self?.outputProfileImage.value = UserDefaultsManager.shared.profile
+            self?.outputProfileImage.value = UserDefaultsManager.profile
         }
         
         inputNicknameTextField.bind { [weak self] _ in
@@ -91,17 +91,18 @@ final class ProfileViewModel {
         } catch  {
             outputNicknameResult.value = false
             switch error {
-            case NicknameValidationError.empty:
+            case NicknameValidation.empty:
                 outputNicknameInvalidMessage.value = .empty
-            case NicknameValidationError.hasSpecialChar:
+            case NicknameValidation.hasSpecialChar:
                 outputNicknameInvalidMessage.value = .hasSpecialChar
-            case NicknameValidationError.hasNumber:
+            case NicknameValidation.hasNumber:
                 outputNicknameInvalidMessage.value = .hasNumber
-            case NicknameValidationError.invalidLength:
+            case NicknameValidation.invalidLength:
                 outputNicknameInvalidMessage.value = .invalidLength
-            case NicknameValidationError.same:
+            case NicknameValidation.same:
                 outputNicknameInvalidMessage.value = .same
             default:
+                outputNicknameInvalidMessage.value = .etc
                 break
             }
         }
@@ -157,11 +158,14 @@ final class ProfileViewModel {
         // UserDefaults에 유저 데이터 저장
         guard let nickname = inputNicknameTextField.value else { return }
         
-        UserDefaultsManager.shared.nickname = nickname
-        UserDefaultsManager.shared.profile = outputProfileImage.value
-        UserDefaultsManager.shared.mbti = outputMBTI.value
-        UserDefaultsManager.shared.joinDate = DateFormatterManager.shared.getTodayString(formatType: "yyyy. MM. dd")
-        UserDefaultsManager.shared.isUser = true
+        UserDefaultsManager.nickname = nickname
+        UserDefaultsManager.profile = outputProfileImage.value
+        UserDefaultsManager.mbti = outputMBTI.value
+        UserDefaultsManager.joinDate = DateFormatterManager.shared.getTodayString(formatType: "yyyy. MM. dd")
+        UserDefaultsManager.isUser = true
+        
+        // 사진 저장할 디렉토리 생성
+        DocumentFileManager.shared.createMoodFolioDirectoryToDocument()
         
         outputUserAccountResult.value = true
     }

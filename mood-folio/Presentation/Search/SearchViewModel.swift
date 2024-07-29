@@ -19,10 +19,12 @@ final class SearchViewModel {
     var inputSearchText = Observable<String?>(nil)
     var inputSortButton = Observable<SearchOrder>(.relevant)    // 검색 결과 정렬
     var inputInfinityScroll = Observable<Void?>(nil)
-    var inputHeartButton = Observable<Int?>(nil)
+    var inputHeartButton = Observable<Photo?>(nil)
     
     // output
     var outputSearchResult = Observable<Search>(Search(total: 0, total_pages: 0, results: []))
+    
+    
     var outputSearchNoResult = Observable<Void?>(nil)
     var outputCreateLikePhotoTrigger = Observable<Void?>(nil)
     var outputDeleteLikePhotoTrigger = Observable<Void?>(nil)
@@ -51,19 +53,19 @@ final class SearchViewModel {
             self?.getSearch()
         }
         
-        inputHeartButton.bind { [weak self] tag in
-            guard let tag else { return }
+        inputHeartButton.bind { [weak self] photo in
+            guard let photo else { return }
+            // let likePhoto = LikePhoto(photo: photo)
             
-            if let data = self?.outputSearchResult.value.results[tag] {
-                let isLikePhoto = self?.repo.isLikePhoto(id: data.id)
-                
-                if isLikePhoto != true {
-                    self?.createLikePhoto(data)
-                } else {
-                    guard let likePhoto = self?.repo.getLikePhoto(id: data.id)  else { return }
-                    self?.deleteLikePhoto(likePhoto)
-                }
+            let isLikePhoto = self?.repo.isLikePhoto(id: photo.id)
+            
+            if isLikePhoto != true {
+                self?.createLikePhoto(photo)
+            } else {
+                guard let likePhoto = self?.repo.getLikePhoto(id: photo.id)  else { return }
+                self?.deleteLikePhoto(likePhoto)
             }
+            
         }
     }
     
@@ -99,10 +101,15 @@ final class SearchViewModel {
     private func createLikePhoto(_ data: Photo) {
         let likePhoto = LikePhoto(photo: data)
         self.repo.createLikePhoto(likePhoto)
+        
+        guard let url = URL(string: likePhoto.urlRaw) else { return }
+        DocumentFileManager.shared.saveImageToDocument(imageURL: url, filename: likePhoto.id)
+        
         self.outputCreateLikePhotoTrigger.value = ()
     }
     
     private func deleteLikePhoto(_ data: LikePhoto) {
+        DocumentFileManager.shared.removeImageFromDocument(filename: data.id)
         self.repo.deleteLikePhoto(photo: data)
         self.outputDeleteLikePhotoTrigger.value = ()
     }

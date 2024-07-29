@@ -8,14 +8,14 @@
 import UIKit
 
 enum DetailType {
-    case photo
-    case likePhoto
+    case photo      // 토픽, 검색 화면에서 사용
+    case likePhoto  // 찜한 사진 화면에서 사용
 }
 
 final class DetailViewController: BaseViewController {
     
     private let detailView = DetailView()
-    let viewModel = DetailViewModel()
+    let viewModel = DetailViewModel()   // 토픽, 검색, 찜한 사진에서 뷰모델로 데이터 전달해주기 때문에 private 처리 X
     
     var detailType: DetailType = .photo
         
@@ -65,8 +65,8 @@ final class DetailViewController: BaseViewController {
     }
     
     @objc private func heartButtonClicked() {
-        print("Tetetet")
         viewModel.inputHeartButton.value = detailType
+        viewModel.inputSaveImage.value = detailView.mainPhotoImage.image
     }
     
 }

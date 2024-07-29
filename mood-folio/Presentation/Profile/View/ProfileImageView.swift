@@ -71,10 +71,12 @@ final class ProfileImageView: BaseView {
     }
     
     override func configureLayout() {
+        let safeArea = self.safeAreaLayoutGuide
+        
         profileImageView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(safeArea).inset(16)
             $0.size.equalTo(100)
-            $0.centerX.equalTo(self.safeAreaLayoutGuide)
+            $0.centerX.equalTo(safeArea)
         }
         
         profileImage.snp.makeConstraints {
@@ -96,8 +98,8 @@ final class ProfileImageView: BaseView {
         
         profileCollectionView.snp.makeConstraints {
             $0.top.equalTo(profileImageView.snp.bottom).offset(32)
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(safeArea).inset(16)
+            $0.bottom.equalTo(safeArea)
         }
     }
     

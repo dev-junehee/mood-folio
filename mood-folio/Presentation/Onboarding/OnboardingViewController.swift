@@ -28,4 +28,5 @@ final class OnboardingViewController: BaseViewController {
         let profileVC = ProfileViewController()
         navigationController?.pushViewController(profileVC, animated: true)
     }
+    
 }

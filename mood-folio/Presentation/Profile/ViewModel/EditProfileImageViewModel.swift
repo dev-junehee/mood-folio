@@ -14,8 +14,8 @@ final class EditProfileImageViewModel {
     var inputProfileImageSelected = Observable<Int?>(nil)
     
     // output
-    var outputOriginProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
-    var outputChangedProfileImage = Observable<Int>(UserDefaultsManager.shared.profile)
+    var outputOriginProfileImage = Observable<Int>(UserDefaultsManager.profile)
+    var outputChangedProfileImage = Observable<Int>(UserDefaultsManager.profile)
     
     init() {
         transform()
@@ -23,12 +23,11 @@ final class EditProfileImageViewModel {
     
     private func transform() {
         inputViewDidLoad.bind { [weak self] _ in
-            self?.outputOriginProfileImage.value = UserDefaultsManager.shared.profile
+            self?.outputOriginProfileImage.value = UserDefaultsManager.profile
         }
         
         inputProfileImageSelected.bind { [weak self] selected in
             guard let selected else { return }
-            print("선택한 이미지", selected)
             self?.outputChangedProfileImage.value = selected
         }
     }

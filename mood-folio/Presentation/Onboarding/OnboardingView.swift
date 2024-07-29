@@ -24,6 +24,7 @@ final class OnboardingView: BaseView {
         return view
     }()
     
+    // MARK: 추후 삭제 필요
     private let nameLabel = {
         let label = UILabel()
         label.text = "김준희"
@@ -43,28 +44,30 @@ final class OnboardingView: BaseView {
     }
     
     override func configureLayout() {
+        let safeArea = self.safeAreaLayoutGuide
+        
         titleImage.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide)
-            $0.centerX.equalTo(self.safeAreaLayoutGuide)
+            $0.top.equalTo(safeArea)
+            $0.centerX.equalTo(safeArea)
             $0.width.equalTo(320)
             $0.height.equalTo(120)
         }
         
         polaroidImage.snp.makeConstraints {
             $0.top.equalTo(titleImage.snp.bottom).offset(16)
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(safeArea)
             $0.height.equalTo(400)
         }
         
         startButton.snp.makeConstraints {
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.horizontalEdges.equalTo(safeArea).inset(16)
             $0.height.equalTo(50)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.bottom.equalTo(safeArea).inset(16)
         }
         
         nameLabel.snp.makeConstraints {
             $0.top.equalTo(polaroidImage.snp.bottom).offset(16)
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(safeArea)
             $0.height.equalTo(24)
         }
     }

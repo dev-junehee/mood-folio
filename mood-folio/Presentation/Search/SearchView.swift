@@ -72,32 +72,34 @@ final class SearchView: BaseView {
     }
     
     override func configureLayout() {
+        let safeArea = self.safeAreaLayoutGuide
+        
         searchBar.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide)
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(8)
+            $0.top.equalTo(safeArea)
+            $0.horizontalEdges.equalTo(safeArea).inset(8)
             $0.height.equalTo(44)
         }
         
         lineView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(8)
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(safeArea)
             $0.height.equalTo(1)
         }
         
         sortButton.snp.makeConstraints {
             $0.top.equalTo(lineView.snp.bottom).offset(8)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).offset(8)
+            $0.trailing.equalTo(safeArea).offset(8)
             $0.width.equalTo(90)
         }
         
         emptyView.snp.makeConstraints {
             $0.top.equalTo(sortButton.snp.bottom).offset(8)
-            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.bottom.equalTo(safeArea)
         }
         
         collectionView.snp.makeConstraints {
             $0.top.equalTo(sortButton.snp.bottom).offset(8)
-            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.bottom.equalTo(safeArea)
         }
     }
     

@@ -8,6 +8,8 @@
 import Foundation
 
 enum Constants {
+    static let moodfolio = "moodfolio"
+    
     enum Title {
         static let topic = "OUR TOPIC"
         static let search = "SEARCH PHOTO"
@@ -50,6 +52,7 @@ enum Constants {
         static let cancel = "취소"
         static let done = "완료"
         static let save = "저장"
+        static let cancelation = "회원탈퇴"
     }
     
     enum Placeholder {
@@ -58,33 +61,23 @@ enum Constants {
     
     enum Alert {
         enum Welcome {
-            static let message = "무드폴리오를 찾아주셔서 감사해요! =^^="
+            static let message = "무드폴리오를 찾아주셔서 감사해요!✨"
         }
         
         enum EditProfile {
-            static let title = "프로필 수정 완료!"
-            static let message = "프로필 성공적으로 수정되었어요.\n이전 화면으로 돌아갈게요."
+            static let title = "프로필 수정 완료"
+            static let message = "프로필 성공적으로 수정되었어요!\n이전 화면으로 돌아갈게요."
         }
         
         enum Cancelation {
-            static let title = "탈퇴하기"
-            static let message = "저장된 데이터가 모두 초기화됩니다.\n탈퇴하시겠습니까?"
+            static let title = "정말 떠나시는 건가요?"
+            static let message = "탈퇴하면 저장된 데이터가 모두 초기화돼요.\n그래도 탈퇴하시겠어요?"
         }
         
         enum ToOnboarding {
             static let title = "회원탈퇴 완료"
-            static let message = "온보딩 화면으로 돌아갑니다."
+            static let message = "그동안 무드폴리오를 이용해 주셔서 감사해요.\n언제든 다시 찾아주세요.👋"
         }
-    }
-    
-    enum NicknameValidation: String {
-        case success = "사용할 수 있는 닉네임이에요."
-        case empty = ""
-        case hasSpecialChar = "닉네임에 @, #, $, %할 포함될 수 없어요."
-        case hasNumber = "닉네임에 숫자는 포함할 수 없어요."
-        case invalidLength = "2글자 이상 10글자 미만으로 설정해 주세요."
-        case same = "이미 사용 중인 닉네임이에요."
-        case etc = "알 수 없는 오류에요🥲"
     }
     
     enum Integer {

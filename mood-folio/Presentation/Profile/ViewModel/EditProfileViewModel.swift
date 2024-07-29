@@ -9,6 +9,8 @@ import Foundation
 
 final class EditProfileViewModel {
     
+    private let repo = LikePhotoRepository()
+    
     // input
     var inputViewDidLoad = Observable<Void?>(nil)
     var inputNicknameTextField = Observable<String?>(nil)
@@ -19,8 +21,8 @@ final class EditProfileViewModel {
     // output
     var outputOriginInfo = Observable<(Int, String, [String])>((0, "", ["", "", "", ""]))
     var outputNicknameResult = Observable<Bool>(false)
-    var outputNicknameInvalidMessage = Observable<Constants.NicknameValidation>(.empty)
-    var outputMBTI = Observable<[MBTICharType.RawValue]>(UserDefaultsManager.shared.mbti)
+    var outputNicknameInvalidMessage = Observable<NicknameValidation>(.empty)
+    var outputMBTI = Observable<[MBTICharType.RawValue]>(UserDefaultsManager.mbti)
     var outputOppositeMBTI = Observable<MBTICharType?>(.none)
     var outputMBTIResult = Observable<Bool>(false)
     var outputDeleteAccount = Observable<Void?>(nil)
@@ -32,9 +34,9 @@ final class EditProfileViewModel {
     private func transform() {
         inputViewDidLoad.bind { [weak self] _ in
             self?.outputOriginInfo.value = (
-                UserDefaultsManager.shared.profile,
-                UserDefaultsManager.shared.nickname,
-                UserDefaultsManager.shared.mbti
+                UserDefaultsManager.profile,
+                UserDefaultsManager.nickname,
+                UserDefaultsManager.mbti
             )
         }
         
@@ -50,13 +52,16 @@ final class EditProfileViewModel {
             self?.setInactiveMBTIChar()
         }
         
-        inputDeleteAccountButton.bind { _ in
+        inputDeleteAccountButton.bind { [weak self] _ in
             print("모든 데이터가 삭제될 예정")
+            DocumentFileManager.shared.removeAllImageFromDocument()
+            
             // Realm 데이터 먼저 삭제
+            self?.repo.deleteAllRealm()
             
             // UserDefaults 데이터 삭제
-            UserDefaultsManager.shared.deleteAllUserDefaults()
-            self.outputDeleteAccount.value = ()
+            UserDefaultsManager.deleteAllUserDefaults()
+            self?.outputDeleteAccount.value = ()
         }
     }
     
@@ -72,15 +77,15 @@ final class EditProfileViewModel {
         } catch  {
             outputNicknameResult.value = false
             switch error {
-            case NicknameValidationError.empty:
+            case NicknameValidation.empty:
                 outputNicknameInvalidMessage.value = .empty
-            case NicknameValidationError.hasSpecialChar:
+            case NicknameValidation.hasSpecialChar:
                 outputNicknameInvalidMessage.value = .hasSpecialChar
-            case NicknameValidationError.hasNumber:
+            case NicknameValidation.hasNumber:
                 outputNicknameInvalidMessage.value = .hasNumber
-            case NicknameValidationError.invalidLength:
+            case NicknameValidation.invalidLength:
                 outputNicknameInvalidMessage.value = .invalidLength
-            case NicknameValidationError.same:
+            case NicknameValidation.same:
                 outputNicknameInvalidMessage.value = .same
             default:
                 break

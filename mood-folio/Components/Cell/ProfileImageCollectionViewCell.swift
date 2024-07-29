@@ -10,11 +10,10 @@ import SnapKit
 
 final class ProfileImageCollectionViewCell: BaseCollectionViewCell {
     
-    let profileImageView = UIView()
-    let profileImage = UIImageView()
+    private let profileImageView = UIView()
+    private let profileImage = UIImageView()
     
-    var itemNum: Int?
-    let profileNum = UserDefaultsManager.shared.profile
+    private let profileNum = UserDefaultsManager.profile
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -24,16 +23,14 @@ final class ProfileImageCollectionViewCell: BaseCollectionViewCell {
     }
     
     // 선택한 Cell에 대한 UI
-    override var isSelected: Bool{
+    override var isSelected: Bool {
         didSet {
             if isSelected {
                 profileImageView.alpha = 1.0
-                profileImage.layer.borderColor = Resource.Color.primary.cgColor
-                profileImage.layer.borderWidth = Constants.Integer.borderWidth
+                profileImage.setSelectedUI()
             } else {
                 profileImageView.alpha = 0.5
-                profileImage.layer.borderColor = Resource.Color.lightGray.cgColor
-                profileImage.layer.borderWidth = Constants.Integer.borderWidthEnabled
+                profileImage.setUnselectedUI()
             }
         }
     }
@@ -62,17 +59,12 @@ final class ProfileImageCollectionViewCell: BaseCollectionViewCell {
         profileImage.contentMode = .scaleAspectFit
         
         profileImageView.alpha = 0.5
-        profileImage.layer.borderColor = Resource.Color.lightGray.cgColor
-        profileImage.layer.borderWidth = Constants.Integer.borderWidthEnabled
+        profileImage.setUnselectedUI()
     }
     
     func configureSelectedUI() {
-        profileImage.backgroundColor = Resource.Color.white
-        profileImage.contentMode = .scaleAspectFit
-        
         profileImageView.alpha = 1.0
-        profileImage.layer.borderColor = Resource.Color.primary.cgColor
-        profileImage.layer.borderWidth = Constants.Integer.borderWidth
+        profileImage.setSelectedUI()
     }
     
     func configureCellData(data: UIImage) {

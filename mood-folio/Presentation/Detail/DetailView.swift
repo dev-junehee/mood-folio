@@ -32,24 +32,22 @@ final class DetailView: BaseView {
     
     private let userNameLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.font = Resource.Font.regular14
         return label
     }()
     
     private let createDateLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.font = Resource.Font.bold14
         return label
     }()
     
     let heartButton = {
         let button = UIButton()
-        // let image = UIImage(resource: .like)
-        // button.setImage(image, for: .normal)
         return button
     }()
     
-    private let mainPhotoImage = {
+    let mainPhotoImage = {
         let view = UIImageView()
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
@@ -151,45 +149,48 @@ final class DetailView: BaseView {
     }
     
     override func configureLayout() {
+        let safeArea = self.safeAreaLayoutGuide
+        
         userProfileImage.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+            $0.top.equalTo(safeArea).offset(8)
+            $0.leading.equalTo(safeArea).offset(16)
             $0.size.equalTo(40)
         }
         
         userInfoStack.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
+            $0.top.equalTo(safeArea).offset(8)
             $0.leading.equalTo(userProfileImage.snp.trailing).offset(8)
             $0.trailing.equalTo(heartButton.snp.leading)
             $0.height.equalTo(40)
         }
         
         heartButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(safeArea).offset(8)
+            $0.trailing.equalTo(safeArea).inset(16)
             $0.size.equalTo(40)
         }
         
         mainPhotoImage.snp.makeConstraints {
             $0.top.equalTo(userProfileImage.snp.bottom).offset(16)
-            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(safeArea)
             $0.height.equalTo(200)
         }
         
         photoInfoLabel.snp.makeConstraints {
             $0.top.equalTo(mainPhotoImage.snp.bottom).offset(16)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+            $0.leading.equalTo(safeArea).offset(16)
             $0.width.equalTo(80)
         }
         
         photoInfoStack.snp.makeConstraints {
             $0.top.equalTo(mainPhotoImage.snp.bottom).offset(16)
             $0.leading.equalTo(photoInfoLabel.snp.trailing)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.trailing.equalTo(safeArea).inset(16)
             $0.height.equalTo(80)
         }
     }
     
+    // 토픽 화면, 검색 화면에서 사용
     func updateUI(data: Photo?) {
         guard let data else { return }
         userProfileImage.kf.setImage(with: URL(string: data.user.profile_image.medium))
@@ -201,6 +202,7 @@ final class DetailView: BaseView {
         updateHeartButtonUI(id: data.id)
     }
     
+    // 찜한 사진 화면에서 사용
     func updateLikePhotoUI(data: LikePhoto?) {
         guard let data else { return }
         userProfileImage.kf.setImage(with: URL(string: data.userProfileImage))
@@ -212,6 +214,7 @@ final class DetailView: BaseView {
         updateHeartButtonUI(id: data.id)
     }
     
+    // 하트 버튼 핸들링
     func updateHeartButtonUI(id: String) {
         let isLikePhoto = repo.isLikePhoto(id: id)
         let buttonImage = isLikePhoto ? Resource.Image.like : Resource.Image.likeInactive
@@ -221,6 +224,7 @@ final class DetailView: BaseView {
         heartButton.tintColor = buttonColor
     }
     
+    // 상세화면 데이터 바인딩 (Statistics API)
     func updateDetailUI(data: Statistics?) {
         guard let data else { return }
         viewDataLabel.text = data.views.total.formatted()

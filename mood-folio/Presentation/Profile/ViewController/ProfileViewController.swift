@@ -89,7 +89,7 @@ final class ProfileViewController: BaseViewController {
         viewModel.outputUserAccountResult.bind { [weak self] res in
             if !res { return }
             self?.showAlert(
-                title: UserDefaultsManager.shared.getWelcomeMessage(),
+                title: UserDefaultsManager.getWelcomeMessage(),
                 message: Constants.Alert.Welcome.message,
                 buttonType: .oneButton,
                 okHandler: { [weak self] _ in
@@ -144,7 +144,6 @@ final class ProfileViewController: BaseViewController {
     }
     
     @objc private func doneButtonClicked() {
-        // print(#function)
         viewModel.inputDoneButton.value = ()
     }
 }
