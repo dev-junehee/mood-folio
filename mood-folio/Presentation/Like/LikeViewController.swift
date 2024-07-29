@@ -92,7 +92,7 @@ final class LikeViewController: BaseViewController {
         if isEmpty {
             likeView.collectionView.isHidden = true
             likeView.emptyView.isHidden = false
-            likeView.emptyView.emptyText = "저장된 사진이 없어요!"
+            likeView.emptyView.emptyText = Constants.Like.empty
         } else {
             likeView.collectionView.isHidden = false
             likeView.emptyView.isHidden = true
@@ -120,7 +120,7 @@ extension LikeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.detailType = .likePhoto
-        detailVC.viewModel.inputLikePhotoData.value = viewModel.outputLikePhotoListSorted.value[indexPath.item]
+        detailVC.viewModel.inputLikePhotoData.value = viewModel.outputLikePhotoList.value[indexPath.item]
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

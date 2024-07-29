@@ -33,6 +33,7 @@ enum Constants {
     enum Like {
         static let latest = "최신순"
         static let past = "과거순"
+        static let empty = "저장된 사진이 없어요!"
     }
     
     enum Detail {
