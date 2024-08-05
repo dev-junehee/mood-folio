@@ -30,25 +30,13 @@
                                     <constraint firstAttribute="height" constant="400" id="fbs-fB-acq"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김준희" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pJ-RU-kuU">
-                                <rect key="frame" x="0.0" y="651" width="393" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="4Sd-ka-pHY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OhW-pI-U3d" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OST-mg-ZAd"/>
                             <constraint firstItem="6c5-bi-jzu" firstAttribute="top" secondItem="OhW-pI-U3d" secondAttribute="bottom" constant="16" id="c5j-Bx-Tkb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4pJ-RU-kuU" secondAttribute="trailing" id="cPY-UT-p4o"/>
-                            <constraint firstItem="4pJ-RU-kuU" firstAttribute="top" secondItem="6c5-bi-jzu" secondAttribute="bottom" constant="16" id="e6R-Q2-ptU"/>
                             <constraint firstItem="OhW-pI-U3d" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="jaP-7A-j2t"/>
-                            <constraint firstItem="4pJ-RU-kuU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pAF-O5-y2L"/>
                             <constraint firstItem="6c5-bi-jzu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vPt-Kt-HtS"/>
                             <constraint firstItem="6c5-bi-jzu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wBT-0K-UtQ"/>
                         </constraints>

@@ -24,22 +24,13 @@ final class OnboardingView: BaseView {
         return view
     }()
     
-    // MARK: 추후 삭제 필요
-    private let nameLabel = {
-        let label = UILabel()
-        label.text = "김준희"
-        label.textAlignment = .center
-        label.font = Resource.Font.black20
-        return label
-    }()
-    
     let startButton = {
         let button = CommonButton(title: Constants.Button.start)
         return button
     }()
     
     override func configureHierarchy() {
-        let views = [titleImage, polaroidImage, startButton, nameLabel]
+        let views = [titleImage, polaroidImage, startButton]
         views.forEach { self.addSubview($0) }
     }
     
@@ -64,11 +55,6 @@ final class OnboardingView: BaseView {
             $0.height.equalTo(50)
             $0.bottom.equalTo(safeArea).inset(16)
         }
-        
-        nameLabel.snp.makeConstraints {
-            $0.top.equalTo(polaroidImage.snp.bottom).offset(16)
-            $0.horizontalEdges.equalTo(safeArea)
-            $0.height.equalTo(24)
-        }
     }
+    
 }
