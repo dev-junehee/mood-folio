@@ -83,7 +83,7 @@ final class LikeViewController: BaseViewController {
         var snapshot = NSDiffableDataSourceSnapshot<LikeSection, LikePhoto>()
         snapshot.appendSections(LikeSection.allCases)
         snapshot.appendItems(viewModel.outputLikePhotoList.value, toSection: .main)
-        dataSource.apply(snapshot)
+        dataSource.applySnapshotUsingReloadData(snapshot)
     }
     
     private func viewToggle() {

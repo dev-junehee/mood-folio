@@ -36,6 +36,11 @@ final class SearchViewController: BaseViewController {
         showEmptyView(type: .noSearch)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateSnapshot()
+    }
+    
     private func bindData() {
         viewModel.outputSearchResult.bind { [weak self] _ in
             self?.showCollectionView()
@@ -95,7 +100,7 @@ final class SearchViewController: BaseViewController {
         var snapshot = NSDiffableDataSourceSnapshot<SearchSection, Photo>()
         snapshot.appendSections(SearchSection.allCases)
         snapshot.appendItems(viewModel.outputSearchResult.value.results, toSection: .main)
-        dataSource.apply(snapshot)
+        dataSource.applySnapshotUsingReloadData(snapshot)
     }
     
     private func showEmptyView(type: EmptyViewType) {
