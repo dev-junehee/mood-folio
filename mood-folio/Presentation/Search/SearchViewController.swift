@@ -53,10 +53,12 @@ final class SearchViewController: BaseViewController {
         
         viewModel.outputCreateLikePhotoTrigger.bind { [weak self] _ in
             self?.updateSnapshot()
+            self?.showToast(type: .createPhoto)
         }
         
-        viewModel.outputCreateLikePhotoTrigger.bind { [weak self] _ in
+        viewModel.outputDeleteLikePhotoTrigger.bind { [weak self] _ in
             self?.updateSnapshot()
+            self?.showToast(type: .deletePhoto)
         }
     }
     
