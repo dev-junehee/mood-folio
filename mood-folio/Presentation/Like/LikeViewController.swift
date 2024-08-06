@@ -44,10 +44,9 @@ final class LikeViewController: BaseViewController {
             self?.viewToggle()
         }
         
-        // viewModel.outputLikePhotoListSorted.bind { [weak self] _ in
-        //     self?.updateSnapshot()
-        //     self?.viewToggle()
-        // }
+        viewModel.outputDeletedTrigger.bind { [weak self] _ in
+            self?.showToast(type: .deletePhoto)
+        }
     }
     
     override func configureViewController() {

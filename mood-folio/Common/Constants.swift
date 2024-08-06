@@ -87,8 +87,8 @@ enum Constants {
     }
     
     enum Toast {
-        static let createPhoto = "사진 저장 완료"
-        static let deletePhoto = "사진이 저장 해제"
+        static let createPhoto = "사진 저장 완료!"
+        static let deletePhoto = "사진 저장 해제!"
     }
     
     enum Integer {
