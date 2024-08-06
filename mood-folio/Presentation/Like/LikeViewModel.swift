@@ -28,6 +28,7 @@ final class LikeViewModel {
     var outputLikePhotoListSortedLatest = Observable<[LikePhoto]>([])  // 최신순
     var outputLikePhotoListSortedPast = Observable<[LikePhoto]>([])    // 관련순
     var outputLikePhotoListSorted = Observable<[LikePhoto]>([])        // 실제 보여줄 값
+    var outputDeletedTrigger = Observable<Void?>(nil)
     
     init() {
         transform()
@@ -83,6 +84,7 @@ final class LikeViewModel {
             DocumentFileManager.shared.removeImageFromDocument(filename: likePhoto.id)
             self?.repo.deleteLikePhoto(photo: likePhoto)
             self?.outputLikePhotoList.value = self?.repo.getAllLikePhoto() ?? []
+            self?.outputDeletedTrigger.value = ()
         }
     }
     

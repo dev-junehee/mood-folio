@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 enum BarButtonPosition {
     case left
@@ -15,6 +16,12 @@ enum BarButtonPosition {
 enum AlertButtonType {
     case oneButton
     case twoButton
+}
+
+enum ToastType {
+    case createPhoto
+    case deletePhoto
+    case custom
 }
 
 extension UIViewController {
@@ -105,6 +112,19 @@ extension UIViewController {
         }
         
         present(alert, animated: true)
+    }
+    
+    // Toast
+    func showToast(type: ToastType, message: String? = nil) {
+        switch type {
+        case .createPhoto:
+            view.makeToast(Constants.Toast.createPhoto)
+        case .deletePhoto:
+            view.makeToast(Constants.Toast.deletePhoto)
+        case .custom:
+            view.makeToast(message)
+        }
+        
     }
     
     // 여러 뷰컨에서 공통적으로 많이 사용하는 핸들러

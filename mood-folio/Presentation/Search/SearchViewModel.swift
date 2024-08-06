@@ -55,8 +55,6 @@ final class SearchViewModel {
         
         inputHeartButton.bind { [weak self] photo in
             guard let photo else { return }
-            // let likePhoto = LikePhoto(photo: photo)
-            
             let isLikePhoto = self?.repo.isLikePhoto(id: photo.id)
             
             if isLikePhoto != true {

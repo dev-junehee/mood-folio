@@ -86,6 +86,11 @@ enum Constants {
         }
     }
     
+    enum Toast {
+        static let createPhoto = "사진 저장 완료!"
+        static let deletePhoto = "사진 저장 해제!"
+    }
+    
     enum Integer {
         static let commonButtonRadius: CGFloat = 20
         static let mbtiButtonRadius: CGFloat = 40
