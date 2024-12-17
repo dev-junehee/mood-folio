@@ -1,9 +1,9 @@
-# 🎞️ 무드폴리오 (Mood Polio) - 이미지 스크랩 플랫폼
+# 📷 무드폴리오 (Mood Polio) - 이미지 스크랩 플랫폼
 
 <br />
 
 <div align="center">
-  <img width=180" src="https://github.com/user-attachments/assets/a6b417d5-c83d-45bd-8744-7d3b61e51768" />
+  <img width=180" src="https://github.com/user-attachments/assets/040213be-51ad-4114-8891-62ce6d279b02" />
   <br /><br />
   <img src="https://img.shields.io/badge/Swift-v5.1-F05138?logo=swift" />
   <img src="https://img.shields.io/badge/Xcode-v15.4-147EFB?logo=Xcode" />
@@ -89,6 +89,8 @@
 - Observable 제네릭 클래스 구현하여 핸들링할 값과 클로저 선언
 - 초기화 시점에 데이터를 받아 값에 할당하고, 값이 변할 때 마다 클로저를 호출하여 외부에서 변경된 값을 반영
 
+<br />
+
 ### 네트워크 연결 상태를 감지하여 네트워크 상태 변화를 추적
 - Singleton 패턴으로 NetworkMonitorManager 클래스 구현하고 NWPathMonitor 인스턴스를 통해 네트워크 모니터링
 - 앱의 라이프사이클에 따라 네트워크 모니터링 실행/중단 처리
@@ -98,12 +100,16 @@
 - 모든 화면이 상속 받는 BaseViewController의 ViewDidLoad 시점에서 네트워크 모니터링 결과 핸들링
 - 네트워크가 연결되지 않았을 경우 Alert를 띄우고 설정 화면으로 연결하여 네트워크를 연결하도록 유도
 
+<br />
+
 ### 네트워크 통신 & Toast를 활용한 에러 핸들링
 - TargetType 프로토콜을 직접 구현하고, TargetType 프로토콜을 채택한 Router를 만들어 네트워크 요청에 필요한 속성 정의
 - Singleton 패턴을 활용한 NetworkManager 클래스 구현
 - 제네릭과 Result Type을 활용해 추상화된 네트워크 요청 함수 구현
 - Alamofire.request 메서드를 통해 네트워크 호출 및 응답 처리
 - Toast 메세지를 활용한 에러 핸들링
+
+<br />
 
 ### Realm 데이터베이스 & FileManager를 활용한 사진 저장 기능 구현
 - 앱에서 사용할 LikePhoto 모델 정의
@@ -112,6 +118,8 @@
 - Singleton 패턴으로 DocumentFileManager 클래스 구현하여 도큐멘트 경로 확인/디렉토리 생성 등의 메서드 구현
 - FileManager를 통해 사진 저장 전 앱 이름으로 도큐멘트 생성하여 해당 도큐멘트 내부에 사진 저장하여 기능 확장과 유지보수 고려
 - 사진 로드 시 #available을 활용해 iOS 16.0 이상 버전과 이하 버전에 따라 분기 처리
+
+<br />
 
 ### UICollectionViewDiffableDataSource를 활용한 사진 검색 기능 구현
 - UICollectionViewDiffableDataSource를 사용해 컬렉션 뷰를 구현하고 데이터 관리
